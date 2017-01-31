@@ -3,13 +3,13 @@
 
 		include '../dbh.php';
 		//Gets values from form
-		$uid = $_POST['uid'];
+		$netid = $_POST['netid'];
 		$pwd = $_POST['pwd'];
 		//create a group variable
 		$group = 'test';
 
 		//get password from database based on UID
-		$sql = "SELECT * FROM user WHERE uid='$uid' AND status='Active'";
+		$sql = "SELECT * FROM Users WHERE NetID='$netid' AND status='Active'";
 		$result = mysqli_query($conn, $sql);
 		$row = $result->fetch_assoc();
 		$hash_pwd = $row['pwd'];
@@ -36,12 +36,12 @@
 				}
 				else
 				{
-					$_SESSION['id'] = $row['id'];
-					$_SESSION['access'] = $row['access'];
-					$_SESSION['first'] = $row['first'];
+					$_SESSION['NetID'] = $row['NetID'];
+					$_SESSION['credentials'] = $row['Credentials'];
+					/*$_SESSION['first'] = $row['first'];
 					$_SESSION['last'] = $row['last'];
-					$_SESSION['uid'] = $row['uid'];
-					$group = $row['access'];
+					$_SESSION['uid'] = $row['uid'];*/
+					$group = $row['Credentials'];
 				}
 		 }
 		/*
@@ -102,17 +102,20 @@
 		*/
 
 
-		if ($group == 'admin')
+		if ($group == 1)
 		{
+			// If user is level 1 (admin), go to admin dashboard
 			header('Location: ../adminoptions.php');
 		}
-		else if ($group == 'student')
+		else if ($group == 2)
 		{
-			header('Location: ../studentoptions.php');
+			// If user is level 2 (secretary), go to secretary dashboard
+			header('Location: ../secretaryoptions.php');
 		}
-		else if ($group == 'coach')
+		else if ($group == 3)
 		{
-			header('Location: ../coachoptions.php');
+			// If user is level 3 (faculty), go to faculty dashboard
+			header('Location: ../facultyoptions.php');
 		}
 
 ?>
