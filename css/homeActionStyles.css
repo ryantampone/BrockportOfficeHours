@@ -1,0 +1,28 @@
+body
+{
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+  font-family: Arial;
+  font-size: 18px;
+}
+
+#homeActions a
+{
+  align-self: center;
+  color: #212121;
+}
+
+#homeActions a:hover
+{
+  color: #444444;
+  text-decoration: none;
+}
+
+#homeActions a,visited
+{
+  color: #ccc;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+}
