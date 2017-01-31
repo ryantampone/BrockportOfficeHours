@@ -179,12 +179,14 @@ div.callToActionBox
 
 div.callToActionContent
 {
-  min-height: 175px;
-  width: 100%;
-  margin: 0px;
-  background-color: #709A42;
-  box-shadow: 2px 2px 5px grey;
-  display:inline-block;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  bottom: 10px;
+  left: 10px;
 }
 
 

@@ -7,6 +7,7 @@
 		{
 				$group = (string)$_SESSION['access'];
 				$loginID = (string)$_SESSION['id'];
+				$callToAction = 'TEST';
 
 
 				if ($group == 'admin')
@@ -27,9 +28,8 @@
 		{
 				echo"
 				<div class='callToActionBox'>
-						<div class='callToActionContent'>"
-								$callToAction
-								echo"
+						<div class='callToActionContent'>
+								TESTING CALL TO ACTION
 						</div>
 				</div>
 

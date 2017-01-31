@@ -160,9 +160,9 @@
 							<?php
 									//$firstName = (string)$_SESSION['first'];
 									///$lastName = (string)$_SESSION['last'];
-									$access = (string)$_SESSION['access'];
+									$NetID = (string)$_SESSION['NetID'];
 									//$netID = (string)$_SESSION['uid'];
-                  if (isset($_SESSION['id']))
+                  if (isset($_SESSION['NetID']))
 									{
 											//get links from array and list them here
 											//echo "<a href='index.php'>$firstName $lastName's $access dashboard</a> </li><li>";
