@@ -148,6 +148,23 @@
 						}
 					}
 
+					/* If credentials = 1 (admin), then department = null
+								credentials = 2 or 3 (secretary or faculty), then department can be chosen
+					*/
+					function checkCreds()
+					{
+						var creds = document.getElementById("access").value;
+						if (creds == 1)
+						{
+							document.getElementById("dept").value = "none";
+							document.getElementById("dept").disabled();
+						}
+						else
+						{
+							document.getElementById("dept").enabled();
+						}
+					}
+
 		</script>
 </head>
 <body bgcolor="#F5F5F5">
@@ -173,7 +190,7 @@
 									{
 											//if the user is not logged in (ie. on the login page), display these links
 											echo "<a href='index.php'>Please Login with Your Username and Password</a></li><li>";
-											echo "<a href='registration_enter_key.php'>Signup</a></li><li>";
+											echo "<a href='user_signup.php'>Signup</a></li><li>";
 											echo "<a href='forgotpassword.php'>Forgot Password</a></li><li>";
                   }
               ?>
