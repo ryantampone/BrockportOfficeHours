@@ -117,7 +117,7 @@ body
   left: 5%;
   bottom: 5%;
   */
-  background: white;
+  background: #F5F5F5;
   box-shadow: 5px 5px 5px #bdbdbd/*#b6aeae*/;
 }
 #login:hover{
@@ -179,8 +179,8 @@ div.callToActionBox
 
 div.callToActionContent
 {
-  height: inherit;
-  width: inherit;
+  height: auto;
+  width: auto;
   position: absolute;
   color: white;
   font-size: 30px;

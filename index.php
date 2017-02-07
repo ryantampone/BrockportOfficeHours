@@ -34,10 +34,6 @@
 				</div>
 
 
-
-
-
-
 				<style>
 						.button
 						{
