@@ -56,12 +56,12 @@ body
 
 #nav ul li a:hover
 {
-  color: white;
+  color: #ccc; /*white;*/
 }
 
 #nav ul li a,visited
 {
-  color: #ccc;
+  color: white; /*#ccc;*/
   display: block;
   padding: 15px;
   text-decoration: none;
@@ -69,7 +69,7 @@ body
 
 #nav ul li a :hover
 {
-  color: #ccc;
+  color: white; /*#ccc;*/
   text-decoration: none;
 }
 
@@ -96,12 +96,12 @@ body
 
 #nav ul ul li a,visited
 {
-  color: #ccc;
+  color: white; /*#ccc;*/
 }
 
 #nav ul ul li a:hover
 {
-  color: white;
+  color: #ccc;/*White;*/
 }
 
 
