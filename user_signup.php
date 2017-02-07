@@ -4,7 +4,7 @@
 ?>
 
 <?php
-	if ((isset($_SESSION['id'])) && ((string)$_SESSION['access'] == 'admin'))
+	if ((isset($_SESSION['NetID'])) && ($_SESSION['Credentials'] == 1))
 	{
 		session_destroy();
 		echo "<SCRIPT LANGUAGE='JavaScript'>
