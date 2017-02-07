@@ -1,18 +1,25 @@
 <?php
-session_start();
+  session_start();
 
-include '../dbh.php';
+  require('../db_cn.php');
 
-$first = $_POST['first'];
-$last = $_POST['last'];
-$uid = $_POST['uid'];
-$pwd = $_POST['pwd'];
-$access = $_POST['access'];
+  $netid = $_POST['netid'];
+  $fn = $_POST['firstname'];
+  $ln = $_POST['lastname'];
+  $uid = $_POST['uid'];
+  $pwd = $_POST['pwd'];
+  $access = $_POST['access'];
 
-$sql = "INSERT INTO user (first, last, uid, pwd, access)
-  VALUES ('$first', '$last', '$uid', '$pwd', '$access')";
-$result=mysqli_query($conn, $sql);
+  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
+  $sql = "INSERT INTO user (first, last, uid, pwd, access)
+    VALUES ('$first', '$last', '$uid', '$pwd', '$access')";
+  $result = mysql_query($sql);
 
-//header("location: ../forecastoptions.php");
+  while($row = mysql_fetch_assoc($sql))
+  {
+
+  }
+
+  //header("location: ../forecastoptions.php");
 
 ?>
