@@ -25,6 +25,8 @@ body
 #nav
 {
   background-color: #3D4B2E;
+  /*opacity: 0.5;*/
+  /*rgba(104,104,104,.5);*/
 }
 
 #nav_wrapper
@@ -157,7 +159,7 @@ div.callToActionBox
 {
   min-height: 175px;
   width: 100%;
-  margin: 0px;
+  margin-top: 0px;
   background-color: #709A42;
   box-shadow: 2px 2px 5px grey;
   display: inline-block;
@@ -165,12 +167,12 @@ div.callToActionBox
 
 div.callToActionContent
 {
-  height: auto;
-  width: auto;
-  /*position: absolute;*/
-  display: inline;
+  height: inherit;
+  width: inherit;
+  margin-top: 55px;
+  margin-left: 25px;
   color: white;
-  font-size: 30px;
+  font-size: 50px;
   font-family: 'Roboto', sans-serif;
   bottom: 10px;
   left: 10px;

@@ -29,7 +29,7 @@
 				echo"
 				<div class='callToActionBox'>
 						<div class='callToActionContent'>
-								TESTING CALL TO ACTION
+								Sign in to access your account
 						</div>
 				</div>
 
