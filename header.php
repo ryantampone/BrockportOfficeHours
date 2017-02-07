@@ -212,9 +212,4 @@
     		</ul>
 		</div>
 </div>
-<div class='callToActionBox'>
-		<div class='callToActionContent'>
-				TESTING CALL TO ACTION
-		</div>
-</div>
 				<!-- =========================End of Header======================== -->

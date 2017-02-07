@@ -7,6 +7,7 @@ body
   font-size: 18px;
 }
 
+/*
 @media all and (max-height: 650px)
 {
   .ellsworthimg {display: none;}
@@ -19,6 +20,7 @@ body
 {
   .ellsworthimg {display: none;}
 }
+*/
 
 #nav
 {
@@ -150,22 +152,6 @@ body
   display:inline-block;
 }
 
-#studentButton
-{
-  /*float: left;*/
-}
-
-#coachButton
-{
-  /*float: right;*/
-}
-
-#stBtn, #cchBtn
-{
-  width: 100px;
-  height: 100px;
-}
-
 
 div.callToActionBox
 {
@@ -174,14 +160,15 @@ div.callToActionBox
   margin: 0px;
   background-color: #709A42;
   box-shadow: 2px 2px 5px grey;
-  display:inline-block;
+  display: inline-block;
 }
 
 div.callToActionContent
 {
   height: auto;
   width: auto;
-  position: absolute;
+  /*position: absolute;*/
+  display: inline;
   color: white;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;
