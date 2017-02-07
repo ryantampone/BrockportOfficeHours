@@ -27,13 +27,6 @@
 		else
 		{
 				echo"
-				<div class='callToActionBox'>
-						<div class='callToActionContent'>
-								TESTING CALL TO ACTION
-						</div>
-				</div>
-
-
 				<style>
 						.button
 						{

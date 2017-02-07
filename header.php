@@ -178,24 +178,43 @@
 									//$firstName = (string)$_SESSION['first'];
 									///$lastName = (string)$_SESSION['last'];
 									$NetID = (string)$_SESSION['NetID'];
-									//$netID = (string)$_SESSION['uid'];
+									$credentials= (string)$_SESSION['Credentials'];
                   if (isset($_SESSION['NetID']))
 									{
-											//get links from array and list them here
-											//echo "<a href='index.php'>$firstName $lastName's $access dashboard</a> </li><li>";
-											echo "<a href='changepassword.php'>Change Password</a> </li><li>";
-											echo "<a href='login/logout.php'>Logout</a> </li><li>";
-                  }
+											//echo "<li><a href='index.php'>$firstName $lastName's $access dashboard</a> </li><li>";
+											if ($credentials == '1')
+											{
+												echo "<li><a href='#'>Dashboards</a>";
+												echo "<ul><li><a href='studentoptions.php'>Student Dashboard</a></li>";
+												echo "<li><a href='coachoptions.php'>Coach Dashboard</a></li></ul></li>";
+											}
+											if ($credentials == '2')
+											{
+												echo "<li><a href='forecast_student_select_process.php'>Past Forecasts</a>";
+											}
+											if ($credentials == '3')
+											{
+												echo "<li><a href='forecast_student_select_process.php'>Past Forecasts</a>";
+											}
+											echo "<li><a href='#'>Options</a>";
+											echo "<ul><li><a href='changepassword.php'>Change Password</a></li>";
+											echo "<li><a href='login/logout.php'>Sign Out</a></li></ul></li>";
+									}
 									else
 									{
-											//if the user is not logged in (ie. on the login page), display these links
-											echo "<a href='index.php'>Please Login with Your Username and Password</a></li><li>";
-											echo "<a href='user_signup.php'>Signup</a></li><li>";
-											echo "<a href='forgotpassword.php'>Forgot Password</a></li><li>";
-                  }
+											echo "<li><a href='index.php'>Home</a>";
+											echo "<li><a href='registration_enter_key.php'>Sign up</a>";
+											echo "<li><a href='forgotpassword.php'>Forgot Password</a>";
+											//echo "<center><h4 style='color:white;'>Please Login with Your Username and Password</h4></center>";
+									}
               ?>
           	</li>
     		</ul>
+		</div>
+</div>
+<div class='callToActionBox'>
+		<div class='callToActionContent'>
+				TESTING CALL TO ACTION
 		</div>
 </div>
 				<!-- =========================End of Header======================== -->
