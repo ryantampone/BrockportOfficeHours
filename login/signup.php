@@ -21,15 +21,18 @@
   {
     $message = "Unable to insert user : ".mysql_error();
     echo "
+        <form action='../user_signup.php' name='populate_form' id='populate_form' method='post'>
           <input type='hidden' name='nid' id='nid' value='$netid' />
           <input type='hidden' name='fn' id='fn' value='$fn' />
           <input type='hidden' name='ln' id='ln' value='$ln' />
           <input type='hidden' name='acc' id='acc' value='$access' />
           <input type='hidden' name='dep' id='dep' value='$dept' />
           <input type='hidden' name='pass' id='pass' value='$pwd_entered' />
+        </form>
           <script language='javascript'>
             window.alert(\"$message\");
-            window.location = '../user_signup.php';
+            //window.location = '../user_signup.php';
+            document.getElementById(\"populate_form\").submit();
           </script>
     ";
   }

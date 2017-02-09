@@ -37,7 +37,24 @@
 	else $access = "";
 
 	if(isset($_POST['dep']))
+	{
+		connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 		$dept = $_POST['dep'];
+		$dept_sql = "SELECT Name FROM Department WHERE DepartmentID = '$dept'";
+		$dept_result = mysql_query($dept_sql);
+
+		if(!$dept_result)
+		{
+			echo "Unable to get Department Name : " .mysql_error();
+		}
+		else
+		{
+			while($row = mysql_fetch_assoc($dept_result))
+			{
+				$deptname = $row['Name'];
+			}
+		}
+	}
 	else $dept = "";
 
 	if(isset($_POST['pass']))
@@ -51,15 +68,15 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Net ID:</span></td>
-							<td><input name='netid' id='netid' TYPE='text' SIZE='20' onKeyPress='return hasToBeNumberOrLetter(event)' required/>$netid</td>
+							<td><input name='netid' id='netid' TYPE='text' SIZE='20' value='$netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 						</tr>
 						<tr>
               <td><span align='right'>First Name:</span></td>
-              <td><input name='firstname' id='firstname' TYPE='text' SIZE='50' onKeyPress='return isTextCityOrPersonKey(event)' required/>$firstname</td>
+              <td><input name='firstname' id='firstname' TYPE='text' SIZE='50' value='$firstname' onKeyPress='return isTextCityOrPersonKey(event)' required/></td>
 						</tr>
 						<tr>
 							<td><span align='right'>Last Name:</span></td>
-              <td><input name='lastname' id='lastname' TYPE='text' SIZE='50' onKeyPress='return isTextCityOrPersonKey(event)' required/>$lastname</td>
+              <td><input name='lastname' id='lastname' TYPE='text' SIZE='50' value='$lastname' onKeyPress='return isTextCityOrPersonKey(event)' required/></td>
             </tr>
 						<tr>
 						  <td><span align='right'>Access Level:</span></td>
@@ -101,10 +118,6 @@
 							<td><span align='right'>Department:</span></td>
               <td>
                 <select name='dept' id='dept'>";
-									if($dept != "")
-									{
-										echo "<option value=$deptid>$dept</option>";
-									}
 									connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
                   $sql_dept = "SELECT DepartmentID, Name FROM Department WHERE Status='Active'";
                   $sql_result = mysql_query($sql_dept);
@@ -113,7 +126,14 @@
                   {
                     $deptid = $row['DepartmentID'];
                     $deptname = $row['Name'];
-                    echo "<option value=$deptid>$deptname</option>";
+										if($dept != "")
+										{
+											if($dept == $deptid)
+											{
+												echo "<option value=$deptid selected>$deptname</option>";
+											}
+										}
+										else echo "<option value=$deptid>$deptname</option>";
                   }
           echo "</select>
               </td>
