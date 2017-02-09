@@ -20,6 +20,18 @@
   if(!$result)
   {
     $message = "Unable to insert user : ".mysql_error();
+    echo "
+          <input type='hidden' name='nid' id='nid' value='$netid' />
+          <input type='hidden' name='fn' id='fn' value='$fn' />
+          <input type='hidden' name='ln' id='ln' value='$ln' />
+          <input type='hidden' name='acc' id='acc' value='$access' />
+          <input type='hidden' name='dep' id='dep' value='$dept' />
+          <input type='hidden' name='pass' id='pass' value='$pwd_entered' />
+          <script language='javascript'>
+            window.alert(\"$message\");
+            window.location = '../user_signup.php';
+          </script>
+    ";
   }
   else
   {
@@ -27,7 +39,3 @@
   }
 
 ?>
-
-<script language="javascript">
-  window.alert("TEST");
-</script>
