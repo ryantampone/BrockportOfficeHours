@@ -1,6 +1,6 @@
 <?php
 	include 'header.php';
-	$callToActionVar = 'Please Login to your Account';
+	$callToActionVar = 'Office Hours System';
 	include 'callToAction.php';
 	include 'dbh.php';
 ?>
@@ -63,11 +63,20 @@
 								box-sizing: border-box;
 								font-size:18px;
 						}
+
+						#callToAction
+						{
+							color: #444444;
+							font-size: 35px;
+							font-family: 'Roboto', sans-serif;
+							font-weight: 200;
+						}
 				</style>
 
 						<center>
 						<br><br><br><br><br>
 						<div id='callToAction'>
+							Sign in to access your account
 						</div>
 						<div id='login'>
 							<div class='innerTable'>
