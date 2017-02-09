@@ -1,5 +1,7 @@
 <?php
 	include 'header.php';
+	$callToActionVar = 'Please Login to your Account';
+	include 'callToAction.php';
 	include 'dbh.php';
 ?>
 <?php
@@ -27,11 +29,7 @@
 		else
 		{
 				echo"
-				<div class='callToActionBox'>
-						<div class='callToActionContent'>
-								Sign in to access your account
-						</div>
-				</div>
+
 
 				<style>
 						.button
