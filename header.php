@@ -203,7 +203,7 @@
 									else
 									{
 											echo "<li><a href='index.php'>Home</a>";
-											echo "<li><a href='registration_enter_key.php'>Sign up</a>";
+											echo "<li><a href='user_signup.php'>Sign up</a>";
 											echo "<li><a href='forgotpassword.php'>Forgot Password</a>";
 											//echo "<center><h4 style='color:white;'>Please Login with Your Username and Password</h4></center>";
 									}

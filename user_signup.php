@@ -1,6 +1,8 @@
 <?php
 	include 'header.php';
   include 'dbh.php';
+	$callToActionVar = "User Signup";
+	include 'callToAction.php';
 	require('db_cn.inc');
 
 	/*if ((isset($_SESSION['NetID'])) && ($_SESSION['Credentials'] == 1))
@@ -20,15 +22,15 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Net ID:</span></td>
-							<td><input name='netid' id='netid' TYPE='text' SIZE='20' onKeyPress='' required/></td>
+							<td><input name='netid' id='netid' TYPE='text' SIZE='20' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 						</tr>
 						<tr>
               <td><span align='right'>First Name:</span></td>
-              <td><input name='firstname' id='firstname' TYPE='text' SIZE='50' onKeyPress='' required/></td>
+              <td><input name='firstname' id='firstname' TYPE='text' SIZE='50' onKeyPress='return isTextCityOrPersonKey(event)' required/></td>
 						</tr>
 						<tr>
 							<td><span align='right'>Last Name:</span></td>
-              <td><input name='lastname' id='lastname' TYPE='text' SIZE='50' onKeyPress='' required/></td>
+              <td><input name='lastname' id='lastname' TYPE='text' SIZE='50' onKeyPress='return isTextCityOrPersonKey(event)' required/></td>
             </tr>
 						<tr>
 						  <td><span align='right'>Access Level:</span></td>
@@ -47,7 +49,7 @@
 									connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
                   $sql_dept = "SELECT DepartmentID, Name FROM Department WHERE Status='Active'";
                   $sql_result = mysql_query($sql_dept);
-									
+
                   while($row = mysql_fetch_assoc($sql_result))
                   {
                     $deptid = $row['DepartmentID'];
