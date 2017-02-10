@@ -39,6 +39,12 @@
   else
   {
     $message = "User '$netid' inserted successfully.";
+    echo "
+      <script language='javascript'>
+        window.alert(\"$message\");
+        window.location = '../user_signup.php';
+      </script>
+    ";
   }
 
 ?>
