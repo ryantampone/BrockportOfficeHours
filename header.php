@@ -196,6 +196,7 @@
 											{
 												echo "<li><a href='forecast_student_select_process.php'>Past Forecasts</a>";
 											}
+
 											echo "<li><a href='#'>Options</a>";
 											echo "<ul><li><a href='changepassword.php'>Change Password</a></li>";
 											echo "<li><a href='login/logout.php'>Sign Out</a></li></ul></li>";
@@ -212,4 +213,15 @@
     		</ul>
 		</div>
 </div>
+<?php
+echo"
+<div class='callToActionBox'>
+    <!-- <img src='src/callToActionHeader.png' alt='header'/> -->
+    <div class='callToActionContent'>
+        $callToActionVar
+    </div>
+</div>
+"
+?>
+
 				<!-- =========================End of Header======================== -->

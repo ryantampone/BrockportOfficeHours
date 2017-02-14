@@ -1,7 +1,6 @@
 <?php
-	include 'header.php';
 	$callToActionVar = 'Office Hours System';
-	include 'callToAction.php';
+	include 'header.php';
 	include 'dbh.php';
 ?>
 <?php
