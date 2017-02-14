@@ -82,7 +82,7 @@
 							<div class='innerTable'>
 							<p align='center'><img src='src/login_icon.png' height='110' width='110'/></p>
 							<form action='login/login.php' method='POST'>
-									<input type='text' name='uid' id='uid' placeholder='NetID' onKeyPress='return hasToBeNumberOrLetter(event)' SIZE='35' style='margin-bottom: 10px' required>
+									<input type='text' name='netid' id='netid' placeholder='NetID' onKeyPress='return hasToBeNumberOrLetter(event)' SIZE='35' style='margin-bottom: 10px' required>
 									<input type='password' name='pwd' id='pwd' placeholder='Password' SIZE='35' style='margin-bottom: 5px' required><br>
 									<button class='button' type='submit' name='submit' id='submit' onClick=''>Sign in</button>
 							</form>

@@ -25,7 +25,7 @@
 		else
 		{
 				//Everything else
-				$sql1 = "SELECT * FROM User WHERE NetID='$netid' AND Password='$hash_pwd' AND Status='Active'";
+				$sql1 = "SELECT * FROM Users WHERE NetID='$netid' AND Password='$hash_pwd' AND Status='Active'";
 				$result1 = mysqli_query($conn, $sql1);
 				if (!$row = mysqli_fetch_assoc($result1))
 				{
