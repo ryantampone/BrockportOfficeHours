@@ -12,13 +12,13 @@
 		$sql = "SELECT * FROM Users WHERE NetID='$netid' AND Status='Active'";
 		$result = mysqli_query($conn, $sql);
 		$row = $result->fetch_assoc();
-		$hash_pwd = $row['pwd'];
+		$hash_pwd = $row['Password'];
 		$hash = password_verify($pwd, $hash_pwd);
 
 		if ($hash == 0)
 		{
 			echo "<SCRIPT LANGUAGE='JavaScript'>
-				 window.alert('Invalid NetID or Password.  Check your credentials or click Signup to register for an account.')
+				 window.alert('Invalid NetID or Password.  ------------Check your credentials or click Signup to register for an account.')
 				 window.location.href='../index.php';
 				 </SCRIPT>";
 		}
@@ -30,7 +30,7 @@
 				if (!$row = mysqli_fetch_assoc($result1))
 				{
 					echo "<SCRIPT LANGUAGE='JavaScript'>
-						 window.alert('Invalid NetID or Password.  Check your credentials or click Signup to register for an account.')
+						 window.alert('Invalid NetID or Password.  ++++++++++++++++Check your credentials or click Signup to register for an account.')
 						 window.location.href='../index.php';
 						 </SCRIPT>";
 				}
