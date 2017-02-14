@@ -25,6 +25,7 @@ body
 #nav
 {
   background-color: #3D4B2E;
+  z-index: 10;
   /*opacity: 0.5;*/
   /*rgba(104,104,104,.5);*/
 }
@@ -34,6 +35,7 @@ body
   width: 100%;/*960px;*/
   margin: 0 auto;
   text-align: center;
+  z-index: 10;
 }
 
 #nav ul
@@ -42,21 +44,25 @@ body
   padding: 0;
   margin: 0;
   position: relative;
+  z-index: 10;
 }
 
 #nav li
 {
   display: inline-block;
+  z-index: 10;
 }
 
 #nav ul li:hover
 {
   background-color: #3D4B2E;
+  z-index: 10;
 }
 
 #nav ul li a:hover
 {
   color: #ccc; /*white;*/
+  z-index: 10;
 }
 
 #nav ul li a,visited
@@ -65,17 +71,20 @@ body
   display: block;
   padding: 15px;
   text-decoration: none;
+  z-index: 10;
 }
 
 #nav ul li a :hover
 {
   color: white; /*#ccc;*/
   text-decoration: none;
+  z-index: 10;
 }
 
 #nav ul li:hover ul
 {
   display: block;
+  z-index: 10;
 }
 
 #nav ul ul
@@ -85,6 +94,7 @@ body
   border: 5px solid #00533E;
   border-top: 0;
   margin-left: -5px;
+  z-index: 10;
 
 }
 
@@ -92,16 +102,26 @@ body
 {
   display: block;
   background-color: #00533E;
+  z-index: 10;
+}
+
+#nav ul ul li a
+{
+  display: block;
+  background-color: #00533E;
+  z-index: 10;
 }
 
 #nav ul ul li a,visited
 {
   color: white; /*#ccc;*/
+  z-index: 10;
 }
 
 #nav ul ul li a:hover
 {
   color: #ccc;/*White;*/
+  z-index: 10;
 }
 
 
@@ -165,6 +185,7 @@ div.callToActionBox
   display: inline-block;
   background: url('http://www.ryantampone.com/brockportofficehours/src/callToActionHeader.png') no-repeat;
   background-size: cover;
+  z-index: 8;
 }
 /*
 div.callToActionBox img
@@ -189,6 +210,7 @@ div.callToActionContent
   font-family: 'Roboto', sans-serif;
   bottom: 10px;
   left: 10px;
+  z-index: 8;
 }
 
 

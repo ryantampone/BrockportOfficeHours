@@ -179,11 +179,25 @@
 									///$lastName = (string)$_SESSION['last'];
 									$NetID = (string)$_SESSION['NetID'];
 									$credentials= (string)$_SESSION['Credentials'];
+									if ($credentials == '1')
+									{
+										$home = 'adminoptions.php';
+									}
+									if ($credentials == '2')
+									{
+										$home = 'secretaryoptions.php';
+									}
+									if ($credentials == '3')
+									{
+										$home = 'facultyoptions.php';
+									}
+
                   if (isset($_SESSION['NetID']))
 									{
-											//echo "<li><a href='index.php'>$firstName $lastName's $access dashboard</a> </li><li>";
+											echo "<li><a href='$home'>Home</a>";
 											if ($credentials == '1')
 											{
+												echo "<li><a href='user_signup.php'>Sign up</a>";
 												echo "<li><a href='#'>Dashboards</a>";
 												echo "<ul><li><a href='studentoptions.php'>Student Dashboard</a></li>";
 												echo "<li><a href='coachoptions.php'>Coach Dashboard</a></li></ul></li>";
@@ -204,9 +218,7 @@
 									else
 									{
 											echo "<li><a href='index.php'>Home</a>";
-											echo "<li><a href='user_signup.php'>Sign up</a>";
 											echo "<li><a href='forgotpassword.php'>Forgot Password</a>";
-											//echo "<center><h4 style='color:white;'>Please Login with Your Username and Password</h4></center>";
 									}
               ?>
           	</li>

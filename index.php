@@ -4,24 +4,24 @@
 	include 'dbh.php';
 ?>
 <?php
-		if (isset($_SESSION['id']))
+		if (isset($_SESSION['NetID']))
 		{
-				$group = (string)$_SESSION['access'];
+				$credentials = (string)$_SESSION['Credentials'];
 				$loginID = (string)$_SESSION['id'];
 				$callToAction = 'TEST';
 
 
-				if ($group == 'admin')
+				if ($credentials == '1')
 				{
 					 echo "<SCRIPT LANGUAGE='JavaScript'>window.location.href='adminoptions.php';</SCRIPT>";
 				}
-				else if ($group == 'student')
+				else if ($credentials == '2')
 				{
-					echo "<SCRIPT LANGUAGE='JavaScript'>window.location.href='studentoptions.php';</SCRIPT>";
+					echo "<SCRIPT LANGUAGE='JavaScript'>window.location.href='secretaryoptions.php';</SCRIPT>";
 				}
-				else if ($group == 'coach')
+				else if ($credentials == '3')
 				{
-					echo "<SCRIPT LANGUAGE='JavaScript'>window.location.href='coachoptions.php';</SCRIPT>";
+					echo "<SCRIPT LANGUAGE='JavaScript'>window.location.href='facultyoptions.php';</SCRIPT>";
 				}
 
 		}

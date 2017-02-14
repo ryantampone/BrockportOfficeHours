@@ -1,13 +1,13 @@
 <?php
-  $callToActionVar = 'Admin Options';
+  $callToActionVar = 'Administrator Options';
 	include 'header.php';
 ?>
 
 <?php
-	if ((isset($_SESSION['id'])) && (string)$_SESSION['Credentials'] == '1';)
+	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
 		echo "
-    
+    <H3>HELLO ADMINS</H3>
     ";
 	}
 	else
