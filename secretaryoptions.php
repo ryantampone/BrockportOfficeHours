@@ -7,6 +7,7 @@
 	if ((isset($_SESSION['NetID'])) && (string)$_SESSION['Credentials'] == '2')
 	{
 		echo "
+		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
     <h2 align='center'>Welcome to the Secretary View</h2>
     <p align='center'>Here you can:</p>
     <div class='bodyContent'>
