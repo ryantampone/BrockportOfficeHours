@@ -11,7 +11,7 @@ function forgot_password()
 	$resetCode = $_POST['resetCode'];
 
 	//check to make sure there is a user with the provided netID and password reset code
-	$sql_stmt = "SELECT * FROM `User` WHERE NetID='$netID' AND PWDResetCode='$resetCode';";
+	$sql_stmt = "SELECT * FROM `Users` WHERE NetID='$netID' AND PWDResetCode='$resetCode';";
 
 	$result = mysql_query($sql_stmt);
 	$message = "";

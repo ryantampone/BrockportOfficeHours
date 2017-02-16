@@ -11,7 +11,7 @@ function update_password()
 	$password = $_POST['pwd'];
 	$pwd = password_hash($password, PASSWORD_DEFAULT); //creates an encrypted password
 
-	$sql_stmt = "UPDATE `User` SET Password='$pwd' WHERE NetID='$uid';";
+	$sql_stmt = "UPDATE `Users` SET Password='$pwd' WHERE NetID='$uid';";
 
 	$result = mysql_query($sql_stmt);
 	echo $result;

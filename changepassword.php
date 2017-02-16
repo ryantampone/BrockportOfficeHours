@@ -1,4 +1,5 @@
 <?php
+$callToActionVar = 'Change Password';
 include 'header.php';
 
 

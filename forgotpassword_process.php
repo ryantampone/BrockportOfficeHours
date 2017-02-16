@@ -7,7 +7,7 @@ function forgot_password()
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 	$netID = $_POST['netID'];
 	//check to make sure there is a user with the provided netID
-	$sql_stmt = "SELECT * FROM `User` WHERE NetID='$netID';";
+	$sql_stmt = "SELECT * FROM `Users` WHERE NetID='$netID';";
 
 	$result = mysql_query($sql_stmt);
 	$message = "";
@@ -16,7 +16,7 @@ function forgot_password()
 	{
   	  $message = "An unknown error occured.  Please contact an admin for further assistance: ". mysql_error();
 			echo "<SCRIPT LANGUAGE='JavaScript'>
-				 window.alert('$message')
+				 window.alert(\"$message\")
 				 window.location.href='forgotpassword.php';
 				 </SCRIPT>";
 	}
@@ -34,14 +34,14 @@ function forgot_password()
 		$rand = substr(md5(microtime()),rand(0,26),5);
 
 		//used to store password reset code in database
-		$sql_stmt2 = "UPDATE `User` SET PWDResetCode='$rand' WHERE NetID='$netID';";
+		$sql_stmt2 = "UPDATE `Users` SET PWDResetCode='$rand' WHERE NetID='$netID';";
 		$result2 = mysql_query($sql_stmt2);
 		$message2 = "";
 		if (!$result2)
 		{
 			$message2 = "An error occured reseting your password.  Please contact an admin for further assistance: ". mysql_error();
 			echo "<SCRIPT LANGUAGE='JavaScript'>
-				 window.alert('$message2')
+				 window.alert(\"$message2\")
 				 window.location.href='forgotpassword.php';
 				 </SCRIPT>";
 		}

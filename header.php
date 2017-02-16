@@ -197,18 +197,37 @@
 											echo "<li><a href='$home'>Home</a>";
 											if ($credentials == '1')
 											{
-												echo "<li><a href='user_signup.php'>Sign up</a>";
-												echo "<li><a href='#'>Dashboards</a>";
-												echo "<ul><li><a href='studentoptions.php'>Student Dashboard</a></li>";
-												echo "<li><a href='coachoptions.php'>Coach Dashboard</a></li></ul></li>";
+												echo "<li><a href='#'>Users</a><ul>";
+													echo "<li><a href='#'>Add User</a></li>";
+													echo "<li><a href='#'>Modify User</a></li>";
+													echo "<li><a href='#'>Remove User</a></li>";
+													echo "</ul></li>";
+												echo "<li><a href='#'>Departments</a><ul>";
+													echo "<li><a href='#'>Add Department</a></li>";
+													echo "<li><a href='#'>Modify Department</a></li>";
+													echo "<li><a href='#'>Remove Department</a></li>";
+													echo "</ul></li>";
+												echo "<li><a href='#'>Buildings</a><ul>";
+													echo "<li><a href='#'>Add Building</a></li>";
+													echo "<li><a href='#'>Modify Building</a></li>";
+													echo "<li><a href='#'>Remove Building</a></li>";
+													echo "</ul></li>";
 											}
-											if ($credentials == '2')
+											if ($credentials == '2' || $credentials == '1')
 											{
-												echo "<li><a href='forecast_student_select_process.php'>Past Forecasts</a>";
+												echo "<li><a href='#'>Courses</a><ul>";
+													echo "<li><a href='#'>Add Courses</a></li>";
+													echo "<li><a href='#'>Modify Courses</a></li>";
+													echo "<li><a href='#'>Remove Courses</a></li>";
+													echo "</ul></li>";
 											}
-											if ($credentials == '3')
+											if ($credentials == '3' || $credentials == '2'  || $credentials == '1')
 											{
-												echo "<li><a href='forecast_student_select_process.php'>Past Forecasts</a>";
+												echo "<li><a href='#'>Office Hours</a><ul>";
+													echo "<li><a href='#'>Add Office Hours</a></li>";
+													echo "<li><a href='#'>Modify Office Hours</a></li>";
+													echo "<li><a href='#'>Remove Office Hours</a></li>";
+													echo "</ul></li>";
 											}
 
 											echo "<li><a href='#'>Options</a>";
@@ -219,6 +238,7 @@
 									{
 											echo "<li><a href='index.php'>Home</a>";
 											echo "<li><a href='forgotpassword.php'>Forgot Password</a>";
+											//echo "<li><a href='user_signup.php'>Sign up</a></li>";
 									}
               ?>
           	</li>
