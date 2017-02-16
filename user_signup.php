@@ -1,8 +1,7 @@
 <?php
+	$callToActionVar = "User Signup";
 	include 'header.php';
   include 'dbh.php';
-	$callToActionVar = "User Signup";
-	include 'callToAction.php';
 	require('db_cn.inc');
 
 	/*if ((isset($_SESSION['NetID'])) && ($_SESSION['Credentials'] == 1))

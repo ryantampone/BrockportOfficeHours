@@ -12,7 +12,6 @@
     <p align='center'>Here you can:</p>
     <div class='bodyContent'>
       <ul>
-        <li>Sign up users</li>
         <li>Edit office hours of a faculty member</li>
         <li>Edit courses of a faculty member</li>
       </ul>
