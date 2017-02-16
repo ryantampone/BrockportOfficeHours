@@ -1,5 +1,4 @@
 <?php
-
 require('db_cn.inc');
 
 forgot_password();
@@ -64,15 +63,6 @@ function forgot_password()
 				 window.location.href='index.php';
 				 </SCRIPT>";
 		}
-	}
-}
-
-
-	// Select the database
-	$dbh = mysql_select_db($dbname);
-	if (!$dbh){
-    		echo "Unable to select ".$dbname.": " . mysql_error();
-		exit;
 	}
 }
 

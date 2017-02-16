@@ -38,12 +38,5 @@ function forgot_password()
 	}
 }
 
-	// Select the database
-	$dbh = mysql_select_db($dbname);
-	if (!$dbh){
-    		echo "Unable to select ".$dbname.": " . mysql_error();
-		exit;
-	}
-}
 
 ?>
