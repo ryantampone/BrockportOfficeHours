@@ -6,8 +6,24 @@
 <?php
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
-		echo "
-    <H3>HELLO ADMINS</H3>
+    echo "
+		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
+    <h2 align='center'>Welcome to the Administrator View</h2>
+    <p align='center'>Here you can:</p>
+    <div class='bodyContent'>
+      <ul>
+        <li>Sign up a User</li>
+        <li>View Faculty and Secretary Pages</li>
+        <li>Add or change the following:</li>
+          <ul>
+            <li>Departments</li>
+            <li>Buildings</li>
+            <li>Courses and Semesters</li>
+            <li>Office Hours</li>
+            <li>User Information</li>
+          </ul>
+      </ul>
+    </div>
     ";
 	}
 	else

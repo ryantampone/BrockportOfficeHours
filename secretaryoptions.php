@@ -4,7 +4,7 @@
 ?>
 
 <?php
-	if ((isset($_SESSION['NetID'])) && (string)$_SESSION['Credentials'] == '2')
+	if ((isset($_SESSION['NetID'])) && (string)$_SESSION['Credentials'] == '2' || (string)$_SESSION['Credentials'] == '1')
 	{
 		echo "
 		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />

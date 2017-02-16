@@ -18,7 +18,7 @@
 		if ($hash == 0)
 		{
 			echo "<SCRIPT LANGUAGE='JavaScript'>
-				 window.alert('Invalid NetID or Password.  ------------Check your credentials or click Signup to register for an account.')
+				 window.alert('Invalid NetID or Password.  Check your credentials or click Signup to register for an account.')
 				 window.location.href='../index.php';
 				 </SCRIPT>";
 		}
@@ -30,7 +30,7 @@
 				if (!$row = mysqli_fetch_assoc($result1))
 				{
 					echo "<SCRIPT LANGUAGE='JavaScript'>
-						 window.alert('Invalid NetID or Password.  ++++++++++++++++Check your credentials or click Signup to register for an account.')
+						 window.alert('Invalid NetID or Password.  Check your credentials or click Signup to register for an account.')
 						 window.location.href='../index.php';
 						 </SCRIPT>";
 				}
