@@ -10,6 +10,7 @@
 
 		<link rel='shortcut icon' type='image/x-icon' href='src/favicon.ico' />
     <link href="css/headerStyles.css" type="text/css" rel="stylesheet" />
+		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
 
 		<script language="javascript">
 					function hasToBeNumber(evt)
@@ -203,7 +204,7 @@
 													echo "<li><a href='#'>Remove User</a></li>";
 													echo "</ul></li>";
 												echo "<li><a href='#'>Departments</a><ul>";
-													echo "<li><a href='#'>Add Department</a></li>";
+													echo "<li><a href='department_add.php'>Add Department</a></li>";
 													echo "<li><a href='#'>Modify Department</a></li>";
 													echo "<li><a href='#'>Remove Department</a></li>";
 													echo "</ul></li>";
@@ -228,6 +229,10 @@
 													echo "<li><a href='#'>Modify Office Hours</a></li>";
 													echo "<li><a href='#'>Remove Office Hours</a></li>";
 													echo "</ul></li>";
+												if ($credentials == '3')
+												{
+													echo "<li><a href='#'>View Schedule</a></li>";
+												}
 											}
 
 											echo "<li><a href='#'>Options</a>";

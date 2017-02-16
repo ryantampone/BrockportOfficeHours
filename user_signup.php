@@ -67,7 +67,7 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Net ID:</span></td>
-							<td><input name='netid' id='netid' TYPE='text' SIZE='20' value='$netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+							<td><input name='netid' id='netid' TYPE='text' SIZE='50' value='$netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 						</tr>
 						<tr>
               <td><span align='right'>First Name:</span></td>
