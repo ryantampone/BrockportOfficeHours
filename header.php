@@ -198,7 +198,7 @@
 											if ($credentials == '1')
 											{
 												echo "<li><a href='#'>Users</a><ul>";
-													echo "<li><a href='#'>Add User</a></li>";
+													echo "<li><a href='user_signup.php'>Add User</a></li>";
 													echo "<li><a href='#'>Modify User</a></li>";
 													echo "<li><a href='#'>Remove User</a></li>";
 													echo "</ul></li>";
