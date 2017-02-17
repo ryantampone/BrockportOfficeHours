@@ -5,7 +5,7 @@ include 'header.php';
 
 
 echo "
-<center><h2>Enter your Brockport NetID and password reset code to reset your account password</h2></center>
+<center><h2 class='contentAction'>Enter your Brockport NetID and password reset code to reset your account password</h2></center>
   <div id='userpasswordform'>
         <form action='forgotpassword_reset_process.php' method='post'>
             <table align='center'>

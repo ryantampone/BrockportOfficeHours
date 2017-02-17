@@ -6,7 +6,7 @@ function showPWDForm($netID, $resetCode)
 {
 	//display password reset form
 	echo "
-	<center><h2>Enter your new password</h2></center>
+	<center><h2 class='contentAction'>Enter your new password</h2></center>
 		<div id='userpasswordform'>
 					<form action='changepassword_process.php' method='post'>
 							<table align='center'>

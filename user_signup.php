@@ -61,7 +61,7 @@
 	else $pwd = "";
 
 		echo "
-		<center><h2>Please fill out the form below</h2></center>
+		<center><h2 class='contentAction'>Please fill out the form below</h2></center>
 			<div id='userdataform'>
 				<form action='login/signup.php' method='post'>
 					<table align='center'>

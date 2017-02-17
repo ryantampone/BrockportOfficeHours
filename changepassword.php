@@ -5,7 +5,7 @@ include 'header.php';
 
 
 echo "
-<center><h2>Update your password</h2></center>
+<center><h2 class='contentAction'>Update your password</h2></center>
   <div id='userpasswordform'>
         <form action='changepassword_process.php' method='post'>
             <table align='center'>
