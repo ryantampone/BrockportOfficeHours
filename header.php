@@ -9,8 +9,11 @@
     <title>Brockport Faculty Office Hours</title>
 
 		<link rel='shortcut icon' type='image/x-icon' href='src/favicon.ico' />
+
+		<link href="css/genericStyles.css" type="text/css" rel="stylesheet" />
     <link href="css/headerStyles.css" type="text/css" rel="stylesheet" />
-		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
+		<link href="css/bodyStyles.css" type="text/css" rel="stylesheet" />
+		<!-- <link href="css/cssDebug.css" type="text/css" rel="stylesheet" /> --> <!-- Uncomment this to test issues with CSS display -->
 
 		<script language="javascript">
 					function hasToBeNumber(evt)
@@ -170,6 +173,7 @@
 </head>
 <!-- <body bgcolor="#F5F5F5">#FFFFFF -->
 <body bgcolor="#FFFFFF">
+
 <!-- ====================== Begin Page Header ====================== -->
 <div id="nav">
   	<div id="nav_wrapper">
@@ -260,5 +264,11 @@ echo"
 </div>
 "
 ?>
-
 				<!-- =========================End of Header======================== -->
+
+
+				<!-- *************************Begin Body*************************** -->
+<!--
+<div class="pagebody">
+<div class="pagecontent">
+-->

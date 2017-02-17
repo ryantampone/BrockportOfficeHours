@@ -28,6 +28,8 @@
 			 </SCRIPT>";
 	}
 echo "
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
 </body>
 </html>
 "

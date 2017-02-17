@@ -153,5 +153,8 @@
 	//}
 ?>
 
+
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
 </body>
 </html>

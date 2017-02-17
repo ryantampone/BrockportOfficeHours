@@ -27,7 +27,10 @@ echo "
     </div>
 ";
 //finishes the html body
-echo "</BODY>";
-echo "</HTML>";
-
+echo "
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
+</body>
+</html>
+";
 ?>

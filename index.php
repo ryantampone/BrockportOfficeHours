@@ -2,6 +2,7 @@
 	$callToActionVar = 'Office Hours System';
 	include 'header.php';
 	include 'dbh.php';
+	echo '<link href="css/indexStyles.css" type="text/css" rel="stylesheet" />';
 ?>
 <?php
 		if (isset($_SESSION['NetID']))
@@ -30,53 +31,13 @@
 				echo"
 
 
-				<style>
-						.button
-						{
-						    background-color: #5193FB;
-						    border: none;
-						    color: white;
-						    padding: 10px 94px;
-						    text-align: center;
-						    text-decoration: none;
-						    display: inline-block;
-						    font-size: 16px;
-						    margin: 4px 2px;
-						    cursor: pointer;
-						}
-
-						input[type=text]
-						{
-						    width: 80%;
-						    padding: 5px 20px;
-						    margin: 0px 0;
-						    box-sizing: border-box;
-								font-size:18px;
-						}
-
-						input[type=password]
-						{
-								width: 80%;
-								padding: 5px 20px;
-								margin: 0px 0;
-								box-sizing: border-box;
-								font-size:18px;
-						}
-
-						#callToAction
-						{
-							color: #444444;
-							font-size: 35px;
-							font-family: 'Roboto', sans-serif;
-							font-weight: 200;
-						}
-				</style>
 
 						<center>
 						<br><br><br><br><br>
-						<div id='callToAction'>
+						<!-- <div id='callToAction'>
 							Sign in to access your account
-						</div>
+						</div> -->
+						<h2 class='contentAction'>Sign in to access your account</h2>
 						<div id='login'>
 							<div class='innerTable'>
 							<p align='center'><img src='src/login_icon.png' height='110' width='110'/></p>
@@ -93,6 +54,14 @@
 
 
 ?>
+<!--
+<div class='actionButtonbutton'>
+<input id='tiny_button' type='submit' id='submit' name='submit' value='testingbutton'>
+</div>
+-->
 
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
+</div> <!-- End Container Div -->
 </body>
 </html>

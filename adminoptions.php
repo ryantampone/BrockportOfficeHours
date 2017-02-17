@@ -8,7 +8,7 @@
 	{
     echo "
 		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
-    <h2 align='center'>Welcome to the Administrator View</h2>
+    <h2 class='contentAction' align='center'>Welcome to the Administrator View</h2>
     <p align='center'>Here you can:</p>
     <div class='bodyContent'>
       <ul>
@@ -36,6 +36,8 @@
 			 </SCRIPT>";
 	}
 echo "
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
 </body>
 </html>
 "

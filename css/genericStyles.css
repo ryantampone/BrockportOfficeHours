@@ -1,0 +1,24 @@
+.actionButton
+{
+  background-color:#374357;
+  border: none;
+	color:white;
+	border-radius: 2px;
+	padding: 8px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+  cursor: pointer; cursor: hand;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+	font-size: 16px;
+}
+
+
+.contentAction
+{
+  color: #444444;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+}

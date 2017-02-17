@@ -5,7 +5,7 @@ include 'header.php';
 
 
 echo "
-<center><h2>Enter your Brockport NetID to reset your account password</h2></center>
+<center><h2 class='contentAction'>Enter your Brockport NetID to reset your account password</h2></center>
   <div id='userpasswordform'>
         <form action='forgotpassword_process.php' method='post'>
             <table align='center'>
@@ -22,7 +22,11 @@ echo "
     </div>
 ";
 //finishes the html body
-echo "</BODY>";
-echo "</HTML>";
+echo "
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
+</body>
+</html>
+";
 
 ?>

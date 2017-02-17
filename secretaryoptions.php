@@ -27,8 +27,10 @@
 			 window.location.href='index.php';
 			 </SCRIPT>";
 	}
-echo "
-</body>
-</html>
-"
+  echo "
+  </div> <!-- End pagecontent Div -->
+  </div> <!-- End pagebody Div -->
+  </body>
+  </html>
+  ";
 ?>

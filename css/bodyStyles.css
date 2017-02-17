@@ -1,5 +1,12 @@
-div.bodyContent
+div.pagebody
 {
   margin-left: 15%;
+  margin-right: 15%;
+  height: auto;
+}
+
+div.bodyContent
+{
+  width: inherit;
   position: relative;
 }
