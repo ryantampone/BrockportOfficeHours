@@ -26,8 +26,8 @@ body
 {
   background-color: #3D4B2E;
   z-index: 10;
-  /*opacity: 0.5;*/
-  background: rgba(104,104,104,.5);
+  /*opacity: 0.5;
+  background: rgba(104,104,104,.5);*/
 }
 
 #nav_wrapper

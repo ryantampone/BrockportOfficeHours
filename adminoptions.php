@@ -23,6 +23,8 @@
             <li>User Information</li>
           </ul>
       </ul>
+
+      <button class='actionButton'>Testing Adam</button>
     </div>
     ";
 	}

@@ -7,7 +7,7 @@
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
     echo "
-    <h2 align='center'>Enter the deparment information below</h2>
+    <h2 class='contentAction' align='center'>Enter the department information below</h2>
     <div class='bodyContent'>
 		<form action='department_add_process.php' method='post'>
 			<table align='center'>
