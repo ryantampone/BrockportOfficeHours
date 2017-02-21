@@ -213,7 +213,7 @@
 													echo "<li><a href='#'>Remove Department</a></li>";
 													echo "</ul></li>";
 												echo "<li><a href='#'>Buildings</a><ul>";
-													echo "<li><a href='#'>Add Building</a></li>";
+													echo "<li><a href='building_add.php'>Add Building</a></li>";
 													echo "<li><a href='#'>Modify Building</a></li>";
 													echo "<li><a href='#'>Remove Building</a></li>";
 													echo "</ul></li>";
@@ -221,7 +221,7 @@
 											if ($credentials == '2' || $credentials == '1')
 											{
 												echo "<li><a href='#'>Courses</a><ul>";
-													echo "<li><a href='#'>Add Courses</a></li>";
+													echo "<li><a href='course_add.php'>Add Courses</a></li>";
 													echo "<li><a href='#'>Modify Courses</a></li>";
 													echo "<li><a href='#'>Remove Courses</a></li>";
 													echo "</ul></li>";

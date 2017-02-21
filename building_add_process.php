@@ -15,7 +15,7 @@
     echo "
           <script language='javascript'>
             window.alert(\"$message\");
-            window.location = 'department_add.php';
+            window.location = 'building_add.php';
           </script>
     ";
   }
