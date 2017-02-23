@@ -1,0 +1,154 @@
+<?php
+	$callToActionVar = "Add Course";
+	include 'header.php';
+	require('db_cn.inc');
+?>
+<?php
+  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
+	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
+	{
+    echo "
+    <h2 class='contentAction' align='center'>Enter the course information below</h2>
+    <div class='bodyContent'>
+		<form action='course_add_process.php' method='post'>
+			<table align='center'>
+				<tr>
+					<td><span align='right'>Course Name:</span></td>
+					<td><input name='coursename' id='coursename' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+				</tr>
+				<tr>
+					<td><span align='right'>Department Code:</span></td>
+					<td>
+            <select name='deptcode' id='deptcode' onchange='updateFaculty()' required>
+              <option disable selected hidden>Select one</option>";
+              $sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
+              $result_dept_code = mysql_query($sql_dept_code);
+
+              while($row = mysql_fetch_assoc($result_dept_code))
+              {
+                $deptcode = $row['Code'];
+                echo "<option value=$deptcode>$deptcode</option>";
+              }
+            echo"</select>
+          </td>
+				</tr>
+				<tr>
+					<td><span align='right'>Course Number:</span></td>
+					<td><input  name='coursenum' id='coursenum' type='text' size='10' onKeyPress='return hasToBeNumber(event)' required/></td>
+				</tr>
+				<tr>
+					<td><span align='right'>Section Number:</span></td>
+					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='10' onKeyPress='return hasToBeNumber(event)' required/></td>
+				</tr>
+        <tr>
+          <td><span align='right'>Course Type:</span></td>
+          <td>
+            <select name='coursetype' id='coursetype' required>
+              <option disable selected hidden>Select one</option>
+              <option value='Lab'>Lab</option>
+              <option value='Lecture'>Lecture</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+          <td><span align='right'>Semester:</span></td>
+          <td>
+            <select name='semester' id='semester' required>";
+              $sql_semester = "SELECT * FROM Semester ORDER BY Year";
+              $result_semester = mysql_query($sql_semester);
+
+              while($row = mysql_fetch_assoc($result_semester))
+              {
+                $semester_id = $row['SemesterID'];
+                $semester_year = $row['Year'];
+                $semester_term = $row['Term'];
+                $semester_status = $row['Status'];
+
+                if($semester_status == 'Current')
+                  echo "<option value=$semester_id selected>$semester_term $semester_year (Current)</option>";
+                else echo "<option value=$semester_id>$semester_term $semester_year</option>";
+              }
+            echo "</select>
+          </td>
+        </tr>
+        <tr>
+          <td><span align='right'>Faculty Net ID:</span></td>
+          <td>
+            <select name='netid' id='netid' required>
+              <option>Placeholder (need ajax here)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><span align='right'>Location:</span></td>
+          <td>
+            <select name='location' id='location' required>
+              <option disable selected hidden>Select one</option>";
+              $sql_building = "SELECT * FROM Building ORDER BY Name";
+              $result_building = mysql_query($sql_building);
+
+              while($row = mysql_fetch_assoc($result_building))
+              {
+                $building_id = $row['BuildingID'];
+                $building_name = $row['Name'];
+
+                echo "<option value=$building_id>$building_name</option>";
+              }
+            echo "</select>
+          </td>
+        </tr>
+        <tr>
+          <td><span align='right'>Room Number:</span></td>
+          <td><input name='room' id='room' TYPE='text' SIZE='10' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+        </tr>
+        <tr>
+          <td><span align='right'>Days:</span></td>
+          <td>
+            <table>
+              <tr><td><input type='checkbox' name='days[]' value='Sunday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Monday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Tuesday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Wednesday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Thursday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Friday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Saturday'></td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td><span align='right'>Start Time:</span></td>
+          <td><input name='start' id='start' TYPE='text' SIZE='10' onKeyPress='return isTime(event)' required/></td>
+        </tr>
+        <tr>
+          <td><span align='right'>End Time:</span></td>
+          <td><input name='end' id='end' TYPE='text' SIZE='10' onKeyPress='return isTime(event)' required/></td>
+        </tr>
+			</table>
+			<p align='center'>
+				<input type='submit' value='Submit'/>
+				<input type='reset' value='Reset'/>
+			</p>
+		</form>
+    </div>
+    ";
+
+	}
+	else
+	{
+		//echo '<script type='text/javascript'>alert('Please login to view this page')</script>';
+		session_destroy();
+		echo "<SCRIPT LANGUAGE='JavaScript'>
+			 window.alert('Please Login as an Admin to View This Page')
+			 window.location.href='index.php';
+			 </SCRIPT>";
+	}
+echo "
+</div> <!-- End pagecontent Div -->
+</div> <!-- End pagebody Div -->
+</body>
+</html>
+"
+?>
+
+</body>
+</html>
