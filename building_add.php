@@ -7,13 +7,13 @@
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
     echo "
-    <h2 class='contentAction' align='center'>Enter the building name below</h2>
+    <h2 class='contentAction' align='center'>Enter the name for the new building below</h2>
     <div class='bodyContent'>
 		<form action='building_add_process.php' method='post'>
 			<table align='center'>
 				<tr>
 					<td><span align='right'>Building Name:</span></td>
-					<td><input name='buildname' id='buildname' TYPE='text' SIZE='50' onKeyPress='return hasToBeLetter(event)' required/></td>
+					<td><input name='buildname' id='buildname' TYPE='text' SIZE='50' onKeyPress='return hasToBeLetter(event)' onpaste='return false;' required/></td>
 				</tr>
 			</table>
 			<p align='center'>

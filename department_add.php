@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td><span align='right'>Room Number:</span></td>
-					<td><input name='deptroom' id='deptroom' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumber(event)' required/></td>
+					<td><input name='deptroom' id='deptroom' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumber(event)' onpaste='return false;' required/></td>
 				</tr>
 			</table>
 			<p align='center'>

@@ -229,7 +229,7 @@
 											if ($credentials == '3' || $credentials == '2'  || $credentials == '1')
 											{
 												echo "<li><a href='#'>Office Hours</a><ul>";
-													echo "<li><a href='#'>Add Office Hours</a></li>";
+													echo "<li><a href='officehours_add.php'>Add Office Hours</a></li>";
 													echo "<li><a href='#'>Modify Office Hours</a></li>";
 													echo "<li><a href='#'>Remove Office Hours</a></li>";
 													echo "</ul></li>";
