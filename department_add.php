@@ -13,11 +13,11 @@
 			<table align='center'>
 				<tr>
 					<td><span align='right'>Department Name:</span></td>
-					<td><input name='deptname' id='deptname' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+					<td><input name='deptname' id='deptname' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumberOrLetter(event)' onpaste='return false;' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Department Code:</span></td>
-					<td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' onKeyPress='return hasToBeLetter(event)' maxlength='3' required/></td>
+					<td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' onKeyPress='return hasToBeLetter(event)' onpaste='return false;' maxlength='3' required/></td>
 				</tr>
 				";
 
