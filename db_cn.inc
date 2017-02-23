@@ -22,4 +22,5 @@ function connect_and_select_db($server, $username, $pwd, $dbname)
     exit;
   }
 }
+
 ?>
