@@ -14,12 +14,12 @@
 			<table align='center'>
 				<tr>
 					<td><span align='right'>Course Name:</span></td>
-					<td><input name='coursename' id='coursename' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Department Code:</span></td>
 					<td>
-            <select name='deptcode' id='deptcode' onchange='updateFaculty()' required>
+            <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" required>
               <option disable selected hidden>Select one</option>";
               $sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
               $result_dept_code = mysql_query($sql_dept_code);
@@ -34,16 +34,16 @@
 				</tr>
 				<tr>
 					<td><span align='right'>Course Number:</span></td>
-					<td><input  name='coursenum' id='coursenum' type='text' size='10' onKeyPress='return hasToBeNumber(event)' required/></td>
+					<td><input  name='coursenum' id='coursenum' type='text' size='30' onKeyPress='return hasToBeNumber(event)' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Section Number:</span></td>
-					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='10' onKeyPress='return hasToBeNumber(event)' required/></td>
+					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumber(event)' required/></td>
 				</tr>
         <tr>
           <td><span align='right'>Course Type:</span></td>
           <td>
-            <select name='coursetype' id='coursetype' required>
+            <select name='coursetype' id='coursetype' style=\"width:160px;\" required>
               <option disable selected hidden>Select one</option>
               <option value='Lab'>Lab</option>
               <option value='Lecture'>Lecture</option>
@@ -53,7 +53,7 @@
           <tr>
           <td><span align='right'>Semester:</span></td>
           <td>
-            <select name='semester' id='semester' required>";
+            <select name='semester' id='semester' style=\"width:160px;\" required>";
               $sql_semester = "SELECT * FROM Semester ORDER BY Year";
               $result_semester = mysql_query($sql_semester);
 
@@ -72,17 +72,19 @@
           </td>
         </tr>
         <tr>
-          <td><span align='right'>Faculty Net ID:</span></td>
+          <td><span align='right'>Faculty Name:</span></td>
           <td>
-            <select name='netid' id='netid' required>
-              <option>Placeholder (need ajax here)</option>
-            </select>
+            <select name='netid' id='netid' style=\"width:160px;\" required>
+              <option disable selected hidden>Placeholder (need ajax here)</option>";
+
+
+            echo "</select>
           </td>
         </tr>
         <tr>
           <td><span align='right'>Location:</span></td>
           <td>
-            <select name='location' id='location' required>
+            <select name='location' id='location' style=\"width:160px;\" required>
               <option disable selected hidden>Select one</option>";
               $sql_building = "SELECT * FROM Building ORDER BY Name";
               $result_building = mysql_query($sql_building);
@@ -99,35 +101,40 @@
         </tr>
         <tr>
           <td><span align='right'>Room Number:</span></td>
-          <td><input name='room' id='room' TYPE='text' SIZE='10' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+          <td><input name='room' id='room' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
         </tr>
         <tr>
           <td><span align='right'>Days:</span></td>
           <td>
             <table>
-              <tr><td><input type='checkbox' name='days[]' value='Sunday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Monday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Tuesday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Wednesday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Thursday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Friday'></td></tr>
-              <tr><td><input type='checkbox' name='days[]' value='Saturday'></td></tr>
+              <tr><td><input type='checkbox' name='days[]' value='Sunday'>Sunday</td></tr>
+              <tr>
+								<td><input type='checkbox' name='days[]' value='Monday'>Monday</td>
+              	<td><input type='checkbox' name='days[]' value='Tuesday'>Wednesday</td>
+								<td><input type='checkbox' name='days[]' value='Wednesday'>Friday</td>
+							</tr>
+              <tr>
+              	<td><input type='checkbox' name='days[]' value='Thursday'>Tuesday</td>
+              	<td><input type='checkbox' name='days[]' value='Friday'>Thursday</td>
+							</tr>
+              <tr><td><input type='checkbox' name='days[]' value='Saturday'>Saturday</td></tr>
             </table>
           </td>
         </tr>
         <tr>
           <td><span align='right'>Start Time:</span></td>
-          <td><input name='start' id='start' TYPE='text' SIZE='10' onKeyPress='return isTime(event)' required/></td>
+          <td><input name='start' id='start' TYPE='time' required/></td>
         </tr>
         <tr>
           <td><span align='right'>End Time:</span></td>
-          <td><input name='end' id='end' TYPE='text' SIZE='10' onKeyPress='return isTime(event)' required/></td>
+          <td><input name='end' id='end' TYPE='time' required/></td>
         </tr>
 			</table>
 			<p align='center'>
 				<input type='submit' value='Submit'/>
 				<input type='reset' value='Reset'/>
 			</p>
+			<div id='status'></div>
 		</form>
     </div>
     ";
@@ -145,6 +152,8 @@
 echo "
 </div> <!-- End pagecontent Div -->
 </div> <!-- End pagebody Div -->
+<script src='scripts/jquery-3.1.1.js'></script>
+<script src='scripts/course_add_ajax.js'></script>
 </body>
 </html>
 "

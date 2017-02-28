@@ -169,6 +169,27 @@
 						}
 					}
 
+					function updateFaculty()
+					{
+						/*var ajax = new XMLHttpRequest();
+						var url = "course_add_ajax.php";
+						var dept = document.getElementById("deptcode").value;
+						ajax.open("POST", url, true);
+						// encoded variables (makes variables not show in url)
+						ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						// function to execute each time ready state is changed
+						ajax.onReadyStateChange = function()
+						{
+							if(ajax.readyState == 4 && ajax.status == 200)
+							{
+								var return_data = ajax.responseText;
+								document.getElementById("status").innerHTML = return_data;
+							}
+						}
+						ajax.send(dept);
+						document.getElementById("status").innterHTML = "Processing, please wait...";*/
+					}
+
 		</script>
 </head>
 <!-- <body bgcolor="#F5F5F5">#FFFFFF -->
