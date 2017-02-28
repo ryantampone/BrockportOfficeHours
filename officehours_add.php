@@ -6,7 +6,7 @@
 <?php
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '2') || ((string)$_SESSION['Credentials'] == '1'))
 	{
-		if ((string)$_SESSION['Credentials'] == '2'))
+		if ((string)$_SESSION['Credentials'] != '1'))
 		{
 			$department = (string)$_SESSION['DepartmentID'];
 			echo "
