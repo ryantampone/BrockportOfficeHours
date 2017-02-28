@@ -4,18 +4,6 @@
   include 'dbh.php';
 	require('db_cn.inc');
 
-	/*if ((isset($_SESSION['NetID'])) && ($_SESSION['Credentials'] == 1))
-	{
-		session_destroy();
-		echo "<SCRIPT LANGUAGE='JavaScript'>
-			 window.alert('Please logout to view this page')
-			 window.location.href='index.php';
-			 </SCRIPT>";
-	}
-	else
-	{*/
-
-
 
 //	Populate fields if being redirected from error message after submission
 

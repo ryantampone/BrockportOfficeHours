@@ -17,6 +17,10 @@
     VALUES ('$netid', '$fn', '$ln', '$access', '$dept', '$pwd_hashed', '$status')";
   $result = mysql_query($sql);
 
+  $sql = "INSERT INTO Faculty (NetID, FirstName, LastName, DepartmentID, OfficeRoomNumber, Email, PhoneNumber, Status)
+    VALUES ('$netid', '$fn', '$ln', '$access', '$dept', '$pwd_hashed', '$status')";
+  $result = mysql_query($sql);
+
   if(!$result)
   {
     $message = "Unable to insert user : ".mysql_error();
@@ -38,13 +42,22 @@
   }
   else
   {
-    $message = "User '$netid' inserted successfully.";
-    echo "
-      <script language='javascript'>
-        window.alert(\"$message\");
-        window.location = '../user_signup.php';
-      </script>
-    ";
+    if ($access == '3')
+    {
+      $userInsertMessage = "User '$netid' inserted successfully.";
+      //Put AJAX popup here, the popup with have a form prompting for more information for the faculty member
+    }
+    else
+    {
+      $message = "User '$netid' inserted successfully.";
+      echo "
+        <script language='javascript'>
+          window.alert(\"$message\");
+          window.location = '../user_signup.php';
+        </script>
+      ";
+    }
+
   }
 
 ?>

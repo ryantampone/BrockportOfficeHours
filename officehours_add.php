@@ -8,7 +8,7 @@
 	{
 		if ((string)$_SESSION['Credentials'] != '1'))
 		{
-			$department = (string)$_SESSION['DepartmentID'];
+			$deptID = (string)$_SESSION['DepartmentID'];
 			echo "
 	    <h2 class='contentAction' align='center'>Select a factuly member to add their office hours</h2>
 	    <div class='bodyContent'>
@@ -19,15 +19,16 @@
 						<td>
 							<select name='facultyMember' id='facultyMember'>";
 								connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
-								$sql_building = "SELECT * FROM Building ORDER BY Name DESC";
-								$result_building = mysql_query($sql_building);
+								$sql_fac = "SELECT * FROM Faculty ORDER BY FirstName WHERE DepartmentID='$deptID'";
+								$result_fac = mysql_query($sql_fac);
 
-								while($row = mysql_fetch_assoc($result_building))
+								while($row = mysql_fetch_assoc($result_fac))
 								{
-									$buildingid = $row['BuildingID'];
-									$buildingname = $row['Name'];
+									$facNetID = $row['NetID'];
+									$facFN = $row['FirstName'];
+									$facLN = $row['LastName'];
 
-									echo "<option value=$buildingid selected>$buildingname</option>";
+									echo "<option value=$facNetID selected>$facFN $facLN</option>";
 								}
 				echo "</select>
 						</td>
