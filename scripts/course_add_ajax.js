@@ -1,23 +1,28 @@
 function updateFaculty()
 {
   var dept = $("#deptcode").val();
-  alert(dept);
-  $.ajax({
-    type: "POST",
+  /*var myData = $("#deptcode").serialize();
+  alert(dept + "\n" + myData);*/
+
+  $.post("course_add_process.php", { deptcode: dept }, function(data)
+  {
+    alert(data);
+  });
+
+  /*$.ajax({
     url: "course_add_process.php",
-    success: function(result)
+    data: "",
+    dataType: "json",
+    success: function(data)
     {
-      $("#status").html(result);
+      alert(data);
+      //$("#status").html("Ajax successful: Department = " + dept);
     }
 
     //data: {text:$(this).val()}
   });
 
-  /*$.post("course_add_process.php", { selected_dept: dept }, function(data)
-  {
-    alert(data);
-  });*/
-
+*/
   /*
     Options to add to dropdown:
     Option # = text to show in drop down

@@ -2,9 +2,9 @@
 	$callToActionVar = "Add Course";
 	include 'header.php';
 	require('db_cn.inc');
+	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 ?>
 <?php
-  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
     echo "
