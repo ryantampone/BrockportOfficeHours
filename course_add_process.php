@@ -6,6 +6,20 @@
   $sql_fac_id = "SELECT * FROM Faculty WHERE DepartmentID =
     (SELECT DepartmentID FROM Department WHERE Code = '$selected_dept')";
   $result = mysql_query($sql_fac_id);
+
+  while($row = mysql_fetch_assoc($result))
+  {
+    $netid = $row["NetID"];
+    $fn = $row["FirstName"];
+    $ln = $row["LastName"];
+  }
+
+  if(isset($netid))
+  {
+    $netid = $_POST["NetID"];
+    $fn = $_POST["FirstName"];
+    $ln = $_POST["LastName"];
+  }
   $arr = mysql_fetch_row($result);
 
   echo json_encode($arr);

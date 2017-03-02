@@ -1,14 +1,24 @@
 function updateFaculty()
 {
   var dept = $("#deptcode").val();
-  /*var myData = $("#deptcode").serialize();
-  alert(dept + "\n" + myData);*/
 
-  $.post("course_add_process.php", { deptcode: dept }, function(data)
-  {
-    alert(data);
-  });
+  $.post("course_add_process.php",
+    {
+      deptcode: dept
+    },
+    function(data)
+    {
+      // Can't process info here (asynchronous)
+      alert("Post successful.\n"+data+"\nCalling process_query...");
+      process_query(data);
+    });
 
+}
+
+function process_query(data)
+{
+  alert("Net ID = "+data[0]+"\nFirst Name = "+data[1]+"\nLast Name = "+data[2]);
+}
   /*$.ajax({
     url: "course_add_process.php",
     data: "",
@@ -60,4 +70,3 @@ function updateFaculty()
     alert("failure" + data);
   })
   */
-}
