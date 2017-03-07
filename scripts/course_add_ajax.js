@@ -27,7 +27,11 @@ function updateFaculty()
             // data = {"NetID:","fjones","FirstName:","Faculty" ...}
             if (data != "")
               process_query(data);
-            else alert("There are no faculty members saved in this department.");
+            else
+            {
+              alert("There are no faculty members saved in this department.");
+              $("#netid").empty();
+            }
           }
         }
       };
