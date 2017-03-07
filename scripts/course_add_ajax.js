@@ -7,7 +7,7 @@ function formattedJSON (str)
 function updateFaculty()
 {
   var dept = $("#deptcode").val();
-  $.post("course_add_process.php",
+  $.post("course_department_change.php",
     {
       deptcode: dept
     },
@@ -35,7 +35,7 @@ function updateFaculty()
           }
         }
       };
-      xhr.open("get", "course_add_process.php", true);
+      xhr.open("get", "course_department_change.php", true);
       xhr.send();
     });
 

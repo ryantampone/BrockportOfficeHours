@@ -14,13 +14,13 @@
 			<table align='center'>
 				<tr>
 					<td><span align='right'>Course Name:</span></td>
-					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Department Code:</span></td>
 					<td>
             <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" required>
-              <option disable selected hidden>Select one</option>";
+              <option disable selected hidden value=''>Select one</option>";
               $sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
               $result_dept_code = mysql_query($sql_dept_code);
 
@@ -44,7 +44,7 @@
           <td><span align='right'>Course Type:</span></td>
           <td>
             <select name='coursetype' id='coursetype' style=\"width:160px;\" required>
-              <option disable selected hidden>Select one</option>
+              <option disable selected hidden value=''>Select one</option>
               <option value='Lab'>Lab</option>
               <option value='Lecture'>Lecture</option>
             </select>
@@ -75,17 +75,15 @@
           <td><span align='right'>Faculty Name:</span></td>
           <td>
             <select name='netid' id='netid' style=\"width:160px;\" required>
-              <option disable selected hidden>Placeholder (need ajax here)</option>";
-
-
-            echo "</select>
+              <option disable selected hidden value=''>Placeholder (need ajax here)</option>
+						</select>
           </td>
         </tr>
         <tr>
           <td><span align='right'>Location:</span></td>
           <td>
             <select name='location' id='location' style=\"width:160px;\" required>
-              <option disable selected hidden>Select one</option>";
+              <option disable selected hidden value=''>Select one</option>";
               $sql_building = "SELECT * FROM Building ORDER BY Name";
               $result_building = mysql_query($sql_building);
 
@@ -107,17 +105,17 @@
           <td><span align='right'>Days:</span></td>
           <td>
             <table>
-              <tr><td><input type='checkbox' name='days[]' value='Sunday'>Sunday</td></tr>
+              <tr><td><input type='checkbox' name='days' value='Sunday'>Sunday</td></tr>
               <tr>
-								<td><input type='checkbox' name='days[]' value='Monday'>Monday</td>
-              	<td><input type='checkbox' name='days[]' value='Tuesday'>Wednesday</td>
-								<td><input type='checkbox' name='days[]' value='Wednesday'>Friday</td>
+								<td><input type='checkbox' name='days' value='Monday'>Monday</td>
+              	<td><input type='checkbox' name='days' value='Wednesday'>Wednesday</td>
+								<td><input type='checkbox' name='days' value='Friday'>Friday</td>
 							</tr>
               <tr>
-              	<td><input type='checkbox' name='days[]' value='Thursday'>Tuesday</td>
-              	<td><input type='checkbox' name='days[]' value='Friday'>Thursday</td>
+              	<td><input type='checkbox' name='days' value='Tuesday'>Tuesday</td>
+              	<td><input type='checkbox' name='days' value='Thursday'>Thursday</td>
 							</tr>
-              <tr><td><input type='checkbox' name='days[]' value='Saturday'>Saturday</td></tr>
+              <tr><td><input type='checkbox' name='days' value='Saturday'>Saturday</td></tr>
             </table>
           </td>
         </tr>
