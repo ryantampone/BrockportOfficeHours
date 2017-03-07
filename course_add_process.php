@@ -15,32 +15,4 @@
     echo json_encode($row)."\n";
   }
 
-  /*$netid = $_GET["netid"];
-  $fn = $_GET["fn"];
-  $ln = $_GET["ln"];*/
-
-  //echo $netid.", ".$fn.", ".$ln;
-
-
-  /*if(!$result)
-  {
-    $message = "Error in sql statement: ".mysql_error();
-  }
-  else $message = "Ajax executed successfully\nSelected Department = ".$selected_dept;
-  while($row = mysql_fetch_assoc())
-  {
-    $netid = $row['NetID'];
-    $fn = $row['FirstName'];
-    $ln = $row['LastName'];
-    $deptid = $row['DepartmentID'];
-    $office = $row['OfficeRoomNumber'];
-    $email = $row['Email'];
-    $phone = $row['PhoneNumber'];
-    $status = $row['Status'];
-  }
-
-  $message = $message."NetID = ".$netid."\nFirst Name = ".$fn."\nLast Name = ".$ln."\n
-    Department ID = ".$deptid."\nOffice Room Number = ".$office."\nEmail = ".$email."\n
-    Phone Number = ".$phone."\nStatus = ".$status;
-  echo $message;*/
 ?>

@@ -29,8 +29,8 @@ function updateFaculty()
               process_query(data);
             else
             {
-              alert("There are no faculty members saved in this department.");
               $("#netid").empty();
+              alert("There are no faculty members saved in this department.");
             }
           }
         }
@@ -47,7 +47,7 @@ function process_query(j)
   // from the database and put into an array
   var str = formattedJSON(j);
 
-  //empty the Faculty Name drop down list before populating it with data retrieved
+  // empty the Faculty Name drop down list before populating it with data retrieved
   $("#netid").empty();
 
   // For each entry retrieved from database
@@ -63,54 +63,3 @@ function process_query(j)
     $("#netid").append("<option value='" + netid + "'>" + ln + ", " + fn + "</option>");
   }
 }
-  /*$.ajax({
-    url: "course_add_process.php",
-    data: "",
-    dataType: "json",
-    success: function(data)
-    {
-      alert(data);
-      //$("#status").html("Ajax successful: Department = " + dept);
-    }
-
-    //data: {text:$(this).val()}
-  });
-
-*/
-  /*
-    Options to add to dropdown:
-    Option # = text to show in drop down
-    value# = value of the corresponding option
-
-  var options = {
-    "Option 1": "value1",
-    "Option 2": "value2",
-    "Option 3": "value3"
-  }
-
-  //$("<option></option>").attr("value", "smitra").text("Mitra, Sandeep");
-  var $netid = $("#netid");
-  $netid.empty();
-  $.each(options, function(key, value)
-  {
-    $netid.append($("<option></option>").attr("value", value).text(key));
-  });
-  */
-  //document.write(dept);
-  /*
-  $.ajax({
-    url: "course_add_ajax.php",
-    type: "POST",
-    data: dept,
-    dataType: 'JSON',
-    success: function(data){
-      alert("success" + data);
-    }
-  })
-  .done(function(data) {
-    alert("success" + data);
-  })
-  .fail(function(data) {
-    alert("failure" + data);
-  })
-  */
