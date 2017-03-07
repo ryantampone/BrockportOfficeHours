@@ -2,26 +2,54 @@
 	$callToActionVar = "Add Facutly Office Hours";
 	include 'header.php';
 	require('db_cn.inc');
+	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 ?>
 <?php
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '2') || ((string)$_SESSION['Credentials'] == '1'))
 	{
-		if ((string)$_SESSION['Credentials'] != '1'))
+		//Setup Values for forms
+		$sql_semester = "SELECT * FROM `Semester`";// WHERE Status='Current'
+		$result_semester = mysql_query($sql_semester);
+
+
+
+
+
+		if ((string)$_SESSION['Credentials'] == '2')
 		{
+			//getting the department code of the secratary
 			$deptID = (string)$_SESSION['DepartmentID'];
+
+			echo "<SCRIPT LANGUAGE='JavaScript'>
+				 window.alert('$deptID')
+				 window.location.href='#';
+				 </SCRIPT>";
 			echo "
 	    <h2 class='contentAction' align='center'>Select a factuly member to add their office hours</h2>
 	    <div class='bodyContent'>
 			<form action='officehours_add_process.php' method='post'>
 				<table align='center'>
 					<tr>
+						<td><span align='right'>Semester:</span></td>
+						<td>
+							<select name='semester' id='semester'>";
+							while($row = mysql_fetch_assoc($result_semester))
+							{
+								$semesterID = $row['SemesterID'];
+								$term = $row['Term'];
+								$year = $row['Year'];
+								$status = $row['Status'];
+								echo "<option value=$semesterID selected>$term $year ($status)</option>";
+							}echo "
+
+					</tr>
+					<tr>
 						<td><span align='right'>Facult Member:</span></td>
 						<td>
 							<select name='facultyMember' id='facultyMember'>";
-								connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
-								$sql_fac = "SELECT * FROM Faculty ORDER BY FirstName WHERE DepartmentID='$deptID'";
-								$result_fac = mysql_query($sql_fac);
 
+								$sql_fac = "SELECT * FROM `Faculty` WHERE DepartmentID='$deptID' ORDER BY FirstName;";
+								$result_fac = mysql_query($sql_fac);
 								while($row = mysql_fetch_assoc($result_fac))
 								{
 									$facNetID = $row['NetID'];
