@@ -75,7 +75,7 @@
           <td><span align='right'>Faculty Name:</span></td>
           <td>
             <select name='netid' id='netid' style=\"width:160px;\" required>
-              <option disable selected hidden value=''>Placeholder (need ajax here)</option>
+              <option disable selected hidden value=''>Select one</option>
 						</select>
           </td>
         </tr>
@@ -105,17 +105,17 @@
           <td><span align='right'>Days:</span></td>
           <td>
             <table>
-              <tr><td><input type='checkbox' name='days' value='Sunday'>Sunday</td></tr>
+              <tr><td><input type='checkbox' id='sundayBox' name='sundayBox' onchange='checkCount(this);' value='Sunday'>Sunday</td></tr>
               <tr>
-								<td><input type='checkbox' name='days' value='Monday'>Monday</td>
-              	<td><input type='checkbox' name='days' value='Wednesday'>Wednesday</td>
-								<td><input type='checkbox' name='days' value='Friday'>Friday</td>
+								<td><input type='checkbox' id='mondayBox' name='mondayBox' onchange='checkCount(this);' value='Monday'>Monday</td>
+              	<td><input type='checkbox' id='wednesdayBox' name='wednesdayBox' onchange='checkCount(this);' value='Wednesday'>Wednesday</td>
+								<td><input type='checkbox' id='fridayBox' name='fridayBox' onchange='checkCount(this);' value='Friday'>Friday</td>
 							</tr>
               <tr>
-              	<td><input type='checkbox' name='days' value='Tuesday'>Tuesday</td>
-              	<td><input type='checkbox' name='days' value='Thursday'>Thursday</td>
+              	<td><input type='checkbox' id='tuesdayBox' name='tuesdayBox' onchange='checkCount(this);' value='Tuesday'>Tuesday</td>
+              	<td><input type='checkbox' id='thursdayBox' name='thursdayBox' onchange='checkCount(this);' value='Thursday'>Thursday</td>
 							</tr>
-              <tr><td><input type='checkbox' name='days' value='Saturday'>Saturday</td></tr>
+              <tr><td><input type='checkbox' id='saturdayBox' name='saturdayBox' onchange='checkCount(this);' value='Saturday'>Saturday</td></tr>
             </table>
           </td>
         </tr>

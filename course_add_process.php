@@ -3,6 +3,9 @@
   require('db_cn.inc');
   connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
+
+
+  // Course variables
   $course_name = $_POST['coursename'];
   $course_name_esc = mysql_real_escape_string($course_name);
   $dept_code = $_POST['deptcode'];
@@ -13,10 +16,54 @@
   $fac_name = $_POST['netid'];
   $location = $_POST['location'];
   $room_num = $_POST['room'];
-  $days = $_POST['days'];
+  $courseDay1 = "NULL";
+  $courseDay2 = "NULL";
+  $courseDay3 = "NULL";
   $start_time = $_POST['start'];
   $end_time = $_POST['end'];
 
+  // Days of the week selected
+  if($_POST["sundayBox"] !== NULL)
+    $days = $days.$_POST["sundayBox"]." ";
+  if($_POST["mondayBox"] !== NULL)
+    $days = $days.$_POST["mondayBox"]." ";
+  if($_POST["tuesdayBox"] !== NULL)
+    $days = $days.$_POST["tuesdayBox"]." ";
+  if($_POST["wednesdayBox"] !== NULL)
+    $days = $days.$_POST["wednesdayBox"]." ";
+  if($_POST["thursdayBox"] !== NULL)
+    $days = $days.$_POST["thursdayBox"]." ";
+  if($_POST["fridayBox"] !== NULL)
+    $days = $days.$_POST["fridayBox"]." ";
+  if($_POST["saturdayBox"] !== NULL)
+    $days = $days.$_POST["saturdayBox"]." ";
+  if($days === NULL)
+    $days = "No days selected";
+  else
+  {
+    // Parse days selected
+    $days_array = split(" ", $days);
+    for($i = 0; $i < sizeof($days_array)-1; $i++)
+    {
+      if($days_array[$i] !== NULL)
+      {
+        if($i + 1 == 1)
+          $courseDay1 = $days_array[$i];
+        elseif($i + 1 == 2)
+          $courseDay2 = $days_array[$i];
+        elseif($i + 1 == 3)
+          $courseDay3 = $days_array[$i];
+      }
+    }
+  }
+
+  // Formatted time strings
+  $start_time_parse = split(":", $start_time);
+  $end_time_parse = split(":", $end_time);
+  $start_time = implode("", $start_time_parse);
+  $end_time = implode("", $end_time_parse);
+
+  echo "<br/>";
   echo "Course name = ".$course_name;
   echo "<br/>Course name escaped = ".$course_name_esc;
   echo "<br/>Department code = ".$dept_code;
@@ -27,7 +74,9 @@
   echo "<br/>Faculty NetID = ".$fac_name;
   echo "<br/>Location = ".$location;
   echo "<br/>Room number = ".$room_num;
-  echo "<br/>Days = ".$days;
+  echo "<br/>Course Day 1 = ".$courseDay1;
+  echo "<br/>Course Day 2 = ".$courseDay2;
+  echo "<br/>Course Day 3 = ".$courseDay3;
   echo "<br/>Start time = ".$start_time;
   echo "<br/>End time = ".$end_time;
 

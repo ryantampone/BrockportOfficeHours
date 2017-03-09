@@ -63,3 +63,50 @@ function process_query(j)
     $("#netid").append("<option value='" + netid + "'>" + ln + ", " + fn + "</option>");
   }
 }
+
+function checkCount(cbox)
+{
+  var numChecked = 0;
+  var sun = document.getElementById("sundayBox");
+  var mon = document.getElementById("mondayBox");
+  var tue = document.getElementById("tuesdayBox");
+  var wed = document.getElementById("wednesdayBox");
+  var thu = document.getElementById("thursdayBox");
+  var fri = document.getElementById("fridayBox");
+  var sat = document.getElementById("saturdayBox");
+
+  if (sun.checked === true)
+  {
+    numChecked++;
+  }
+  if (mon.checked === true)
+  {
+    numChecked++;
+  }
+  if (tue.checked === true)
+  {
+    numChecked++;
+  }
+  if (wed.checked === true)
+  {
+    numChecked++;
+  }
+  if (thu.checked === true)
+  {
+    numChecked++;
+  }
+  if (fri.checked === true)
+  {
+    numChecked++;
+  }
+  if (sat.checked === true)
+  {
+    numChecked++;
+  }
+
+  if(numChecked > 3)
+  {
+    cbox.checked = false;
+    alert("You can only select 3 days per course.");
+  }
+}
