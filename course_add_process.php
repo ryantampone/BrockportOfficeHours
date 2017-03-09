@@ -3,8 +3,6 @@
   require('db_cn.inc');
   connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
-
-
   // Course variables
   $course_name = $_POST['coursename'];
   $course_name_esc = mysql_real_escape_string($course_name);
@@ -13,7 +11,7 @@
   $course_section = $_POST['coursesection'];
   $course_type = $_POST['coursetype'];
   $semester = $_POST['semester'];
-  $fac_name = $_POST['netid'];
+  $fac_netid = $_POST['netid'];
   $location = $_POST['location'];
   $room_num = $_POST['room'];
   $courseDay1 = "NULL";
@@ -80,10 +78,8 @@
   echo "<br/>Start time = ".$start_time;
   echo "<br/>End time = ".$end_time;
 
-
-  /*$sql = "INSERT INTO Department (Name, Code, Location, Room, Status)
-    VALUES ('$deptname', '$deptcode', '$deptbuilding', '$deptroom', '$status')";
-  $result = mysql_query($sql);
+  /*$insert_sql = "INSERT INTO Course (CourseName, DepartmentCode, CourseNumber, CourseSectionNumber, CourseType, SemesterID, NetID, BuildingID, RoomNumber, CourseDay1, CourseDay2, CourseDay3, StartTime, EndTime) VALUES ('$course_name_esc', '$dept_code', '$course_num', '$course_section', '$course_type', '$semester', '$fac_netid', '$location', '$room_num', '$courseDay1', '$courseDay2', '$courseDay3', '$start_time', '$end_time')";
+  $result = mysql_query($insert_sql);
 
   if(!$result)
   {

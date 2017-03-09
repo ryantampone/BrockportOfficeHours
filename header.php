@@ -169,25 +169,44 @@
 						}
 					}
 
-					function updateFaculty()
+					function checkTime()
 					{
-						/*var ajax = new XMLHttpRequest();
-						var url = "course_add_ajax.php";
-						var dept = document.getElementById("deptcode").value;
-						ajax.open("POST", url, true);
-						// encoded variables (makes variables not show in url)
-						ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-						// function to execute each time ready state is changed
-						ajax.onReadyStateChange = function()
+					  var start1 = document.getElementById("start").value;
+					  var end1 = document.getElementById("end").value;
+					  var startStr = start1.split(":");
+					  var endStr = end1.split(":");
+					  var start2 = startStr[0].concat(startStr[1]);
+					  var end2 = endStr[0].concat(endStr[1]);
+
+					  if(document.getElementById("submitButton").disabled == true)
+					  {
+					    if(start2 < end2)
+					    {
+					      document.getElementById("submitButton").disabled = false;
+					    }
+					  }
+					  else if(document.getElementById("submitButton").disabled == false)
+					  {
+					    if(start2 > end2)
+					    {
+					      alert("Start time cannot be later than end time.\nPlease check your times and try again.");
+					      //timebox.value = 0000;
+					      document.getElementById("submitButton").disabled = true;
+					    }
+					  }
+					}
+
+					function twoNumbers()
+					{
+						var section = document.getElementById("coursesection").value;
+						var pattern = /^\d{2}$/;
+						if (section.match(pattern))
+							return;
+						else
 						{
-							if(ajax.readyState == 4 && ajax.status == 200)
-							{
-								var return_data = ajax.responseText;
-								document.getElementById("status").innerHTML = return_data;
-							}
+							alert("Invalid Section Format\nMust be in the format: ##");
+							document.getElementById("coursesection").value = "";
 						}
-						ajax.send(dept);
-						document.getElementById("status").innterHTML = "Processing, please wait...";*/
 					}
 
 		</script>

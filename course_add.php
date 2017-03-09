@@ -14,12 +14,12 @@
 			<table align='center'>
 				<tr>
 					<td><span align='right'>Course Name:</span></td>
-					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' required/></td>
+					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' onpaste='return false' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Department Code:</span></td>
 					<td>
-            <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" required>
+            <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>";
               $sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
               $result_dept_code = mysql_query($sql_dept_code);
@@ -34,16 +34,16 @@
 				</tr>
 				<tr>
 					<td><span align='right'>Course Number:</span></td>
-					<td><input  name='coursenum' id='coursenum' type='text' size='30' onKeyPress='return hasToBeNumber(event)' required/></td>
+					<td><input  name='coursenum' id='coursenum' type='text' size='30' onKeyPress='return hasToBeNumber(event)' onpaste='return false' required/></td>
 				</tr>
 				<tr>
 					<td><span align='right'>Section Number:</span></td>
-					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumber(event)' required/></td>
+					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumber(event)' onblur='twoNumbers()' onpaste='return false' required/></td>
 				</tr>
         <tr>
           <td><span align='right'>Course Type:</span></td>
           <td>
-            <select name='coursetype' id='coursetype' style=\"width:160px;\" required>
+            <select name='coursetype' id='coursetype' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>
               <option value='Lab'>Lab</option>
               <option value='Lecture'>Lecture</option>
@@ -53,7 +53,7 @@
           <tr>
           <td><span align='right'>Semester:</span></td>
           <td>
-            <select name='semester' id='semester' style=\"width:160px;\" required>";
+            <select name='semester' id='semester' style=\"width:160px;\" onpaste='return false' required>";
               $sql_semester = "SELECT * FROM Semester ORDER BY Year";
               $result_semester = mysql_query($sql_semester);
 
@@ -74,7 +74,7 @@
         <tr>
           <td><span align='right'>Faculty Name:</span></td>
           <td>
-            <select name='netid' id='netid' style=\"width:160px;\" required>
+            <select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>
 						</select>
           </td>
@@ -82,7 +82,7 @@
         <tr>
           <td><span align='right'>Location:</span></td>
           <td>
-            <select name='location' id='location' style=\"width:160px;\" required>
+            <select name='location' id='location' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>";
               $sql_building = "SELECT * FROM Building ORDER BY Name";
               $result_building = mysql_query($sql_building);
@@ -99,7 +99,7 @@
         </tr>
         <tr>
           <td><span align='right'>Room Number:</span></td>
-          <td><input name='room' id='room' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+          <td><input name='room' id='room' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumberOrLetter(event)' onpaste='return false' required/></td>
         </tr>
         <tr>
           <td><span align='right'>Days:</span></td>
@@ -121,15 +121,15 @@
         </tr>
         <tr>
           <td><span align='right'>Start Time:</span></td>
-          <td><input name='start' id='start' TYPE='time' required/></td>
+          <td><input name='start' id='start' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
         </tr>
         <tr>
           <td><span align='right'>End Time:</span></td>
-          <td><input name='end' id='end' TYPE='time' required/></td>
+          <td><input name='end' id='end' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
         </tr>
 			</table>
 			<p align='center'>
-				<input type='submit' value='Submit'/>
+				<input type='submit' id='submitButton' value='Submit'/>
 				<input type='reset' value='Reset'/>
 			</p>
 			<div id='status'></div>
