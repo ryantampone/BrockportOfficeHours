@@ -9,7 +9,7 @@
   $roomNumber = $_POST['deptroom'];
   $days = $_POST['days'];
 
-  /*Get Days value from database
+  /*Get Days value from post method
   if (isset($_POST['days']))
   {
     $optionArray = $_POST['days'];

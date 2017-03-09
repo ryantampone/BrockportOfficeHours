@@ -113,15 +113,15 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Start Time:</span></td>
-	          <td><input name='start' id='start' TYPE='time' required/></td>
+	          <td><input name='start' id='start' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
 	        </tr>
 	        <tr>
 	          <td><span align='right'>End Time:</span></td>
-	          <td><input name='end' id='end' TYPE='time' required/></td>
+	          <td><input name='end' id='end' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
 	        </tr>
 				</table>
 				<p align='center'>
-					<input type='submit' value='Submit'/>
+					<input type='submit' id='submitButton' value='Submit'/>
 					<input type='reset' value='Reset'/>
 				</p>
 			</form>
@@ -214,15 +214,15 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Start Time:</span></td>
-	          <td><input name='start' id='start' TYPE='time' required/></td>
+	          <td><input name='start' id='start' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
 	        </tr>
 	        <tr>
 	          <td><span align='right'>End Time:</span></td>
-	          <td><input name='end' id='end' TYPE='time' required/></td>
+	          <td><input name='end' id='end' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
 	        </tr>
 				</table>
 				<p align='center'>
-					<input type='submit' value='Submit'/>
+					<input type='submit' id='submitButton' value='Submit'/>
 					<input type='reset' value='Reset'/>
 				</p>
 			</form>
@@ -309,15 +309,15 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Start Time:</span></td>
-	          <td><input name='start' id='start' TYPE='time' required/></td>
+	          <td><input name='start' id='start' TYPE='time'  onchange='checkTime();' onpaste='return false'required/></td>
 	        </tr>
 	        <tr>
 	          <td><span align='right'>End Time:</span></td>
-	          <td><input name='end' id='end' TYPE='time' required/></td>
+	          <td><input name='end' id='end' TYPE='time' onchange='checkTime();' onpaste='return false' required/></td>
 	        </tr>
 				</table>
 				<p align='center'>
-					<input type='submit' value='Submit'/>
+					<input type='submit' id='submitButton' value='Submit'/>
 					<input type='reset' value='Reset'/>
 				</p>
 			</form>
