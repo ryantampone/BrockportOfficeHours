@@ -4,7 +4,7 @@
 
   //get values from form
   $semester = $_POST['semester'];
-  $facNetID = $_POST['facultyMember'];
+  $facNetID = $_POST['netid'];
   $buildingID = $_POST['location'];
   $roomNumber = $_POST['deptroom'];
   $days = $_POST['days'];

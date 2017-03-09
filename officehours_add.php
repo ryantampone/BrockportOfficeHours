@@ -44,7 +44,8 @@
 					<tr>
 						<td><span align='right'>Semester:</span></td>
 						<td>
-							<select name='semester' id='semester' style=\"width:160px;\">";
+							<select name='semester' id='semester' style=\"width:160px;\">
+							<option disable selected hidden value=''>Select one</option>";
 							while($row = mysql_fetch_assoc($result_semester))
 							{
 								$semester_id = $row['SemesterID'];
@@ -58,46 +59,29 @@
 							}
 
 
-							echo "
-							<tr>
-								<td><span align='right'>Department:</span></td>
-								<td>
-										<select name='department' id='department' style=\"width:160px;\">";
+					echo "
+					<tr>
+						<td><span align='right'>Department:</span></td>
+							<td>
+								<select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" required>
+									<option disable selected hidden value=''>Select one</option>";
+									$sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
+									$result_dept_code = mysql_query($sql_dept_code);
 
-							//department selction
-							$sql_dept = "SELECT DepartmentID, Name FROM Department WHERE Status='Active'";
-							$sql_result = mysql_query($sql_dept);
-							while($row = mysql_fetch_assoc($sql_result))
-							{
-								$deptid = $row['DepartmentID'];
-								$deptname = $row['Name'];
-								if($dept != "")
-								{
-									if($dept == $deptid)
+									while($row = mysql_fetch_assoc($result_dept_code))
 									{
-										echo "<option value=$deptid selected>$deptname</option>";
+										$deptcode = $row['Code'];
+										echo "<option value=$deptcode>$deptcode</option>";
 									}
-								}
-								else echo "<option value=$deptid>$deptname</option>";
-							}echo "</td>
-
+								echo"</select>
+							</td>
 					</tr>
 					<tr>
 						<td><span align='right'>Faculty Name:</span></td>
 						<td>
-							<select name='facultyMember' id='facultyMember' style=\"width:160px;\">";
-
-								$sql_fac = "SELECT * FROM `Faculty` WHERE DepartmentID='$deptID' ORDER BY FirstName;";
-								$result_fac = mysql_query($sql_fac);
-								while($row = mysql_fetch_assoc($result_fac))
-								{
-									$facNetID = $row['NetID'];
-									$facFN = $row['FirstName'];
-									$facLN = $row['LastName'];
-
-									echo "<option value=$facNetID selected>$facLN, $facFN</option>";
-								}
-				echo "</select>
+							<select name='netid' id='netid' style=\"width:160px;\" required>
+								<option disable selected hidden value=''>Select one</option>
+							</select>
 						</td>
 					</tr>
 					<tr>
@@ -186,7 +170,7 @@
 					<tr>
 						<td><span align='right'>Faculty Name:</span></td>
 						<td>
-							<select name='facultyMember' id='facultyMember' style=\"width:160px;\">";
+							<select name='netid' id='netid' style=\"width:160px;\">";
 
 								$sql_fac = "SELECT * FROM `Faculty` WHERE DepartmentID='$deptID' ORDER BY FirstName;";
 								$result_fac = mysql_query($sql_fac);
@@ -294,7 +278,7 @@
 					<tr>
 						<td><span align='right'>Faculty Name:</span></td>
 						<td><span align='right'>$ln, $fn</span></td>
-						<td><input name='facultyMember' id='facultyMember' TYPE='hidden' value='$NetID'/></td>
+						<td><input name='netid' id='netid' TYPE='hidden' value='$NetID'/></td>
 					</tr>
 					<tr>
 	          <td><span align='right'>Location:</span></td>
@@ -357,6 +341,8 @@
 echo "
 </div> <!-- End pagecontent Div -->
 </div> <!-- End pagebody Div -->
+<script src='scripts/jquery-3.1.1.js'></script>
+<script src='scripts/officehours_add_ajax.js'></script>
 </body>
 </html>
 "
