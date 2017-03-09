@@ -61,7 +61,7 @@
   $start_time = implode("", $start_time_parse);
   $end_time = implode("", $end_time_parse);
 
-  echo "<br/>";
+  /*echo "<br/>";
   echo "Course name = ".$course_name;
   echo "<br/>Course name escaped = ".$course_name_esc;
   echo "<br/>Department code = ".$dept_code;
@@ -69,37 +69,37 @@
   echo "<br/>Section number = ".$course_section;
   echo "<br/>Course type = ".$course_type;
   echo "<br/>Semester = ".$semester;
-  echo "<br/>Faculty NetID = ".$fac_name;
+  echo "<br/>Faculty NetID = ".$fac_netid;
   echo "<br/>Location = ".$location;
   echo "<br/>Room number = ".$room_num;
   echo "<br/>Course Day 1 = ".$courseDay1;
   echo "<br/>Course Day 2 = ".$courseDay2;
   echo "<br/>Course Day 3 = ".$courseDay3;
   echo "<br/>Start time = ".$start_time;
-  echo "<br/>End time = ".$end_time;
+  echo "<br/>End time = ".$end_time;*/
 
-  /*$insert_sql = "INSERT INTO Course (CourseName, DepartmentCode, CourseNumber, CourseSectionNumber, CourseType, SemesterID, NetID, BuildingID, RoomNumber, CourseDay1, CourseDay2, CourseDay3, StartTime, EndTime) VALUES ('$course_name_esc', '$dept_code', '$course_num', '$course_section', '$course_type', '$semester', '$fac_netid', '$location', '$room_num', '$courseDay1', '$courseDay2', '$courseDay3', '$start_time', '$end_time')";
+  $insert_sql = "INSERT INTO Course (CourseName, DepartmentCode, CourseNumber, CourseSectionNumber, CourseType, SemesterID, NetID, BuildingID, RoomNumber, CourseDay1, CourseDay2, CourseDay3, StartTime, EndTime) VALUES ('$course_name_esc', '$dept_code', '$course_num', '$course_section', '$course_type', '$semester', '$fac_netid', '$location', '$room_num', '$courseDay1', '$courseDay2', '$courseDay3', '$start_time', '$end_time')";
   $result = mysql_query($insert_sql);
 
   if(!$result)
   {
-    $message = "Unable to add department : ".mysql_error();
+    $message = "Unable to add course : ".mysql_error();
     echo "
           <script language='javascript'>
             window.alert(\"$message\");
-            window.location = 'department_add.php';
+            window.location = 'course_add.php';
           </script>
     ";
   }
   else
   {
-    $message = "Department '$deptname' added successfully.";
+    $message = "Course '$course_name' added successfully.";
     echo "
       <script language='javascript'>
         window.alert(\"$message\");
-        window.location = 'index.php';
+        window.location = 'course_add.php';
       </script>
     ";
-  }*/
+  }
 
 ?>
