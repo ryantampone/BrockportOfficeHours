@@ -108,7 +108,6 @@
 									connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
                   $sql_dept = "SELECT DepartmentID, Name FROM Department WHERE Status='Active'";
                   $sql_result = mysql_query($sql_dept);
-
                   while($row = mysql_fetch_assoc($sql_result))
                   {
                     $deptid = $row['DepartmentID'];
