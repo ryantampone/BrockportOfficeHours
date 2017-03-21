@@ -222,28 +222,29 @@
 
 						if (acc == 3)
 						{
-							/*roomL.hidden = false;
-							emailL.hidden = false;
-							phoneL.hidden = false;
-							roomT.style.display = 'block';
-							emailT.style.display = 'block';
-							phoneT.style.display = 'block';*/
 							roomT.disabled = false;
 							emailT.disabled = false;
 							phoneT.disabled = false;
 						}
 						else
 						{
-							/*roomL.hidden = true;
-							emailL.hidden = true;
-							phoneL.hidden = true;
-							roomT.style.display = 'none';
-							emailT.style.display = 'none';
-							phoneT.style.display = 'none';*/
 							roomT.disabled = true;
 							emailT.disabled = true;
 							phoneT.disabled = true;
 						}
+					}
+
+					function resetFaculty()
+					{
+						document.getElementById("room").disabled = false;
+						document.getElementById("email").disabled = false;
+						document.getElementById("phone2").disabled = false;
+					}
+
+					function resetAdmin()
+					{
+						document.getElementById("dept").value = "none";
+						document.getElementById("dept").disabled = true;
 					}
 
 		</script>

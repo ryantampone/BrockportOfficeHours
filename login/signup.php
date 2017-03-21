@@ -2,6 +2,7 @@
   session_start();
 
   require('../db_cn.inc');
+  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
   $netid = $_POST['netid'];
   $fn = $_POST['firstname'];
@@ -10,9 +11,11 @@
   $dept = $_POST['dept'];
   $pwd_entered = $_POST['pwd'];
   $pwd_hashed = password_hash($pwd_entered, PASSWORD_DEFAULT);
+  $room = $_POST['room'];
+  $email = $_POST['email'];
+  $esc_email = mysql_real_escape_string($email);
+  $phone = $_POST['phone2'];
   $status = "Active";
-
-  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
   if($dept == "")
   {
@@ -28,23 +31,26 @@
     else
     {
       $dept = "NULL";
-      $sql = "INSERT INTO Users (NetID, FirstName, LastName, Credentials, DepartmentID, Password, Status)
+      $sql_user = "INSERT INTO Users (NetID, FirstName, LastName, Credentials, DepartmentID, Password, Status)
         VALUES ('$netid', '$fn', '$ln', '$access', $dept, '$pwd_hashed', '$status')";
-      $result = mysql_query($sql);
+      $user_result = mysql_query($sql_user);
     }
   }
   else
   {
-    $sql = "INSERT INTO Users (NetID, FirstName, LastName, Credentials, DepartmentID, Password, Status)
+    $sql_user = "INSERT INTO Users (NetID, FirstName, LastName, Credentials, DepartmentID, Password, Status)
       VALUES ('$netid', '$fn', '$ln', '$access', '$dept', '$pwd_hashed', '$status')";
-    $result = mysql_query($sql);
+    $user_result = mysql_query($sql_user);
   }
 
-  /*$sql = "INSERT INTO Faculty (NetID, FirstName, LastName, DepartmentID, OfficeRoomNumber, Email, PhoneNumber, Status)
-    VALUES ('$netid', '$fn', '$ln', '$dept', '$pwd_hashed', '$status')";
-  $result = mysql_query($sql);*/
+  if($access == 3)
+  {
+    $sql_fac = "INSERT INTO Faculty (NetID, FirstName, LastName, DepartmentID, OfficeRoomNumber, Email, PhoneNumber, Status)
+      VALUES ('$netid', '$fn', '$ln', '$dept', '$room', '$email', '$phone', '$status')";
+    $fac_result = mysql_query($sql_fac);
+  }
 
-  if(!$result)
+  if(!$user_result)
   {
     $message = "Unable to insert user : ".mysql_error();
     echo "
@@ -55,6 +61,9 @@
           <input type='hidden' name='acc' id='acc' value='$access' />
           <input type='hidden' name='dep' id='dep' value='$dept' />
           <input type='hidden' name='pass' id='pass' value='$pwd_entered' />
+          <input type='hidden' name='room' id='room' value='$room' />
+          <input type='hidden' name='email' id='email' value='$esc_email' />
+          <input type='hidden' name='phone' id='phone' value='$phone' />
         </form>
           <script language='javascript'>
             window.alert(\"$message\");
@@ -65,21 +74,26 @@
   }
   else
   {
-    /*if ($access == '3')
+    if ($access == '3')
     {
-      $userInsertMessage = "User '$netid' inserted successfully.";
-      //Put AJAX popup here, the popup with have a form prompting for more information for the faculty member
+      if(!$fac_result)
+      {
+        $message = "Unable to insert faculty : ".mysql_error();
+        echo "
+          <script language='javascript'>
+            window.alert(\"$message\");
+            window.location = '../user_signup.php';
+          </script>
+        ";
+      }
     }
-    else
-    {*/
-      $message = "User '$netid' inserted successfully.";
-      echo "
-        <script language='javascript'>
-          window.alert(\"$message\");
-          window.location = '../user_signup.php';
-        </script>
-      ";
-    //}
+    $message = "User '$netid' inserted successfully.";
+    echo "
+      <script language='javascript'>
+        window.alert(\"$message\");
+        window.location = '../user_signup.php';
+      </script>
+    ";
 
   }
 

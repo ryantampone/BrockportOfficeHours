@@ -20,28 +20,28 @@
 	else $lastname = "";
 
 	if(isset($_POST['acc']))
-	{
 		$access = $_POST['acc'];
-		echo "<script type='text/javascript'>selectFaculty();</script>";
-	}
 	else $access = "";
 
 	if(isset($_POST['dep']))
 	{
 		connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
-		$dept = $_POST['dep'];
-		$dept_sql = "SELECT Name FROM Department WHERE DepartmentID = '$dept'";
-		$dept_result = mysql_query($dept_sql);
+		if($_POST['dep'] != "NULL")
+		{
+			$dept = $_POST['dep'];
+			$dept_sql = "SELECT Name FROM Department WHERE DepartmentID = '$dept'";
+			$dept_result = mysql_query($dept_sql);
 
-		if(!$dept_result)
-		{
-			echo "Unable to get Department Name : " .mysql_error();
-		}
-		else
-		{
-			while($row = mysql_fetch_assoc($dept_result))
+			if(!$dept_result)
 			{
-				$deptname = $row['Name'];
+				echo "Unable to get Department Name : " .mysql_error();
+			}
+			else
+			{
+				while($row = mysql_fetch_assoc($dept_result))
+				{
+					$deptname = $row['Name'];
+				}
 			}
 		}
 	}
@@ -50,6 +50,18 @@
 	if(isset($_POST['pass']))
 		$pwd = $_POST['pass'];
 	else $pwd = "";
+
+	if(isset($_POST['room']))
+		$room = $_POST['room'];
+	else $room = "";
+
+	if(isset($_POST['email']))
+		$email = $_POST['email'];
+	else $email = "";
+
+	if(isset($_POST['phone']))
+		$phone = $_POST['phone'];
+	else $phone = "";
 
 		echo "
 		<center><h2 class='contentAction'>Please fill out the form below</h2></center>
@@ -122,6 +134,7 @@
 											{
 												echo "<option value=$deptid selected>$deptname</option>";
 											}
+											else echo "<option value=$deptid>$deptname</option>";
 										}
 										else echo "<option value=$deptid>$deptname</option>";
                   }
@@ -136,17 +149,23 @@
 						</tr>
 						<tr>
               <td><span id='roomLabel' align='right'>Office Room Number:</span></td>
-              <td><input disabled name='room' id='room' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumber(event)' required/></td>
+              <td><input disabled name='room' id='room' TYPE='text' SIZE='50' value='$room' onKeyPress='return hasToBeNumber(event)' required/></td>
 						</tr>
 						<tr>
               <td><span id='emailLabel' align='right'>Email:</span></td>
-              <td><input disabled name='email' id='email' TYPE='text' SIZE='50' onKeyPress='' required/></td>
+              <td><input disabled name='email' id='email' TYPE='text' SIZE='50' value='$email' onKeyPress='' required/></td>
 						</tr>
 						<tr>
               <td><span id='phoneLabel' align='right'>Phone number:</span></td>
-              <td><input disabled name='phone2' id='phone2' TYPE='text' SIZE='50' onblur='isPhoneNumber2()' required/></td>
+              <td><input disabled name='phone2' id='phone2' TYPE='text' SIZE='50' value='$phone' onblur='isPhoneNumber2()' required/></td>
 						</tr>
 					</table>
+					";
+					if($access == 1)
+						echo "<script type='text/javascript'>resetAdmin();</script>";
+					if($access == 3)
+						echo "<script type='text/javascript'>resetFaculty();</script>";
+					echo "
 					<p align='center'>
 						<input type='submit' value='Submit'/>
 						<input type='reset' value='Reset'/>
