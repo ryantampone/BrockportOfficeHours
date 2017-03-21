@@ -20,7 +20,10 @@
 	else $lastname = "";
 
 	if(isset($_POST['acc']))
+	{
 		$access = $_POST['acc'];
+		echo "<script type='text/javascript'>selectFaculty();</script>";
+	}
 	else $access = "";
 
 	if(isset($_POST['dep']))
@@ -68,7 +71,7 @@
 						<tr>
 						  <td><span align='right'>Access Level:</span></td>
               <td>
-                <select name='access' id='access' onchange='checkCreds()' required>
+                <select name='access' id='access' onchange='checkCreds(); selectFaculty();' required>
 								";
 									if($access == 1)
 									{
@@ -108,6 +111,7 @@
 									connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
                   $sql_dept = "SELECT DepartmentID, Name FROM Department WHERE Status='Active'";
                   $sql_result = mysql_query($sql_dept);
+
                   while($row = mysql_fetch_assoc($sql_result))
                   {
                     $deptid = $row['DepartmentID'];
@@ -121,12 +125,26 @@
 										}
 										else echo "<option value=$deptid>$deptname</option>";
                   }
+									if ($access == "")
+										echo "<script type='text/javascript'>checkCreds();</script>";
           echo "</select>
               </td>
 						</tr>
 						<tr>
               <td><span align='right'>Password:</span></td>
               <td><input name='pwd' id='pwd' TYPE='password' SIZE='50' onKeyPress='' required/></td>
+						</tr>
+						<tr>
+              <td><span id='roomLabel' align='right'>Office Room Number:</span></td>
+              <td><input disabled name='room' id='room' TYPE='text' SIZE='50' onKeyPress='return hasToBeNumber(event)' required/></td>
+						</tr>
+						<tr>
+              <td><span id='emailLabel' align='right'>Email:</span></td>
+              <td><input disabled name='email' id='email' TYPE='text' SIZE='50' onKeyPress='' required/></td>
+						</tr>
+						<tr>
+              <td><span id='phoneLabel' align='right'>Phone number:</span></td>
+              <td><input disabled name='phone2' id='phone2' TYPE='text' SIZE='50' onblur='isPhoneNumber2()' required/></td>
 						</tr>
 					</table>
 					<p align='center'>

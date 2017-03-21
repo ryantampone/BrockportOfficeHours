@@ -158,14 +158,15 @@
 					function checkCreds()
 					{
 						var creds = document.getElementById("access").value;
-						if (creds == 1)
+
+						if (creds == 1 || creds == "")
 						{
 							document.getElementById("dept").value = "none";
-							document.getElementById("dept").disabled();
+							document.getElementById("dept").disabled = true;
 						}
 						else
 						{
-							document.getElementById("dept").enabled();
+							document.getElementById("dept").disabled = false;
 						}
 					}
 
@@ -206,6 +207,42 @@
 						{
 							alert("Invalid Section Format\nMust be in the format: ##");
 							document.getElementById("coursesection").value = "";
+						}
+					}
+
+					function selectFaculty()
+					{
+						var acc = document.getElementById("access").value;
+						var roomL = document.getElementById("roomLabel");
+						var emailL = document.getElementById("emailLabel");
+						var phoneL = document.getElementById("phoneLabel");
+						var roomT = document.getElementById("room");
+						var emailT = document.getElementById("email");
+						var phoneT = document.getElementById("phone2");
+
+						if (acc == 3)
+						{
+							/*roomL.hidden = false;
+							emailL.hidden = false;
+							phoneL.hidden = false;
+							roomT.style.display = 'block';
+							emailT.style.display = 'block';
+							phoneT.style.display = 'block';*/
+							roomT.disabled = false;
+							emailT.disabled = false;
+							phoneT.disabled = false;
+						}
+						else
+						{
+							/*roomL.hidden = true;
+							emailL.hidden = true;
+							phoneL.hidden = true;
+							roomT.style.display = 'none';
+							emailT.style.display = 'none';
+							phoneT.style.display = 'none';*/
+							roomT.disabled = true;
+							emailT.disabled = true;
+							phoneT.disabled = true;
 						}
 					}
 
