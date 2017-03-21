@@ -249,8 +249,8 @@
 													echo "</ul></li>";
 												echo "<li><a href='#'>Departments</a><ul>";
 													echo "<li><a href='department_add.php'>Add Department</a></li>";
-													echo "<li><a href='#'>Modify Department</a></li>";
-													echo "<li><a href='#'>Remove Department</a></li>";
+													echo "<li><a href='department_modify.php'>Modify Department</a></li>";
+													echo "<li><a href='department_remove.php'>Remove Department</a></li>";
 													echo "</ul></li>";
 												echo "<li><a href='#'>Buildings</a><ul>";
 													echo "<li><a href='building_add.php'>Add Building</a></li>";
