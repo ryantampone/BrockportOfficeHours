@@ -213,9 +213,6 @@
 					function selectFaculty()
 					{
 						var acc = document.getElementById("access").value;
-						var roomL = document.getElementById("roomLabel");
-						var emailL = document.getElementById("emailLabel");
-						var phoneL = document.getElementById("phoneLabel");
 						var roomT = document.getElementById("room");
 						var emailT = document.getElementById("email");
 						var phoneT = document.getElementById("phone2");
@@ -245,6 +242,21 @@
 					{
 						document.getElementById("dept").value = "none";
 						document.getElementById("dept").disabled = true;
+					}
+
+					function checkEnables(acc)
+					{
+						if (acc == 3)
+							resetFaculty();
+						else
+						{
+							document.getElementById("room").disabled = true;
+							document.getElementById("email").disabled = true
+							document.getElementById("phone2").disabled = true;
+						}
+						if (acc != 1)
+							document.getElementById("dept").disabled = false;
+						else resetAdmin();
 					}
 
 		</script>
@@ -282,7 +294,7 @@
 											{
 												echo "<li><a href='#'>Users</a><ul>";
 													echo "<li><a href='user_signup.php'>Add User</a></li>";
-													echo "<li><a href='#'>Modify User</a></li>";
+													echo "<li><a href='user_modify_lookup.php'>Modify User</a></li>";
 													echo "<li><a href='#'>Remove User</a></li>";
 													echo "</ul></li>";
 												echo "<li><a href='#'>Departments</a><ul>";
