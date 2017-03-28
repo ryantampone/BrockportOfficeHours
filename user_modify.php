@@ -123,6 +123,8 @@
                   }
 									if ($access == "")
 										echo "<script type='text/javascript'>checkCreds();</script>";
+									if ($access == 1)
+										echo "<option value='' selected></option>";
           echo "</select>
               </td>
 						</tr>
@@ -147,7 +149,7 @@
 					echo "
 					<p align='center'>
 						<input type='submit' value='Submit'/>
-						<input type='reset' value='Reset' onclick='resetEnables($accessPerm);'/>
+						<input type='reset' onclick='checkEnables($accessPerm)' value='Reset' />
 					</p>
 				</form>
 			</div>

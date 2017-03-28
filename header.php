@@ -161,8 +161,17 @@
 
 						if (creds == 1 || creds == "")
 						{
-							document.getElementById("dept").value = "none";
-							document.getElementById("dept").disabled = true;
+							resetAdmin();
+						}
+						else if (creds == 2)
+						{
+							document.getElementById("dept").disabled = false;
+							document.getElementById("room").value = "";
+							document.getElementById("email").value = "";
+							document.getElementById("phone2").value = "";
+							document.getElementById("room").disabled = true;
+							document.getElementById("email").disabled = true;
+							document.getElementById("phone2").disabled = true;
 						}
 						else
 						{
@@ -240,24 +249,37 @@
 
 					function resetAdmin()
 					{
-						document.getElementById("dept").value = "none";
 						document.getElementById("dept").disabled = true;
+						document.getElementById("dept").value = "none";
+						document.getElementById("room").value = "";
+						document.getElementById("email").value = "";
+						document.getElementById("phone2").value = "";
+						document.getElementById("room").disabled = true;
+						document.getElementById("email").disabled = true;
+						document.getElementById("phone2").disabled = true;
 					}
 
 					function checkEnables(acc)
 					{
-						if (acc == 3)
+						if (acc == 1)
+							resetAdmin();
+						else if (acc == 3)
+						{
 							resetFaculty();
+							document.getElementById("dept").disabled = false;
+						}
 						else
 						{
+							document.getElementById("dept").disabled = false;
+							document.getElementById("room").value = "";
+							document.getElementById("email").value = "";
+							document.getElementById("phone2").value = "";
 							document.getElementById("room").disabled = true;
-							document.getElementById("email").disabled = true
+							document.getElementById("email").disabled = true;
 							document.getElementById("phone2").disabled = true;
 						}
-						if (acc != 1)
-							document.getElementById("dept").disabled = false;
-						else resetAdmin();
 					}
+
 
 		</script>
 </head>
