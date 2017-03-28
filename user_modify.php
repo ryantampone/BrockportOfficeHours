@@ -5,13 +5,13 @@
 	require('db_cn.inc');
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
-  $netid = $_POST['netid'];
+  $old_netid = $_POST['netid'];
 
-  $sql_user = "SELECT * FROM Users WHERE (NetID = '$netid' AND Status = 'Active')";
+  $sql_user = "SELECT * FROM Users WHERE (NetID = '$old_netid' AND Status = 'Active')";
   $user_result = mysql_query($sql_user);
 
   if (!$user_result)
-    echo "Error in retrieving user $netid: ".mysql_error();
+    echo "Error in retrieving user $old_netid: ".mysql_error();
 
   // Get info of user by netid (entered by client)
   while($row = mysql_fetch_assoc($user_result))
@@ -34,7 +34,7 @@
   // If netid is faculty, get more info from Faculty table
   if($access == 3)
   {
-    $sql_fac = "SELECT OfficeRoomNumber, Email, PhoneNumber FROM Faculty WHERE NetID = '$netid'";
+    $sql_fac = "SELECT OfficeRoomNumber, Email, PhoneNumber FROM Faculty WHERE NetID = '$old_netid'";
     $fac_result = mysql_query($sql_fac);
     while($row = mysql_fetch_assoc($fac_result))
     {
@@ -53,7 +53,7 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Net ID:</span></td>
-							<td><input name='netid' id='netid' TYPE='text' SIZE='50' value='$netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+							<td><input name='netid' id='new_netid' TYPE='text' SIZE='50' value='$old_netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 						</tr>
 						<tr>
               <td><span align='right'>First Name:</span></td>
@@ -151,6 +151,7 @@
 						<input type='submit' value='Submit'/>
 						<input type='reset' onclick='checkEnables($accessPerm)' value='Reset' />
 					</p>
+					<input type='hidden' name='old_netid' id='old_netid' value='$old_netid' />
 				</form>
 			</div>
 		";
