@@ -4,9 +4,9 @@ function formattedJSON (str)
   return newStr;
 }
 
-function updateFaculty()
+function updateDeptForm()
 {
-  var dept = $("#deptcode").val();
+  var deptID = $("#deptID").val();
   $.post("course_department_change.php",
     {
       deptcode: dept
