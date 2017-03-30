@@ -317,7 +317,7 @@
 												echo "<li><a href='#'>Users</a><ul>";
 													echo "<li><a href='user_signup.php'>Add User</a></li>";
 													echo "<li><a href='user_modify_lookup.php'>Modify User</a></li>";
-													echo "<li><a href='#'>Remove User</a></li>";
+													echo "<li><a href='user_remove_lookup.php'>Remove User</a></li>";
 													echo "</ul></li>";
 												echo "<li><a href='#'>Departments</a><ul>";
 													echo "<li><a href='department_add.php'>Add Department</a></li>";

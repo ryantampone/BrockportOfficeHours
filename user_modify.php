@@ -7,7 +7,7 @@
 
   $old_netid = $_POST['netid'];
 
-  $sql_user = "SELECT * FROM Users WHERE (NetID = '$old_netid' AND Status = 'Active')";
+  $sql_user = "SELECT * FROM Users WHERE (NetID = '$old_netid')";
   $user_result = mysql_query($sql_user);
 
   if (!$user_result)
