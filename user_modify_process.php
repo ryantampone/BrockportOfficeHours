@@ -59,7 +59,7 @@
         if(!$result_fac_drop)
         {
           // If faculty cannot be dropped, set the entry to inactive
-          $sql_fac_deactivate = "UPDATE Faculty SET Status='Inactive' WHERE NetID='$old_netid'";
+          $sql_fac_deactivate = "UPDATE Faculty SET DepartmentID=NULL, Status='Inactive' WHERE NetID='$old_netid'";
           $result_fac_deactive = mysql_query($sql_fac_deactivate);
           if(!$result_fac_deactive)
             $message = "Unable to deactivate faculty '$old_netid': ".mysql_error();
@@ -121,7 +121,7 @@
         if(!$result_fac_drop)
         {
           // If faculty cannot be dropped, set the entry to inactive
-          $sql_fac_deactivate = "UPDATE Faculty SET Status='Inactive' WHERE NetID='$old_netid'";
+          $sql_fac_deactivate = "UPDATE Faculty SET DepartmentID='$deptid', Status='Inactive' WHERE NetID='$old_netid'";
           $result_fac_deactive = mysql_query($sql_fac_deactivate);
           if(!$result_fac_deactive)
             $message = "Unable to deactivate faculty '$old_netid': ".mysql_error();
@@ -181,7 +181,7 @@
         if(!$result_fac_insert)
           $message2 = "Unable to insert faculty '$new_netid': ".mysql_error();
         else
-          $message2 = "Faculty '$new_netid' inserted into Faculty successfully.";
+          $message2 = "Faculty '$new_netid' updated successfully.";
       }
 
       // If the modified user exists in the faculty table:
@@ -189,44 +189,27 @@
       // 2: Update faculty-specific info
       else
       {
-        // 1: Drop faculty entry
-        /*$sql_fac_drop = "DELETE FROM Faculty WHERE NetID='$old_netid'";
-        $result_fac_drop = mysql_query($sql_fac_drop);
-        if(!$result_fac_drop)
-        {
-          // If faculty cannot be dropped, set the entry to inactive
-          $sql_fac_deactivate = "UPDATE Faculty SET Status='Inactive' WHERE NetID='$old_netid'";
-          $result_fac_deactive = mysql_query($sql_fac_deactivate);
-          if(!$result_fac_deactive)
-            $message = "Unable to deactivate faculty '$old_netid': ".mysql_error();
-          else
-            $message = "Faculty '$old_netid' set to inactive.";
-        }
-        else
-          $message = "Faculty '$old_netid' dropped successfully.";
-        */
-
         // 1: Update users entry
         $sql_fac_users = "UPDATE Users SET NetID='$new_netid', FirstName='$firstname', LastName='$lastname', Credentials='$access', DepartmentID='$deptid' WHERE NetID='$old_netid'";
         $result_fac_users = mysql_query($sql_fac_users);
         if(!$result_fac_users)
-          $message2 = "Unable to update user '$old_netid': ".mysql_error();
+          $message = "Unable to update user '$old_netid': ".mysql_error();
         else
-          $message2 = "User '$old_netid' updated successfully.";
+          $message = "User '$old_netid' updated successfully.";
 
         // 2: Update faculty-specific info
-        $sql_fac_insert = "UPDATE Faculty SET OfficeRoomNumber='$room', Email='$email', PhoneNumber='$phone', Status='Active' WHERE NetID='$new_netid'";
-        $result_fac_insert = mysql_query($sql_fac_insert);
-        if(!$result_fac_insert)
-          $message3 = "Unable to insert faculty '$new_netid': ".mysql_error();
+        $sql_fac_update = "UPDATE Faculty SET DepartmentID='$deptid', OfficeRoomNumber='$room', Email='$email', PhoneNumber='$phone', Status='Active' WHERE NetID='$new_netid'";
+        $result_fac_update = mysql_query($sql_fac_update);
+        if(!$result_fac_update)
+          $message = "Unable to insert faculty '$new_netid': ".mysql_error();
         else
-          $message3 = "Faculty '$new_netid' inserted into Faculty successfully.";
+          $message = "Faculty '$new_netid' updated successfully.";
       }
     }
 
     echo "
       <script language='javascript'>
-        window.alert(\"$message\\n$message2\\n$message3\");
+        window.alert(\"$message\");
         window.location = 'index.php';
       </script>
     ";
