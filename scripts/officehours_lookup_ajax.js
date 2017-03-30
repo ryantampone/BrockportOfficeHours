@@ -7,6 +7,8 @@ function formattedJSON (str)
 function updateFaculty()
 {
   var facName = $("#FacultyName").val();
+  if (facName != "")
+  {
   $.post("officehours_lookup_facultyName_change.php",
     {
       facultyName: facName
@@ -30,7 +32,8 @@ function updateFaculty()
             else
             {
               $("#netid").empty();
-              alert("No faculty members found.");
+              $("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
+              //alert("No faculty members found.");
             }
           }
         }
@@ -38,6 +41,12 @@ function updateFaculty()
       xhr.open("get", "officehours_lookup_facultyName_change.php", true);
       xhr.send();
     });
+  }
+  else
+  {
+    $("#netid").empty();
+    $("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
+  }
 
 }
 
