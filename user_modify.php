@@ -13,6 +13,17 @@
   if (!$user_result)
     echo "Error in retrieving user $old_netid: ".mysql_error();
 
+	if(mysql_num_rows($user_result) == 0)
+	{
+		$message = "No user with NetID '$old_netid' was found.";
+		echo "
+			<script language='javascript'>
+	    	window.alert(\"$message\");
+	      window.location = 'user_modify_lookup.php';
+	    </script>
+	  ";
+	}
+
   // Get info of user by netid (entered by client)
   while($row = mysql_fetch_assoc($user_result))
   {
@@ -53,7 +64,7 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Net ID:</span></td>
-							<td><input name='netid' id='new_netid' TYPE='text' SIZE='50' value='$old_netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
+							<td><input name='new_netid' id='new_netid' TYPE='text' SIZE='50' value='$old_netid' onKeyPress='return hasToBeNumberOrLetter(event)' required/></td>
 						</tr>
 						<tr>
               <td><span align='right'>First Name:</span></td>
