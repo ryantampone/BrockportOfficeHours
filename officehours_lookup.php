@@ -2,6 +2,7 @@
 	$callToActionVar = "Office Hours Lookup";
 	include 'header.php';
 	require('db_cn.inc');
+	echo '<link href="css/searchStyles.css" type="text/css" rel="stylesheet" />';
 ?>
 
 <?php/*
@@ -20,10 +21,18 @@
 		<form action='officehours_lookup_process.php' method='post'>
 			<table align='center'>
 				<tr>
-					<td><input type='text' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()'></td>
+					<td><input type='text' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...'></td>
+				</tr>
+				<tr>
 					<td>
+					<!--
             <select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>
+						</select>
+						-->
+
+						<select name='netid' id='netid' multiple='multiple' size='1'>
+							<option disable selected hidden value=''>Select one</option>
 						</select>
           </td>
 				</tr>

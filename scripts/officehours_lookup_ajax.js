@@ -32,7 +32,7 @@ function updateFaculty()
             else
             {
               $("#netid").empty();
-              $("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
+              //$("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
               //alert("No faculty members found.");
             }
           }
@@ -45,7 +45,7 @@ function updateFaculty()
   else
   {
     $("#netid").empty();
-    $("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
+    //$("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
   }
 
 }
@@ -67,6 +67,10 @@ function process_query(j)
     var netid = nextProf.NetID;
     var fn = nextProf.FirstName;
     var ln = nextProf.LastName;
+
+    //dynamically size select box
+    var mySelect = document.getElementById("netid");
+    mySelect.size = (str.length-1);
 
     // add the option to the Faculty Name drop down list
     $("#netid").append("<option value='" + netid + "'>" + ln + ", " + fn + "</option>");

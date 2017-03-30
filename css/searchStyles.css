@@ -1,0 +1,17 @@
+input[type=text]
+{
+    width: 350px;
+    padding: 5px 20px;
+    margin: 0px 0;
+    box-sizing: border-box;
+    font-size:18px;
+}
+
+select
+{
+  width: 350px;
+
+  border: none;
+  font-size:18px;
+  text-align: center;
+}
