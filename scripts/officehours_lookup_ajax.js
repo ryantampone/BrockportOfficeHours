@@ -32,6 +32,7 @@ function updateFaculty()
             else
             {
               $("#netid").empty();
+              mySelect.size = (1);
               //$("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
               //alert("No faculty members found.");
             }
@@ -45,6 +46,7 @@ function updateFaculty()
   else
   {
     $("#netid").empty();
+    mySelect.size = (1);
     //$("#netid").append("<option value='" + "" + "'>" + "Select One" + "</option>");
   }
 
@@ -55,7 +57,7 @@ function process_query(j)
   // str is formatted to split the responseText input in individual entries
   // from the database and put into an array
   var str = formattedJSON(j);
-
+  var intCount = 0;
   // empty the Faculty Name drop down list before populating it with data retrieved
   $("#netid").empty();
 
@@ -72,7 +74,16 @@ function process_query(j)
     var mySelect = document.getElementById("netid");
     mySelect.size = (str.length-1);
 
-    // add the option to the Faculty Name drop down list
-    $("#netid").append("<option value='" + netid + "'>" + ln + ", " + fn + "</option>");
+    if (intCount == 0)
+    {
+      // add the option to the Faculty Name drop down list
+      $("#netid").append("<option value='" + netid + "' selected>" + ln + ", " + fn + "</option>");
+      intCount ++;
+    }
+    else
+    {
+      $("#netid").append("<option value='" + netid + "'>" + ln + ", " + fn + "</option>");
+    }
+
   }
 }

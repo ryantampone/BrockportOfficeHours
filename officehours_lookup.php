@@ -2,6 +2,7 @@
 	$callToActionVar = "Office Hours Lookup";
 	include 'header.php';
 	require('db_cn.inc');
+	require('officehours_lookup_process_result.php')
 	echo '<link href="css/searchStyles.css" type="text/css" rel="stylesheet" />';
 ?>
 
