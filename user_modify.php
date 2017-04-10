@@ -31,6 +31,7 @@
     $lastname = $row['LastName'];
     $access = $row['Credentials'];
     $dept_get = $row['DepartmentID'];
+		$status = $row['Status'];
     /*if($deptid != "NULL")
     {
       $sql_dept = "SELECT Name FROM Department WHERE DepartmentID = '$deptid'";
@@ -58,7 +59,7 @@
 
 		echo "
 		<center><h2 class='contentAction' style=\"margin-bottom: -20px;\">Please modify the desired information</h2></center>
-    <center><h5><strong>NOTE: To change a user's password, go to <font color='red'>Options > Change Password</font></strong></h5></center>
+    <center><h5><strong>NOTE: To change a user's password, the user must go to <font color='red'>Options > Change Password</font></strong></h5></center>
 			<div id='userdataform'>
 				<form action='user_modify_process.php' method='post'>
 					<table align='center'>
@@ -158,20 +159,28 @@
 					if($access == 3)
 						echo "<script type='text/javascript'>resetFaculty();</script>";
 					echo "
-					<p align='center'>
+					<p align='center'>";
+					if($status == 'Inactive')
+					{
+						echo "<label name='statusLabel' id='statusLabel'>This user is current inactive.</label></br></br>";
+						echo "<input type='button' name='reactivate' id='reactivate' onclick='reactivateUser();' value='Reactivate User' />";
+					}
+					echo "
 						<input type='submit' value='Submit'/>
 						<input type='reset' onclick='checkEnables($accessPerm)' value='Reset' />
 					</p>
 					<input type='hidden' name='old_netid' id='old_netid' value='$old_netid' />
+					<input type='hidden' name='status' id='status' value='$status' />
 				</form>
 			</div>
+		</div> <!-- End pagecontent Div -->
+		</div> <!-- End pagebody Div -->
+		<script src='scripts/jquery-3.1.1.js'></script>
+		<script src='scripts/user_reactivate_ajax.js'></script>
+		</body>
+		</html>
 		";
-
-	//}
 ?>
 
-
-</div> <!-- End pagecontent Div -->
-</div> <!-- End pagebody Div -->
 </body>
 </html>
