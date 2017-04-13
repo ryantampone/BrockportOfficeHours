@@ -1,63 +1,87 @@
 <?php
-	$callToActionVar = "Modify Department";
+	$callToActionVar = "Modify User";
 	include 'header.php';
+  include 'dbh.php';
 	require('db_cn.inc');
-?>
-<?php
-	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
-	{
-    echo "
-    <h2 class='contentAction' align='center'>Select the department you would like to modify below</h2>
-    <div class='bodyContent'>
-		<form action='department_modify_process.php' method='post'>
-			<table align='center'>
-				<tr>
-					<td><span align='right'>Select a Department:</span></td>
-				";
+	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 
-			echo "
-					<td>
-						<select name='deptID' id='deptID' onchange='updateDeptForm();'>";
-							connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
-							$sql_dept = "SELECT * FROM Department ORDER BY Name";
-							$result_dept = mysql_query($sql_dept);
+  $deptid = $_POST['deptID'];
 
-							while($row = mysql_fetch_assoc($result_dept))
-							{
-								$deptName = $row['Name'];
-								$deptID = $row['DepartmentID'];
+  $sql_dept = "SELECT * FROM Department WHERE (DepartmentID = '$deptid')";
+  $result_dept = mysql_query($sql_dept);
 
-								echo "<option value=$deptID selected>$deptName</option>";
-							}
-			echo "</select>
+  if (!$result_dept)
+    echo "Error in retrieving department id '$deptid': ".mysql_error();
 
-			</table>
-			<p align='center'>
-				<input type='submit' value='Submit'/>
-				<input type='reset' value='Reset'/>
-			</p>
-		</form>
-    </div>
-    ";
+  while($row = mysql_fetch_assoc($result_dept))
+  {
+    $deptname = $row['Name'];
+    $deptcode = $row['Code'];
+    $buildingid = $row['Location'];
+    $room = $row['Room'];
+		$status = $row['Status'];
+  }
 
-	}
-	else
-	{
-		//echo '<script type='text/javascript'>alert('Please login to view this page')</script>';
-		session_destroy();
-		echo "<SCRIPT LANGUAGE='JavaScript'>
-			 window.alert('Please Login as an Admin to View This Page')
-			 window.location.href='index.php';
-			 </SCRIPT>";
-	}
-echo "
-</div> <!-- End pagecontent Div -->
-</div> <!-- End pagebody Div -->
-<script src='scripts/jquery-3.1.1.js'></script>
-<script src='scripts/course_add_ajax.js'></script>
-</body>
-</html>
-"
+
+		echo "
+		<center><h2 class='contentAction'>Please modify the desired information</h2></center>
+			<div id='userdataform'>
+				<form action='department_modify_process.php' method='post'>
+					<table align='center'>
+						<tr>
+							<td><span align='right'>Department Name:</span></td>
+							<td><input name='deptname' id='deptname' TYPE='text' SIZE='50' value='$deptname' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
+						</tr>
+						<tr>
+              <td><span align='right'>Department Code:</span></td>
+              <td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' value='$deptcode' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
+						</tr>
+						<tr>
+							<td><span align='right'>Last Name:</span></td>
+              <td>
+                <select name='location' id='location' required>";
+                  $sql_building = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
+                  $result_building = mysql_query($sql_building);
+                  if(!$result_building)
+                    echo "Error in retrieving buildings: ".mysql_error();
+
+                  while($row = mysql_fetch_assoc($result_building))
+                  {
+                    $bName = $row['Name'];
+                    $bId = $row['BuildingID'];
+
+                    if($buildingid == $bId)
+                      echo "<option value=$bId selected>$bName</option>";
+                    else echo "<option value=$bId>$bName</option>";
+                  }
+                echo"
+              </td>
+            </tr>
+						<tr>
+						  <td><span align='right'>Room Number:</span></td>
+              <td><input id='room' name='room' type='text' size='20' value='$room' onKeyPress='return hasToBeNumber(event)' onpaste='return false' required</td>
+						</tr>
+					</table>
+					<p align='center'>";
+					if($status == 'Inactive')
+					{
+						echo "<label name='statusLabel' id='statusLabel'>This department is currently inactive.</label></br></br>";
+						echo "<input type='button' name='reactivate' id='reactivate' onclick='reactivateDepartment();' value='Reactivate Department' />";
+					}
+					echo "
+						<input type='submit' value='Submit'/>
+						<input type='reset' value='Reset' />
+					</p>
+					<input type='hidden' name='status' id='status' value='$status' />
+				</form>
+			</div>
+		</div> <!-- End pagecontent Div -->
+		</div> <!-- End pagebody Div -->
+		<script src='scripts/jquery-3.1.1.js'></script>
+		<script src='scripts/department_reactivate_ajax.js'></script>
+		</body>
+		</html>
+		";
 ?>
 
 </body>

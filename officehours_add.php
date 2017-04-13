@@ -29,10 +29,6 @@
 		}
 
 
-
-
-
-
 		//Form for admins
 		if ((string)$_SESSION['Credentials'] == '1')
 		{
@@ -86,8 +82,19 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Location:</span></td>
-						<td><span align='right'>$buildingName</span></td>
-	          <td><input name='location' id='location' TYPE='hidden' value='$buildingID'/></td>
+						<td>
+							<select id='location' name='location'>";
+
+							// Get all Buildings (for admin adding office hours)
+							$sql_all_buildings = "SELECT * FROM Building ORDER BY Name";
+							$result_all_buildings = mysql_query($sql_all_buildings);
+							while($row = mysql_fetch_assoc($result_all_buildings))
+							{
+								$bName = $row['Name'];
+								$bId = $row['BuildingID'];
+								echo"<option value=$bId>$bName</option>";
+							}
+						echo"
 	        </tr>
 					<tr>
 						<td><span align='right'>Room Number:</span></td>
@@ -100,12 +107,12 @@
 								<tr><td><input type='radio' name='days' value='Sunday'>Sunday</td></tr>
 								<tr>
 									<td><input type='radio' name='days' value='Monday'>Monday</td>
-									<td><input type='radio' name='days' value='Tuesday'>Wednesday</td>
-									<td><input type='radio' name='days' value='Wednesday'>Friday</td>
+									<td><input type='radio' name='days' value='Wednesday'>Wednesday</td>
+									<td><input type='radio' name='days' value='Friday'>Friday</td>
 								</tr>
 								<tr>
-									<td><input type='radio' name='days' value='Thursday'>Tuesday</td>
-									<td><input type='radio' name='days' value='Friday'>Thursday</td>
+									<td><input type='radio' name='days' value='Tuesday'>Tuesday</td>
+									<td><input type='radio' name='days' value='Thursday'>Thursday</td>
 								</tr>
 								<tr><td><input type='radio' name='days' value='Saturday'>Saturday</td></tr>
 							</table>
@@ -141,10 +148,10 @@
 		{
 			//getting the department code of the secratary
 
-			echo "<SCRIPT LANGUAGE='JavaScript'>
+			/*echo "<SCRIPT LANGUAGE='JavaScript'>
 				 window.alert('$deptID')
 				 window.location.href='#';
-				 </SCRIPT>";
+				 </SCRIPT>";*/
 			echo "
 	    <h2 class='contentAction' align='center'>Enter the information for the office hours you would like to add</h2>
 	    <div class='bodyContent'>
@@ -249,10 +256,10 @@
 				$ln = $row['LastName'];
 			}
 
-			echo "<SCRIPT LANGUAGE='JavaScript'>
+			/*echo "<SCRIPT LANGUAGE='JavaScript'>
 				 window.alert('$deptID, $NetID, $fn, $ln')
 				 window.location.href='#';
-				 </SCRIPT>";
+				 </SCRIPT>";*/
 			echo "
 	    <h2 class='contentAction' align='center'>Select a faculty member to add their office hours</h2>
 	    <div class='bodyContent'>

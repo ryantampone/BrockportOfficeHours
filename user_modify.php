@@ -162,7 +162,7 @@
 					<p align='center'>";
 					if($status == 'Inactive')
 					{
-						echo "<label name='statusLabel' id='statusLabel'>This user is current inactive.</label></br></br>";
+						echo "<label name='statusLabel' id='statusLabel'>This user is currently inactive.</label></br></br>";
 						echo "<input type='button' name='reactivate' id='reactivate' onclick='reactivateUser();' value='Reactivate User' />";
 					}
 					echo "

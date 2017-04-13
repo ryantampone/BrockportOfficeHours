@@ -5,7 +5,7 @@
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
 ?>
 <?php
-	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
+	if ((isset($_SESSION['NetID'])) && (((string)$_SESSION['Credentials'] == '1') || (string)$_SESSION['Credentials'] == '2'))
 	{
     echo "
     <h2 class='contentAction' align='center'>Enter the course information below</h2>
