@@ -2,7 +2,7 @@
 	$callToActionVar = "Office Hours Lookup";
 	include 'header.php';
 	require('db_cn.inc');
-	require('officehours_lookup_process_result.php')
+	//require('officehours_lookup_process_result.php');
 	echo '<link href="css/searchStyles.css" type="text/css" rel="stylesheet" />';
 ?>
 
@@ -17,12 +17,13 @@
 ?>
 <?php
     echo "
+
     <h2 class='contentAction' align='center'>Search for Your Professor Below</h2>
     <div class='bodyContent'>
-		<form action='officehours_lookup_process.php' method='post'>
+		<form action='officehours_lookup_process.php' method='post' autocomplete='false'>
 			<table align='center'>
 				<tr>
-					<td><input type='text' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...'></td>
+					<td><input type='search' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...' autocomplete='off'></td>
 				</tr>
 				<tr>
 					<td>
