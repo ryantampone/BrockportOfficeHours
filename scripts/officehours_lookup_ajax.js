@@ -6,8 +6,12 @@ function formattedJSON (str)
 
 function updateFaculty()
 {
-  var facName = $("#FacultyName").val();
-  if (facName != "")
+  //dynamically size select box
+  var mySelect = document.getElementById("netid");
+
+  var facNameUnparsed = $("#FacultyName").val();
+  facName = facNameUnparsed.replace(/\s+/g, '');
+  if (facName.length != 0)
   {
   $.post("officehours_lookup_facultyName_change.php",
     {
