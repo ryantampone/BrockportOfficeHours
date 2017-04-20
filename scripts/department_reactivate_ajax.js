@@ -1,7 +1,7 @@
 function reactivateDepartment()
 {
   var deptid = $("#deptid").val();
-  var deptname = $("#deptname").val();
+  var deptname = $("#old_deptname").val();
 
   $.post("department_reactivate.php",
     {

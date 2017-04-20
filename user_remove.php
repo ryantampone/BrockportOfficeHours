@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Modify User";
+	$callToActionVar = "Remove User";
 	include 'header.php';
   include 'dbh.php';
 	require('db_cn.inc');
@@ -68,22 +68,22 @@
 				<form action='user_remove_process.php' method='post'>
 					<table align='center'>
 						<tr>
-							<td><span align='right'>Net ID:</span></td>
+							<td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Net ID:</span></td>
 							<td><span align='right'>$netid</td>
               <input type='hidden' name='netid' id='netid' value='$netid' />
 						</tr>
 						<tr>
-              <td><span align='right'>First Name:</span></td>
+              <td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>First Name:</span></td>
 							<td><span align='right'>$firstname</td>
               <input type='hidden' name='firstname' id='firstname' value='$firstname' />
 						</tr>
 						<tr>
-							<td><span align='right'>Last Name:</span></td>
+							<td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Last Name:</span></td>
 							<td><span align='right'>$lastname</td>
               <input type='hidden' name='lastname' id='lastname' value='$lastname' />
             </tr>
 						<tr>
-						  <td><span align='right'>Access Level:</span></td>
+						  <td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Access Level:</span></td>
               <td><span align='right'>$acc_name</td>
               <input type='hidden' name='access' id='access' value='$access' />
 						</tr>";
@@ -91,7 +91,7 @@
           {
             echo"
 						<tr>
-							<td><span align='right'>Department:</span></td>
+							<td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Department:</span></td>
 							<td><span align='right'>$dept_name</td>
               <input type='hidden' name='deptid' id='deptid' value='$deptid' />
 						</tr>";
@@ -100,17 +100,17 @@
           {
             echo"
 						<tr>
-              <td><span align='right'>Office Room Number:</span></td>
+              <td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Office Room Number:</span></td>
               <td><span align='right'>$room</td>
               <input type='hidden' name='room' id='room' value='$room' />
             </tr>
 						<tr>
-              <td><span align='right'>Email:</span></td>
+              <td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Email:</span></td>
 							<td><span align='right'>$email</td>
               <input type='hidden' name='email' id='email' value='$email' />
 						</tr>
 						<tr>
-              <td><span align='right'>Phone number:</span></td>
+              <td style=\"padding-right: 10px; padding-bottom: 5px;\"><span align='right'>Phone number:</span></td>
 							<td><span align='right'>$phone</td>
               <input type='hidden' name='phone' id='phone' value='$phone' />
 						</tr>";

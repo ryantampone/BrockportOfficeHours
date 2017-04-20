@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Modify Department";
+	$callToActionVar = "Remove Department";
 	include 'header.php';
 	require('db_cn.inc');
 ?>
@@ -7,15 +7,15 @@
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1'))
 	{
     echo "
-    <h2 class='contentAction' align='center'>Select the department you would like to modify below</h2>
+    <h2 class='contentAction' align='center'>Select the department you would like to remove</h2>
     <div class='bodyContent'>
-		<form action='department_modify.php' method='post'>
+		<form action='department_remove.php' method='post'>
 			<table align='center'>
 				<tr>
-					<td>
-						<select name='deptID' id='deptID'>";
-							connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
-							$sql_dept = "SELECT * FROM Department ORDER BY Name";
+				  <td>
+            <select name='deptid' id='deptid' />";
+						  connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
+              $sql_dept = "SELECT * FROM Department WHERE Status='Active' ORDER BY Name";
 							$result_dept = mysql_query($sql_dept);
 
 							while($row = mysql_fetch_assoc($result_dept))
@@ -26,8 +26,8 @@
 								echo "<option value=$deptID>$deptName</option>";
 							}
 			echo "</select>
-					</td>
-				</tr>
+          </td>
+        </tr>
 			</table>
 			<p align='center'>
 				<input type='submit' value='Submit'/>

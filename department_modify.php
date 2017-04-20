@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Modify User";
+	$callToActionVar = "Modify Department";
 	include 'header.php';
   include 'dbh.php';
 	require('db_cn.inc');
@@ -15,7 +15,7 @@
 
   while($row = mysql_fetch_assoc($result_dept))
   {
-    $deptname = $row['Name'];
+    $old_deptname = $row['Name'];
     $deptcode = $row['Code'];
     $buildingid = $row['Location'];
     $room = $row['Room'];
@@ -30,17 +30,19 @@
 					<table align='center'>
 						<tr>
 							<td><span align='right'>Department Name:</span></td>
-							<td><input name='deptname' id='deptname' TYPE='text' SIZE='50' value='$deptname' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
+							<td><input name='new_deptname' id='new_deptname' TYPE='text' SIZE='50' value='$old_deptname' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
+							<input type='hidden' name='old_deptname' id='old_deptname' value=$old_deptname />
+							<input type='hidden' name='deptid' id='deptid' value=$deptid />
 						</tr>
 						<tr>
               <td><span align='right'>Department Code:</span></td>
               <td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' value='$deptcode' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
 						</tr>
 						<tr>
-							<td><span align='right'>Last Name:</span></td>
+							<td><span align='right'>Location:</span></td>
               <td>
                 <select name='location' id='location' required>";
-                  $sql_building = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
+                  $sql_building = "SELECT * FROM Building ORDER BY Name";
                   $result_building = mysql_query($sql_building);
                   if(!$result_building)
                     echo "Error in retrieving buildings: ".mysql_error();
