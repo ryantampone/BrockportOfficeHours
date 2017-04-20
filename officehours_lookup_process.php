@@ -1,6 +1,45 @@
 <?php
   require('db_cn.inc');
   connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
+  echo"
+    <script>
+    function toggleInitialVisibility()
+    {
+      var inputs = document.getElementsByTagName('input');
+      var inputsLabel = document.getElementsByTagName('label');
+      for(var i = 0; i < inputs.length; i++)
+      {
+          if(inputs[i].type.toLowerCase() == 'radio')
+          {
+              if (inputs[i].style.display === 'none') {
+                  inputs[i].style.display = 'block';
+              } else {
+                  inputs[i].style.display = 'none';
+              }
+          }
+      }
+    }
+
+
+
+      function toggleVisibility()
+      {
+        var inputs = document.getElementsByTagName('input');
+
+        for(var i = 0; i < inputs.length; i++)
+        {
+            if(inputs[i].type.toLowerCase() == 'radio')
+            {
+                if (inputs[i].style.display === 'none') {
+                    inputs[i].style.display = 'block';
+                } else {
+                    inputs[i].style.display = 'none';
+                }
+            }
+        }
+      }
+    </script>
+  ";
   //----------------------------------------------------------------------------
 
   //get values from form
@@ -163,20 +202,24 @@
     echo"
     <br/><br/><h3 class='subHeading' align='center'>Office Hours</h2>
     <hr width='25%'>
+    <form method='post'>
       <table align='center' cellspacing='20px'>
         <tr>
+          <th></th>
           <th>Day</th>
-          <th>Start Time</th>
-          <th>End Time</th>
+          <th>Time</th>
           <th>Building</th>
-          <th>Room Number</th>
+          <th>Room</th>
         </tr>
     ";
     while($row = mysql_fetch_assoc($result_OfficeHours))
     {
+      $id = $row['ID'];
       $day = $row['Day'];
 
       $startTimeMilitary = (int)$row['StartTime'];
+      $endTimeMilitary = (int)$row['EndTime'];
+
       $startTime_AM_PM = "";
           if ($startTimeMilitary > 1300)
           {
@@ -215,8 +258,6 @@
           $startTime = $startTime." ".$startTime_AM_PM;
 
 
-
-      $endTimeMilitary = (int)$row['EndTime'];
       $endTime_AM_PM = "";
           if ($endTimeMilitary >= 1300)
           {
@@ -278,16 +319,21 @@
             }
       echo"
         <tr>
+          <td><input type='radio' name='officeHoursRadio' id='officeHoursRadio' value='$id'></td>
           <td>$day</td>
-          <td>$startTime</td>
-          <td>$endTime</td>
+          <td align='center'>$startTime - $endTime</td>
           <td>$buildingNameOfficeHours</td>
           <td>$roomNumber</td>
         </tr>
       ";
     }
     echo"
+
       </table>
+          <center>
+            <button type='button' onclick='toggleVisibility()'>Schedule Appointment</button>
+          </center>
+      </form>
     ";
   }
 
@@ -300,7 +346,7 @@
   //Get the faculty member courses
   $search_Courses_stmt = "SELECT * FROM Course WHERE NetID = '$netid' AND SemesterID='$semesterID'";
   $result_Courses = mysql_query($search_Courses_stmt);
-  $numrowsCourses = mysql_num_rows($result_OfficeHours);
+  $numrowsCourses = mysql_num_rows($result_Courses);
   if(!$result_Courses)
   {
     $message = "Unable to get Faculty Member's Courses : ".mysql_error();
@@ -321,14 +367,12 @@
     <hr width='25%'>
       <table align='center' cellspacing='25px'>
         <tr>
-          <th>Department</th>
-          <th>Number</th>
+          <th>Course Number</th>
           <th>Name</th>
           <th>Type</th>
           <th>Location</th>
           <th>Days</th>
-          <th>Start Time</th>
-          <th>End Time</th>
+          <th>Time</th>
         </tr>
     ";
     while($row = mysql_fetch_assoc($result_Courses))
@@ -339,6 +383,95 @@
       $courseNumber = $row['CourseNumber'];
       $courseSectionNumber = $row['CourseSectionNumber'];
       $courseType = $row['CourseType'];
+      $roomNumber = $row['RoomNumber'];
+      $courseDay1 = $row['CourseDay1'];
+      $courseDay2 = $row['CourseDay2'];
+      $courseDay3 = $row['CourseDay3'];
+      $startTimeMilitary = (int)$row['StartTime'];
+      $endTimeMilitary = (int)$row['EndTime'];
+
+
+      $startTime_AM_PM = "";
+          if ($startTimeMilitary > 1300)
+          {
+            $startTimeUnparsed = (string)$startTimeMilitary - 1200;
+            $startTime_AM_PM = 'PM';
+          }
+          else if ($startTimeMilitary == 1200)
+          {
+            $startTimeUnparsed = (string)$startTimeMilitary;
+            $startTime_AM_PM = "PM";
+          }
+          else if ($startTimeMilitary == 0)
+          {
+            $startTimeUnparsed = "12";
+            $startTime_AM_PM = "AM";
+          }
+          else
+          {
+            $startTimeUnparsed = (string)$startTimeMilitary;
+            $startTime_AM_PM = 'AM';
+          }
+          //Convert back to 12HR time
+          $startTimeArray = str_split($startTimeUnparsed);
+          $arrayStartSize = sizeOf($startTimeArray);
+          $separator = ':'; //change for example 1200 to 12:00
+          $splitStartTimePos = $arrayStartSize - 2;
+          $startSplicedArray = array_splice($startTimeArray, $splitStartTimePos, 0, $separator );
+          //$startTime = implode("", $startSplicedArray);
+          $startTime = "";
+
+          for ($cnt = 0; $cnt <= $arrayStartSize; $cnt++)
+          {
+            $startTime = $startTime.$startTimeArray[$cnt];
+          }
+
+          $startTime = $startTime." ".$startTime_AM_PM;
+
+
+
+      $endTime_AM_PM = "";
+          if ($endTimeMilitary >= 1300)
+          {
+            $endTimeUnparsed = $endTimeMilitary - 1200;
+            $endTime_AM_PM = "PM";
+          }
+          else if ($endTimeMilitary == 1200)
+          {
+            $endTimeUnparsed = (string)$endTimeMilitary;
+            $endTime_AM_PM = "PM";
+          }
+          else if ($endTimeMilitary == 0)
+          {
+            $endTimeUnparsed = "12";
+            $endTime_AM_PM = "AM";
+          }
+          else
+          {
+            $endTimeUnparsed = $endTimeMilitary;
+            $endTime_AM_PM = "AM";
+          }
+          //Convert back to 12HR time
+          $endTimeArray = str_split($endTimeUnparsed);
+          $arrayEndSize = sizeOf($endTimeArray);
+          $separator = ':'; //change for example 1200 to 12:00
+          $splitEndTimePos = $arrayEndSize - 2;
+          $endSplicedArray = array_splice($endTimeArray, $splitEndTimePos, 0, $separator );
+          //$startTime = implode("", $startSplicedArray);
+          $endTime = "";
+
+          for ($cnt = 0; $cnt <= $arrayEndSize; $cnt++)
+          {
+            $endTime = $endTime.$endTimeArray[$cnt];
+          }
+          $endTime = $endTime." ".$endTime_AM_PM;
+
+
+
+
+
+
+
       $buildingID = $row['BuildingID'];
             //Use building ID to get the department name
             $building_name_course = "SELECT Name FROM Building WHERE BuildingID = '$buildingID'";
@@ -360,24 +493,16 @@
                 $buildingName = $row['Name'];
               }
             }
-      $roomNumber = $row['RoomNumber'];
-      $courseDay1 = $row['CourseDay1'];
-      $courseDay2 = $row['CourseDay2'];
-      $courseDay3 = $row['CourseDay3'];
-      $startTime = $row['StartTime'];
-      $endTime = $row['EndTime'];
 
 
       echo"
         <tr>
-          <td>$deptCode</td>
-          <td>$courseNumber.$courseSectionNumber</td>
+          <td>$deptCode $courseNumber.$courseSectionNumber</td>
           <td>$courseName</td>
           <td>$courseType</td>
           <td>$buildingName $roomNumber</td>
           <td>$courseDay1 $courseDay2 $courseDay3</td>
-          <td>$startTime</td>
-          <td>$endTime</td>
+          <td align='center'>$startTime - $endTime</td>
 
       ";
     }
@@ -393,4 +518,10 @@
         </script>
   ";
   */
+
+  echo"
+  <script type='text/javascript'>
+          toggleInitialVisibility();
+  </script>
+  ";
 ?>
