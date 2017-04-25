@@ -1,5 +1,5 @@
 <?php
-  include 'header.php';
+  include 'header2.php';
 
   function show_result($result_Semester, $result_FacInfo, $result_OfficeHours, $result_Courses)
   {

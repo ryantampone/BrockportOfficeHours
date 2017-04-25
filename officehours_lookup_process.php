@@ -153,7 +153,7 @@
 
   //---------------********Begin GUI*********------------------------
   $callToActionVar = "$firstName $lastName";
-  include 'header.php';
+  include 'header2.php';
   echo "
   <!-- <h2 class='contentAction' align='center'>Faculty Member Information</h2> -->
   <div class='bodyContent'>

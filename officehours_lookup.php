@@ -1,6 +1,6 @@
 <?php
 	$callToActionVar = "Office Hours Lookup";
-	include 'header.php';
+	include 'header2.php';
 	require('db_cn.inc');
 	//require('officehours_lookup_process_result.php');
 	echo '<link href="css/searchStyles.css" type="text/css" rel="stylesheet" />';
@@ -24,6 +24,7 @@
 			<table align='center'>
 				<tr>
 					<td><input type='search' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...' autocomplete='off'></td>
+					<td valign='center'><input type='submit' value='Go'/></td>
 				</tr>
 				<tr>
 					<td>
@@ -40,8 +41,7 @@
 				</tr>
 			</table>
 			<p align='center'>
-				<input type='submit' value='Submit'/>
-				<input type='reset' value='Reset'/>
+
 			</p>
 		</form>
     </div>
