@@ -326,7 +326,7 @@
 													echo "</ul></li>";
 												echo "<li><a href='#'>Buildings</a><ul>";
 													echo "<li><a href='building_add.php'>Add Building</a></li>";
-													echo "<li><a href='#'>Modify Building</a></li>";
+													echo "<li><a href='building_modify.php'>Modify Building</a></li>";
 													echo "<li><a href='#'>Remove Building</a></li>";
 													echo "</ul></li>";
 											}
