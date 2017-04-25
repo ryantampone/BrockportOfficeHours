@@ -221,19 +221,19 @@
       $endTimeMilitary = (int)$row['EndTime'];
 
       $startTime_AM_PM = "";
-          if ($startTimeMilitary > 1300)
+          if ($startTimeMilitary >= 1300)
           {
             $startTimeUnparsed = (string)$startTimeMilitary - 1200;
             $startTime_AM_PM = 'PM';
           }
-          else if ($startTimeMilitary == 1200)
+          else if (($startTimeMilitary == 1200) || (($startTimeMilitary < 1300) && ($startTimeMilitary >= 1200)))
           {
             $startTimeUnparsed = (string)$startTimeMilitary;
             $startTime_AM_PM = "PM";
           }
-          else if ($startTimeMilitary == 0)
+          else if ($startTimeMilitary == 0000)
           {
-            $startTimeUnparsed = "12";
+            $startTimeUnparsed = "1200";
             $startTime_AM_PM = "AM";
           }
           else
@@ -258,20 +258,22 @@
           $startTime = $startTime." ".$startTime_AM_PM;
 
 
+
+
       $endTime_AM_PM = "";
           if ($endTimeMilitary >= 1300)
           {
             $endTimeUnparsed = $endTimeMilitary - 1200;
             $endTime_AM_PM = "PM";
           }
-          else if ($endTimeMilitary == 1200)
+          else if (($endTimeMilitary == 1200) || (($endTimeMilitary < 1300) && ($endTimeMilitary >= 1200)))
           {
             $endTimeUnparsed = (string)$endTimeMilitary;
             $endTime_AM_PM = "PM";
           }
-          else if ($endTimeMilitary == 0)
+          else if ($endTimeMilitary == 0000)
           {
-            $endTimeUnparsed = "12";
+            $endTimeUnparsed = "1200";
             $endTime_AM_PM = "AM";
           }
           else
@@ -392,19 +394,19 @@
 
 
       $startTime_AM_PM = "";
-          if ($startTimeMilitary > 1300)
+          if ($startTimeMilitary >= 1300)
           {
             $startTimeUnparsed = (string)$startTimeMilitary - 1200;
             $startTime_AM_PM = 'PM';
           }
-          else if ($startTimeMilitary == 1200)
+          else if (($startTimeMilitary == 1200) || (($startTimeMilitary < 1300) && ($startTimeMilitary >= 1200)))
           {
             $startTimeUnparsed = (string)$startTimeMilitary;
             $startTime_AM_PM = "PM";
           }
-          else if ($startTimeMilitary == 0)
+          else if ($startTimeMilitary == 0000)
           {
-            $startTimeUnparsed = "12";
+            $startTimeUnparsed = "1200";
             $startTime_AM_PM = "AM";
           }
           else
@@ -436,14 +438,14 @@
             $endTimeUnparsed = $endTimeMilitary - 1200;
             $endTime_AM_PM = "PM";
           }
-          else if ($endTimeMilitary == 1200)
+          else if (($endTimeMilitary == 1200) || (($endTimeMilitary < 1300) && ($endTimeMilitary >= 1200)))
           {
             $endTimeUnparsed = (string)$endTimeMilitary;
             $endTime_AM_PM = "PM";
           }
-          else if ($endTimeMilitary == 0)
+          else if ($endTimeMilitary == 0000)
           {
-            $endTimeUnparsed = "12";
+            $endTimeUnparsed = "1200";
             $endTime_AM_PM = "AM";
           }
           else
