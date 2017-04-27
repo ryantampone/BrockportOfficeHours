@@ -84,7 +84,7 @@
           <td>
             <select name='location' id='location' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>";
-              $sql_building = "SELECT * FROM Building ORDER BY Name";
+              $sql_building = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
               $result_building = mysql_query($sql_building);
 
               while($row = mysql_fetch_assoc($result_building))

@@ -19,14 +19,38 @@ function renameBuilding()
           {
             // Reached here if successful
 
+            if(data != "")
+            {
+              var str = data.split("\n");
+
+              for(var i = 0; i < str.length-1; i++)
+              {
+                var nextBuilding = JSON.parse(str[i]);
+                var bID = nextBuilding.BuildingID;
+                var bName = nextBuilding.Name;
+                var bStatus = nextBuilding.Status;
+
+                if(bStatus == "Inactive")
+                {
+                  $("#statusLabel").show();
+                  $("#reactivateButton").show();
+                }
+                else
+                {
+                  $("#statusLabel").hide();
+                  $("#reactivateButton").hide();
+                }
+              }
+
+            }
+
             $("#buildingLabel").show();
             $("#newName").show();
             $("#submit").show();
-
           }
         }
       };
-      xhr.open("get", "course_department_change.php", true);
+      xhr.open("get", "building_rename.php", true);
       xhr.send();
     });
 

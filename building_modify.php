@@ -36,7 +36,13 @@
           <td><input hidden type='text' id='newName' name='newName' /></td>
         </tr>
       </table>
+			<table align='center'>
+				<tr>
+					<td><span hidden id='statusLabel'>This building is currently inactive.</span></td>
+				</tr>
+			</table>
 			<p align='center'>
+				<input id='reactivateButton' type='button' value='Reactivate Building' onclick='reactivateBuilding();' style=\"display: none;\" />
 				<input id='submit' type='submit' value='Submit' style=\"display: none;\" />
 			</p>
 		</form>
@@ -58,6 +64,7 @@ echo "
 </div> <!-- End pagebody Div -->
 <script src='scripts/jquery-3.1.1.js'></script>
 <script src='scripts/building_ajax.js'></script>
+<script src='scripts/building_reactivate_ajax.js'></script>
 </body>
 </html>
 "

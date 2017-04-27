@@ -86,7 +86,7 @@
 							<select id='location' name='location'>";
 
 							// Get all Buildings (for admin adding office hours)
-							$sql_all_buildings = "SELECT * FROM Building ORDER BY Name";
+							$sql_all_buildings = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
 							$result_all_buildings = mysql_query($sql_all_buildings);
 							while($row = mysql_fetch_assoc($result_all_buildings))
 							{

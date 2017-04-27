@@ -327,7 +327,7 @@
 												echo "<li><a href='#'>Buildings</a><ul>";
 													echo "<li><a href='building_add.php'>Add Building</a></li>";
 													echo "<li><a href='building_modify.php'>Modify Building</a></li>";
-													echo "<li><a href='#'>Remove Building</a></li>";
+													echo "<li><a href='building_remove.php'>Remove Building</a></li>";
 													echo "</ul></li>";
 											}
 											if ($credentials == '2' || $credentials == '1')

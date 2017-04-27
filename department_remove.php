@@ -59,7 +59,7 @@
 					</tr>
 				</table>
 				<p align='center'>
-					<input type='submit' value='Confirm Delete'/>
+					<input type='submit' value='Confirm Remove'/>
           <input type='button' onclick=\"window.location.href='department_remove_lookup.php'\" value='Back' />
 				</p>
 			</form>
