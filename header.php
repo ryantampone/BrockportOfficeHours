@@ -280,6 +280,13 @@
 						}
 					}
 
+					function getButtonId(clicked_id)
+					{
+						var myBtn = clicked_id;
+						document.getElementById("buttonValue").value = myBtn;
+						document.getElementById("modify_course").submit();
+					}
+
 
 		</script>
 </head>
@@ -334,7 +341,7 @@
 											{
 												echo "<li><a href='#'>Courses</a><ul>";
 													echo "<li><a href='course_add.php'>Add Courses</a></li>";
-													echo "<li><a href='#'>Modify Courses</a></li>";
+													echo "<li><a href='course_modify_lookup.php'>Modify Courses</a></li>";
 													echo "<li><a href='#'>Remove Courses</a></li>";
 													echo "</ul></li>";
 											}
