@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require('db_cn.inc');
   connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
   echo"
@@ -107,12 +108,7 @@
     </script>
   ";
   //----------------------------------------------------------------------------
-
-  if ((string)$_SESSION['Credentials'] == '3')
-  {
-    $netid = (string)$_SESSION['NetID']
-  }
-  else
+  if ($_POST['netid'] != null)
   {
     //get values from form
     $facultyName = $_POST['FacultyName'];
@@ -127,6 +123,20 @@
             </script>";
     }
   }
+  else if ((string)$_SESSION['Credentials'] == 3)
+  {
+    $netid = (string)$_SESSION['NetID'];
+    $facultyName = (string)$_SESSION['First'].' '.(string)$_SESSION['Last'];
+  }
+  else
+  {
+    echo "
+          <script language='javascript'>
+            window.alert('An error has occurred, please contact the system administrator');
+            window.location = 'officehours_lookup.php';
+          </script>";
+  }
+
 
   /*echo "
         <script language='javascript'>

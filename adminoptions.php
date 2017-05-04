@@ -10,7 +10,9 @@
 		<link href=\"css/bodyStyles.css\" type=\"text/css\" rel=\"stylesheet\" />
     <h2 class='contentAction' align='center'>Welcome to the Administrator View</h2>
     <p align='center'>Here you can:</p>
+
     <div class='bodyContent'>
+
       <ul>
         <li>Sign up a User</li>
         <li>View Faculty and Secretary Pages</li>
@@ -23,9 +25,7 @@
             <li>User Information</li>
           </ul>
       </ul>
-
-      <button class='actionButton'>Testing Adam</button>
-    </div>
+      </div>
     ";
 	}
 	else
