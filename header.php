@@ -294,6 +294,15 @@
 						document.getElementById("remove_course").submit();
 					}
 
+					function confirmRemoveCourse()
+					{
+						if (confirm("This action cannot be undone. Proceed?") == true)
+						{
+							document.getElementById("remove_course").submit();
+						}
+
+					}
+
 
 		</script>
 </head>

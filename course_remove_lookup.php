@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Modify Course";
+	$callToActionVar = "Remove Course";
 	include 'header.php';
 	require('db_cn.inc');
 ?>
@@ -9,9 +9,9 @@
 	if ((isset($_SESSION['NetID'])) && ((string)$_SESSION['Credentials'] == '1' || (string)$_SESSION['Credentials'] == '2'))
 	{
     echo "
-    <h2 class='contentAction' align='center'>Select the department of the course you would like to modify</h2>
+    <h2 class='contentAction' align='center'>Select the department of the course you would like to remove</h2>
     <div class='bodyContent'>
-		<form id='deptform' action='course_modify_list.php' method='post'>
+		<form id='deptform' action='course_remove_list.php' method='post'>
 			<input type='hidden' id='userdept' name='userdept' value='$userdept' />
 			<table align='center'>
 				<tr>

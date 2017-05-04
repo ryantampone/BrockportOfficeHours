@@ -16,7 +16,10 @@
 					<td><span align='right'>Course Name:</span></td>
 					<td><input name='coursename' id='coursename' TYPE='text' SIZE='30' onpaste='return false' required/></td>
 				</tr>
-				<tr>
+				<tr>";
+				if((string)$_SESSION['Credentials'] == '1')
+				{
+					echo"
 					<td><span align='right'>Department Code:</span></td>
 					<td>
             <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" onpaste='return false' required>
@@ -29,7 +32,31 @@
                 $deptcode = $row['Code'];
                 echo "<option value=$deptcode>$deptcode</option>";
               }
-            echo"</select>
+						echo"</select>";
+					}
+					else
+					{
+						$userdept = $_SESSION['DepartmentID'];
+						$sql_dept = "SELECT * FROM Department WHERE DepartmentID='$userdept'";
+						$result_dept = mysql_query($sql_dept);
+
+						if(!$result_dept)
+							echo "Error in retrieving user department: ".mysql_error();
+						else
+						{
+							while($row = mysql_fetch_assoc($result_dept))
+							{
+								$deptname = $row['Name'];
+								$deptcode = $row['Code'];
+							}
+						}
+						echo"
+							<td><span align='right'>Department:</span></td>
+							<td><span align='right'>$deptcode</span></td>
+							<td><input type='hidden' id='deptcode' name='deptcode' value='$deptcode' />
+						";
+					}
+					echo"
           </td>
 				</tr>
 				<tr>
@@ -73,10 +100,36 @@
         </tr>
         <tr>
           <td><span align='right'>Faculty Name:</span></td>
-          <td>
-            <select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
-              <option disable selected hidden value=''>Select one</option>
-						</select>
+          <td>";
+					if((string)$_SESSION['Credentials'] == '1')
+					{
+						echo"
+	            <select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
+	              <option disable selected hidden value=''>Select one</option>
+							</select>
+						";
+					}
+					else
+					{
+						echo"
+							<select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
+								<option disable selected hidden value=''>Select one</option>";
+								$sql_faculty = "SELECT * FROM Faculty WHERE DepartmentID='$userdept' ORDER BY LastName";
+								$result_faculty = mysql_query($sql_faculty);
+
+								while($row = mysql_fetch_assoc($result_faculty))
+								{
+									$fac_netid = $row['NetID'];
+									$fac_fn = $row['FirstName'];
+									$fac_ln = $row['LastName'];
+
+									echo"<option value='$fac_netid'>$fac_ln, $fac_fn</option>";
+								}
+							echo"
+							</select>
+						";
+					}
+					echo"
           </td>
         </tr>
         <tr>
