@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Add Facutly Office Hours";
+	$callToActionVar = "Enter Facutly Member Office Hours";
 	include 'header.php';
 	require('db_cn.inc');
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
