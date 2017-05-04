@@ -342,7 +342,7 @@
 												echo "<li><a href='#'>Courses</a><ul>";
 													echo "<li><a href='course_add.php'>Add Courses</a></li>";
 													echo "<li><a href='course_modify_lookup.php'>Modify Courses</a></li>";
-													echo "<li><a href='#'>Remove Courses</a></li>";
+													echo "<li><a href='course_remove_lookup.php'>Remove Courses</a></li>";
 													echo "</ul></li>";
 											}
 											if ($credentials == '3' || $credentials == '2'  || $credentials == '1')
@@ -354,7 +354,7 @@
 													echo "</ul></li>";
 												if ($credentials == '3')
 												{
-													echo "<li><a href='#'>View Schedule</a></li>";
+													echo "<li><a href='officehours_lookup_process.php' target='_blank'>View Schedule</a></li>";
 												}
 											}
 

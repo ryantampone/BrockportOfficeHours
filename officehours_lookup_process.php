@@ -108,9 +108,26 @@
   ";
   //----------------------------------------------------------------------------
 
-  //get values from form
-  $facultyName = $_POST['FacultyName'];
-  $netid = $_POST['netid'];
+  if ((string)$_SESSION['Credentials'] == '3')
+  {
+    $netid = (string)$_SESSION['NetID']
+  }
+  else
+  {
+    //get values from form
+    $facultyName = $_POST['FacultyName'];
+    $netid = $_POST['netid'];
+
+    if (($facultyName == null)||($netid == null))
+    {
+      echo "
+            <script language='javascript'>
+              window.alert('You Must First Search for a Professor to View Their Office Hours');
+              window.location = 'officehours_lookup.php';
+            </script>";
+    }
+  }
+
   /*echo "
         <script language='javascript'>
           window.alert(\"$netid\");
