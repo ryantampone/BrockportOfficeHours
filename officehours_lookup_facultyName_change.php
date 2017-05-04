@@ -4,10 +4,14 @@
 
   $enteredFacName = $_POST['facultyName'];
   $sql_fac_id = "SELECT NetID, FirstName, LastName FROM `Faculty`
-  WHERE ((FirstName LIKE '%$enteredFacName%')
-  OR (LastName LIKE '%$enteredFacName%') OR (NetID LIKE '%$enteredFacName%'))
+  WHERE (
+     (FirstName LIKE '%$enteredFacName%')
+  OR (LastName LIKE '%$enteredFacName%')
+  OR (NetID LIKE '%$enteredFacName%')
+  OR (Email LIKE '%$enteredFacName%')
+  OR (PhoneNumber LIKE '%$enteredFacName%')
   OR (CONCAT(FirstName, LastName) LIKE '%$enteredFacName%')
-  OR (CONCAT(LastName, FirstName) LIKE '%$enteredFacName%')
+  OR (CONCAT(LastName, FirstName) LIKE '%$enteredFacName%'))
   ORDER BY 'LastName';";
   $result = mysql_query($sql_fac_id); //$result = resource id
 

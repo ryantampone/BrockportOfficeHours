@@ -6,7 +6,6 @@
     function toggleInitialVisibility()
     {
       var inputs = document.getElementsByTagName('input');
-      var inputsLabel = document.getElementsByTagName('label');
       for(var i = 0; i < inputs.length; i++)
       {
           if(inputs[i].type.toLowerCase() == 'radio')
@@ -18,6 +17,39 @@
               }
           }
       }
+
+      if( document.getElementById('otherRadioLabel').style.display=='none' ){
+         document.getElementById('otherRadioLabel').style.display = '';
+       }else{
+         document.getElementById('otherRadioLabel').style.display = 'none';
+       }
+
+
+       if( document.getElementById('submitAppointment').style.display=='none' ){
+          document.getElementById('submitAppointment').style.display = '';
+        }else{
+          document.getElementById('submitAppointment').style.display = 'none';
+        }
+
+        if( document.getElementById('scheduleAppointmentHeading').style.display=='none' ){
+           document.getElementById('scheduleAppointmentHeading').style.display = '';
+         }else{
+           document.getElementById('scheduleAppointmentHeading').style.display = 'none';
+         }
+
+
+         if( document.getElementById('otherOfficeTimeDate').style.display=='none' ){
+            document.getElementById('otherOfficeTimeDate').style.display = '';
+          }else{
+            document.getElementById('otherOfficeTimeDate').style.display = 'none';
+          }
+
+          if( document.getElementById('scheduleAppointment').style.display=='none' ){
+             document.getElementById('scheduleAppointment').style.display = '';
+           }else{
+             document.getElementById('scheduleAppointment').style.display = 'none';
+           }
+
     }
 
 
@@ -37,6 +69,40 @@
                 }
             }
         }
+
+        if( document.getElementById('otherRadioLabel').style.display=='none' ){
+           document.getElementById('otherRadioLabel').style.display = '';
+         }else{
+           document.getElementById('otherRadioLabel').style.display = 'none';
+         }
+
+         if( document.getElementById('scheduleAppointment').style.display=='none' ){
+            document.getElementById('scheduleAppointment').style.display = '';
+          }else{
+            document.getElementById('scheduleAppointment').style.display = 'none';
+          }
+
+
+          if( document.getElementById('submitAppointment').style.display=='none' ){
+             document.getElementById('submitAppointment').style.display = '';
+           }else{
+             document.getElementById('submitAppointment').style.display = 'none';
+           }
+
+
+           if( document.getElementById('scheduleAppointmentHeading').style.display=='none' ){
+              document.getElementById('scheduleAppointmentHeading').style.display = '';
+            }else{
+              document.getElementById('scheduleAppointmentHeading').style.display = 'none';
+            }
+
+
+
+            if( document.getElementById('otherOfficeTimeDate').style.display=='none' ){
+               document.getElementById('otherOfficeTimeDate').style.display = '';
+             }else{
+               document.getElementById('otherOfficeTimeDate').style.display = 'none';
+             }
       }
     </script>
   ";
@@ -202,7 +268,8 @@
     echo"
     <br/><br/><h3 class='subHeading' align='center'>Office Hours</h2>
     <hr width='25%'>
-    <form method='post'>
+      <center id='scheduleAppointmentHeading'><h3 class='subHeading'>Select a Timeslot & Enter your information below</h3></center>
+    <form method='post' action='officehours_appointment_process.php'>
       <table align='center' cellspacing='20px'>
         <tr>
           <th></th>
@@ -321,7 +388,7 @@
             }
       echo"
         <tr>
-          <td><input type='radio' name='officeHoursRadio' id='officeHoursRadio' value='$id'></td>
+          <td><input type='radio' name='officeHoursRadio' id='officeHoursRadio' value='$id' required></td>
           <td>$day</td>
           <td align='center'>$startTime - $endTime</td>
           <td>$buildingNameOfficeHours</td>
@@ -330,11 +397,40 @@
       ";
     }
     echo"
-
+    <tr>
+      <td><input type='radio' name='officeHoursRadio' id='officeHoursRadio' value='other'></td>
+      <td id='otherRadioLabel' colspan='4'>Schedule a different time <input type='datetime-local' id='otherOfficeTimeDate'></td>
+    </tr>
       </table>
           <center>
-            <button type='button' onclick='toggleVisibility()'>Schedule Appointment</button>
+            <button type='button' id='scheduleAppointment' onclick='toggleVisibility()'>Schedule Appointment</button>
           </center>
+
+          <input type='hidden' id='professorEmail' name='professorEmail' value='$email'>
+      <table id='submitAppointment' align='center' cellspacing='10px'>
+        <tr>
+            <td>First Name</td>
+            <td><input type='text' name='firstName' id='firstName'></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type='text' name='lastName' id='lastName'></td>
+        </tr>
+        <tr>
+            <td>Brockport Email</td>
+            <td><input type='text' name='studentEmail' id='studentEmail'></td>
+        </tr>
+        <tr>
+            <td>Reason for Appointment:</td>
+            <td colspan='2'><textarea name='messageDetails' id='messageDetails' width='60px' height='50px'></textarea></td>
+        </tr>
+        <tr>
+            <td colspan='2'><center><input type='submit' value='Submit Selected Appointment'></center></td>
+        </tr>
+      </table>
+
+
+
       </form>
     ";
   }
