@@ -287,6 +287,13 @@
 						document.getElementById("modify_course").submit();
 					}
 
+					function getButtonIdRemove(clicked_id)
+					{
+						var myBtn = clicked_id;
+						document.getElementById("buttonValue").value = myBtn;
+						document.getElementById("remove_course").submit();
+					}
+
 
 		</script>
 </head>
