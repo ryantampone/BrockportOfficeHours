@@ -156,6 +156,9 @@
             <td>$course_day1 $course_day2 $course_day3</td>
             <td align='center'>$startTime - $endTime</td>
           </tr>
+          <tr>
+            <td><input type='hidden' name='courseCode' value='$dept_code' />
+          </tr>
         ";
 
   }

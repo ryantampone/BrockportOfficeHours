@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td><span align='right'>Section Number:</span></td>
-					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumber(event)' onblur='twoNumbers()' onpaste='return false' required/></td>
+					<td><input name='coursesection' id='coursesection' TYPE='text' SIZE='30' onKeyPress='return hasToBeNumber(event)' onpaste='return false' required/></td>
 				</tr>
         <tr>
           <td><span align='right'>Course Type:</span></td>
