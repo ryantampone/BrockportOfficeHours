@@ -73,6 +73,11 @@
 			$endMin = $endArr[2].$endArr[3];
 		}
 
+		if($startHour < 10)
+			$startHour = "0".$startHour;
+		if($endHour < 10)
+			$endHour = "0".$endHour;
+
     echo "
     <h2 class='contentAction' align='center'>Enter the course information below</h2>
     <div class='bodyContent'>
