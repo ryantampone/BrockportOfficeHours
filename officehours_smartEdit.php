@@ -29,13 +29,45 @@
 		}
 
 
+
+
 		//Form for admins
 		if ((string)$_SESSION['Credentials'] == '1')
 		{
 			echo "
-	    <h2 class='contentAction' align='center'>Enter the information for the office hours you would like to add</h2>
+	    <h2 class='contentAction' align='center'>Search for a Faculty Member Below</h2>
 	    <div class='bodyContent'>
-			<form action='officehours_add_process.php' method='post'>
+			<form action='officehours_smartEdit_process.php' method='post' autocomplete='false'>
+				<table align='center'>
+					<tr>
+						<td><input type='search' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...' autocomplete='off'></td>
+						<td valign='center'><input type='submit' value='Go'/></td>
+					</tr>
+					<tr>
+						<td>
+						<!--
+	            <select name='netid' id='netid' style=\"width:160px;\" onpaste='return false' required>
+	              <option disable selected hidden value=''>Select one</option>
+							</select>
+							-->
+
+							<select name='netid' id='netid' multiple='multiple' size='1'>
+								<option disable selected hidden value=''>Select one</option>
+							</select>
+	          </td>
+					</tr>
+				</table>
+				<p align='center'>
+
+				</p>
+			</form>
+
+
+
+
+
+
+			<form action='officehours_smartEdit_process.php' method='post'>
 				<table align='center'>
 					<tr>
 						<td><span align='right'>Semester:</span></td>
@@ -152,10 +184,12 @@
 				 window.alert('$deptID')
 				 window.location.href='#';
 				 </SCRIPT>";*/
+
+			$departmentID = (string)$_SESSION['DepartmentID'];
 			echo "
-	    <h2 class='contentAction' align='center'>Enter the information for the office hours you would like to add</h2>
+	    <h2 class='contentAction' align='center'>Please Select a Faculty Member Below</h2>
 	    <div class='bodyContent'>
-			<form action='officehours_add_process.php' method='post'>
+			<form action='officehours_smartEdit_process.php' method='post'>
 				<table align='center'>
 					<tr>
 						<td><span align='right'>Semester:</span></td>
@@ -345,14 +379,14 @@
 			 </SCRIPT>";
 	}*/
 
-echo "
-</div> <!-- End pagecontent Div -->
-</div> <!-- End pagebody Div -->
-<script src='scripts/jquery-3.1.1.js'></script>
-<script src='scripts/officehours_add_ajax.js'></script>
-</body>
-</html>
-"
+	echo "
+	</div> <!-- End pagecontent Div -->
+	</div> <!-- End pagebody Div -->
+	<script src='scripts/jquery-3.1.1.js'></script>
+	<script src='scripts/officehours_lookup_ajax.js'></script>
+	</body>
+	</html>
+	";
 ?>
 
 </body>
