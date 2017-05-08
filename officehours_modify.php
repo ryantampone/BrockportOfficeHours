@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Enter Facutly Member Office Hours";
+	$callToActionVar = "Modify Office Hours";
 	include 'header.php';
 	require('db_cn.inc');
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
@@ -37,7 +37,7 @@
 			echo "
 	    <h2 class='contentAction' align='center'>Search for a Faculty Member Below</h2>
 	    <div class='bodyContent'>
-			<form action='officehours_smartEdit_process.php' method='post' autocomplete='false'>
+			<form action='officehours_modify_process.php' method='post' autocomplete='false'>
 				<table align='center'>
 					<tr>
 						<td><input type='search' name='FacultyName' id='FacultyName' onKeyUp='updateFaculty()' placeholder='Search...' autocomplete='off'></td>

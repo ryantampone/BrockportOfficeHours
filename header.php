@@ -365,8 +365,8 @@
 											{
 												echo "<li><a href='#'>Office Hours</a><ul>";
 													echo "<li><a href='officehours_add.php'>Add Office Hours</a></li>";
-													echo "<li><a href='#'>Modify Office Hours</a></li>";
-													echo "<li><a href='#'>Remove Office Hours</a></li>";
+													echo "<li><a href='officehours_modify.php'>Modify Office Hours</a></li>";
+													echo "<li><a href='officehours_remove.php'>Remove Office Hours</a></li>";
 													echo "</ul></li>";
 												if ($credentials == '3')
 												{
@@ -394,7 +394,7 @@ echo"
 <div class='callToActionBox'>
     <!-- <img src='src/callToActionHeader.png' alt='header'/> -->
     <div class='callToActionContent'>
-        $callToActionVar
+        <center>$callToActionVar</center>
     </div>
 </div>
 "
