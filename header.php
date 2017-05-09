@@ -389,7 +389,7 @@
 												echo "<li><a href='#'>Office Hours</a><ul>";
 													echo "<li><a href='officehours_add.php'>Add Office Hours</a></li>";
 													echo "<li><a href='officehours_modify.php'>Modify Office Hours</a></li>";
-													echo "<li><a href='officehours_remove.php'>Remove Office Hours</a></li>";
+													echo "<li><a href='officehours_remove_lookup.php'>Remove Office Hours</a></li>";
 													echo "</ul></li>";
 												if ($credentials == '3')
 												{
