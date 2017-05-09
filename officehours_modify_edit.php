@@ -8,20 +8,26 @@
 <?php
 	//Get Value from OH Modify process
 	$officeHoursID = $_POST['officeHoursRadio'];
-
+	echo "<SCRIPT LANGUAGE='JavaScript'>
+		 window.alert('OH ID: $officeHoursID')
+		 window.location.href='#';
+		 </SCRIPT>";
 	//Get Office Hours Info
-	$search_OfficeHours_stmt = "SELECT * FROM OfficeHours WHERE ID = '$officeHoursID'";
+	$search_OfficeHours_stmt = "SELECT * FROM OfficeHours WHERE ID='$officeHoursID'";
 	$result_OfficeHours = mysql_query($search_OfficeHours_stmt);
 	$numrowsOH = mysql_num_rows($result_OfficeHours);
 	if ($numrowsOH != 0)
 	{
-		$netID = $row['NetID'];
-		$semesterID = $row['SemesterID'];
-		$day = $row['Day'];
-		$startTime = (int)$row['StartTime'];
-		$endTime = (int)$row['EndTime'];
-		$location = $row['Location'];
-		$roomNumber = $row['RoomNumber'];
+		while ($row = mysql_fetch_assoc($result_OfficeHours))
+		{
+			$netID = $row['NetID'];
+			$semesterID = $row['SemesterID'];
+			$day = $row['Day'];
+			$startTime = (int)$row['StartTime'];
+			$endTime = (int)$row['EndTime'];
+			$location = $row['Location'];
+			$roomNumber = $row['RoomNumber'];
+		}
 	}
 	else
 	{
@@ -31,15 +37,25 @@
 			 </SCRIPT>";
 	}
 
+	echo "<SCRIPT LANGUAGE='JavaScript'>
+		 window.alert('Semester ID: $semesterID')
+		 window.location.href='#';
+		 </SCRIPT>";
+
+
+
+
+
+
 
 
 		//Form for admins
 		if ((string)$_SESSION['Credentials'] == '1')
 		{
 			echo "
-	    <h2 class='contentAction' align='center'>Enter the information for the office hours you would like to add</h2>
+	    <h2 class='contentAction' align='center'>Update the Information Below</h2>
 	    <div class='bodyContent'>
-			<form action='officehours_add_process.php' method='post'>
+			<form action='officehours_modify_edit_process.php' method='post'>
 				<table align='center'>
 					<tr>
 						<td><span align='right'>Semester:</span></td>
@@ -55,7 +71,7 @@
 								$semester_year = $row['Year'];
 								$status = $row['Status'];
 								if($semester_id == $semesterID)
-                  echo "<option value=$semester_id selected>$semester_term $semester_year (Current)</option>";
+                  echo "<option value=$semester_id selected>$semester_term $semester_year</option>";
                 else echo "<option value=$semester_id>$semester_term $semester_year</option>";
 								//echo "<option value=$semesterID selected>$term $year ($status)</option>";
 							}
@@ -68,20 +84,29 @@
 								<select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" required>
 									<option disable selected hidden value=''>Select one</option>";
 
-									$sql_dept_code_compare = "SELECT Code FROM Department WHERE Location='$location'";
-									$result_dept_code_compare = mysql_query($sql_dept_code_compare);
-									while($row = mysql_fetch_assoc($result_dept_code_compare))
+									$sql_dept_id_compare = "SELECT DepartmentID FROM Faculty WHERE NetID='$netID'";
+									$result_dept_id_compare = mysql_query($sql_dept_id_compare);
+									while($row = mysql_fetch_assoc($result_dept_id_compare))
 									{
-										$deptcode_compare = $row['Code'];
+										$deptid_compare = $row['DepartmentID'];
 									}
 
-									$sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
+									//run query to get dept code from dept id
+
+
+									echo "<SCRIPT LANGUAGE='JavaScript'>
+										 window.alert('DeptCode Compare: $deptid_compare, LocAtion: $location')
+										 window.location.href='#';
+										 </SCRIPT>";
+									$sql_dept_code = "SELECT * FROM Department ORDER BY Code";
 									$result_dept_code = mysql_query($sql_dept_code);
 
 									while($row = mysql_fetch_assoc($result_dept_code))
 									{
 										$deptcode = $row['Code'];
-										if ($deptcode_compare == $deptcode)
+										$deptID2 = $row['DepartmentID'];
+
+										if ($deptID2 == $deptid_compare)
 											echo "<option value=$deptcode selected>$deptcode</option>";
 										else
 											echo "<option value=$deptcode >$deptcode</option>";
@@ -92,8 +117,20 @@
 					<tr>
 						<td><span align='right'>Faculty Name:</span></td>
 						<td>
-							<select name='netid' id='netid' style=\"width:160px;\" required>
-								<option disable selected hidden value=''>Select one</option>
+							<select name='netid' id='netid' style=\"width:160px;\" required>";
+							$sql_all_facs = "SELECT * FROM Faculty WHERE DepartmentID='$deptid_compare' ORDER BY LastName";
+							$result_all_facs = mysql_query($sql_all_facs);
+							while($row = mysql_fetch_assoc($result_all_facs))
+							{
+								$facsFN = $row['FirstName'];
+								$facsLN = $row['LastName'];
+								$facsNetID = $row['NetID'];
+								if ($netID == $facsNetID)
+									echo"<option value=$facsNetID selected>$facsLN, $facsFN</option>";
+								else
+									echo"<option value=$facsNetID>$facsLN, $facsFN</option>";
+							}
+							echo"
 							</select>
 						</td>
 					</tr>
@@ -109,7 +146,7 @@
 							{
 								$bName = $row['Name'];
 								$bId = $row['BuildingID'];
-								if ($location = $bId)
+								if ($location == $bId)
 									echo"<option value=$bId selected>$bName</option>";
 								else
 									echo"<option value=$bId>$bName</option>";
