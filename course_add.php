@@ -24,7 +24,7 @@
 					<td>
             <select name='deptcode' id='deptcode' onchange='updateFaculty();' style=\"width:160px;\" onpaste='return false' required>
               <option disable selected hidden value=''>Select one</option>";
-              $sql_dept_code = "SELECT Code FROM Department ORDER BY Code";
+              $sql_dept_code = "SELECT Code FROM Department WHERE Status='Active' ORDER BY Code";
               $result_dept_code = mysql_query($sql_dept_code);
 
               while($row = mysql_fetch_assoc($result_dept_code))
