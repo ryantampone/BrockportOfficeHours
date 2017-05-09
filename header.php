@@ -219,6 +219,20 @@
 						}
 					}
 
+					function fourNumbers()
+					{
+						var section = document.getElementById("year").value;
+						var pattern = /^\d{4}$/;
+						if (section.match(pattern))
+							return;
+						else
+						{
+							alert("Invalid Year\nMust be in the format: ####");
+							document.getElementById("year").value = "";
+							document.getElementById("term").focus();
+						}
+					}
+
 					function selectFaculty()
 					{
 						var acc = document.getElementById("access").value;
@@ -300,9 +314,18 @@
 						{
 							document.getElementById("remove_course").submit();
 						}
-
 					}
 
+					function confirmNewSemester()
+					{
+						if(document.getElementById("year").value != "")
+						{
+							if (confirm("This action cannot be undone. Proceed?") == true)
+							{
+								document.getElementById("new_semester").submit();
+							}
+						}
+					}
 
 		</script>
 </head>
@@ -375,7 +398,12 @@
 											}
 
 											echo "<li><a href='#'>Options</a>";
-											echo "<ul><li><a href='changepassword.php'>Change Password</a></li>";
+											if($credentials == '1')
+											{
+												echo "<ul><li><a href='new_semester.php'>New Semester</a></li>";
+												echo "<li><a href='changepassword.php'>Change Password</a></li>";
+											}
+											else echo "<ul><li><a href='changepassword.php'>Change Password</a></li>";
 											echo "<li><a href='login/logout.php'>Sign Out</a></li></ul></li>";
 									}
 									else
