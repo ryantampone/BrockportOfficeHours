@@ -36,7 +36,7 @@
 						</tr>
 						<tr>
               <td><span align='right'>Department Code:</span></td>
-              <td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' value='$deptcode' onKeyPress='return hasToBeLetter(event)' onpaste='return false' required/></td>
+              <td><input name='deptcode' id='deptcode' TYPE='text' SIZE='50' value='$deptcode' onKeyPress='return hasToBeLetter(event)' onpaste='return false' maxlength='3' required/></td>
 						</tr>
 						<tr>
 							<td><span align='right'>Location:</span></td>
