@@ -8,10 +8,7 @@
 <?php
 	//Get Value from OH Modify process
 	$officeHoursID = $_POST['officeHoursRadio'];
-	echo "<SCRIPT LANGUAGE='JavaScript'>
-		 window.alert('OH ID: $officeHoursID')
-		 window.location.href='#';
-		 </SCRIPT>";
+
 	//Get Office Hours Info
 	$search_OfficeHours_stmt = "SELECT * FROM OfficeHours WHERE ID='$officeHoursID'";
 	$result_OfficeHours = mysql_query($search_OfficeHours_stmt);
@@ -37,10 +34,6 @@
 			 </SCRIPT>";
 	}
 
-	echo "<SCRIPT LANGUAGE='JavaScript'>
-		 window.alert('Semester ID: $semesterID')
-		 window.location.href='#';
-		 </SCRIPT>";
 
 
 
@@ -92,12 +85,6 @@
 									}
 
 									//run query to get dept code from dept id
-
-
-									echo "<SCRIPT LANGUAGE='JavaScript'>
-										 window.alert('DeptCode Compare: $deptid_compare, LocAtion: $location')
-										 window.location.href='#';
-										 </SCRIPT>";
 									$sql_dept_code = "SELECT * FROM Department ORDER BY Code";
 									$result_dept_code = mysql_query($sql_dept_code);
 
@@ -252,6 +239,7 @@
 					<input type='submit' id='submitButton' value='Submit'/>
 					<input type='reset' value='Reset'/>
 				</p>
+				<input type='hidden' id='OHid' name='OHid' value='$officeHoursID'/>
 			</form>
 	    </div>
 	    ";

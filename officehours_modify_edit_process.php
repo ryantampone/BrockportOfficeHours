@@ -8,6 +8,7 @@
   $buildingID = $_POST['location'];
   $roomNumber = $_POST['deptroom'];
   $days = $_POST['days'];
+  $officeHoursID = $_POST['OHid'];
 
   /*Get Days value from post method
   if (isset($_POST['days']))
@@ -33,7 +34,7 @@
 
   //Insert Values into OfficeHours Table of Database
   $sql_insertOfficeHours = "UPDATE OfficeHours SET NetID='$facNetID', SemesterID='$semester', Day='$days',
-  StartTime='$startTimeParsed', EndTime='$endTimeParsed', Location='$buildingID', RoomNumber='$roomNumber')";
+  StartTime='$startTimeParsed', EndTime='$endTimeParsed', Location='$buildingID', RoomNumber='$roomNumber' WHERE ID='$officeHoursID'";
   $result = mysql_query($sql_insertOfficeHours);
 
   if(!$result)
@@ -53,7 +54,7 @@
     echo "
       <script language='javascript'>
         window.alert(\"$message\");
-        window.location = 'officehours_add.php';
+        window.location = 'officehours_modify.php';
       </script>
     ";
   }
