@@ -1,5 +1,5 @@
 <?php
-	$callToActionVar = "Enter Facutly Member Office Hours";
+	$callToActionVar = "Enter Faculty Member Office Hours";
 	include 'header.php';
 	require('db_cn.inc');
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);
@@ -95,6 +95,8 @@
 								echo"<option value=$bId>$bName</option>";
 							}
 						echo"
+						</select>
+						</td>
 	        </tr>
 					<tr>
 						<td><span align='right'>Room Number:</span></td>
@@ -194,8 +196,21 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Location:</span></td>
-						<td><span align='right'>$buildingName</span></td>
-	          <td><input name='location' id='location' TYPE='hidden' value='$buildingID'/></td>
+						<td>
+							<select id='location' name='location'>";
+
+							// Get all Buildings (for admin adding office hours)
+							$sql_all_buildings = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
+							$result_all_buildings = mysql_query($sql_all_buildings);
+							while($row = mysql_fetch_assoc($result_all_buildings))
+							{
+								$bName = $row['Name'];
+								$bId = $row['BuildingID'];
+								echo"<option value=$bId>$bName</option>";
+							}
+						echo"
+						</select>
+						</td>
 	        </tr>
 					<tr>
 						<td><span align='right'>Room Number:</span></td>
@@ -208,12 +223,12 @@
 								<tr><td><input type='radio' name='days' value='Sunday'>Sunday</td></tr>
 								<tr>
 									<td><input type='radio' name='days' value='Monday'>Monday</td>
-									<td><input type='radio' name='days' value='Tuesday'>Wednesday</td>
-									<td><input type='radio' name='days' value='Wednesday'>Friday</td>
+									<td><input type='radio' name='days' value='Wednesday'>Wednesday</td>
+									<td><input type='radio' name='days' value='Friday'>Friday</td>
 								</tr>
 								<tr>
-									<td><input type='radio' name='days' value='Thursday'>Tuesday</td>
-									<td><input type='radio' name='days' value='Friday'>Thursday</td>
+									<td><input type='radio' name='days' value='Tuesday'>Tuesday</td>
+									<td><input type='radio' name='days' value='Thursday'>Thursday</td>
 								</tr>
 								<tr><td><input type='radio' name='days' value='Saturday'>Saturday</td></tr>
 							</table>
@@ -289,8 +304,21 @@
 					</tr>
 					<tr>
 	          <td><span align='right'>Location:</span></td>
-						<td><span align='right'>$buildingName</span></td>
-	          <td><input name='location' id='location' TYPE='hidden' value='$buildingID'/></td>
+						<td>
+							<select id='location' name='location'>";
+
+							// Get all Buildings (for admin adding office hours)
+							$sql_all_buildings = "SELECT * FROM Building WHERE Status='Active' ORDER BY Name";
+							$result_all_buildings = mysql_query($sql_all_buildings);
+							while($row = mysql_fetch_assoc($result_all_buildings))
+							{
+								$bName = $row['Name'];
+								$bId = $row['BuildingID'];
+								echo"<option value=$bId>$bName</option>";
+							}
+						echo"
+						</select>
+						</td>
 	        </tr>
 					<tr>
 						<td><span align='right'>Room Number:</span></td>
@@ -303,12 +331,12 @@
 								<tr><td><input type='radio' name='days' value='Sunday'>Sunday</td></tr>
 								<tr>
 									<td><input type='radio' name='days' value='Monday'>Monday</td>
-									<td><input type='radio' name='days' value='Tuesday'>Wednesday</td>
-									<td><input type='radio' name='days' value='Wednesday'>Friday</td>
+									<td><input type='radio' name='days' value='Wednesday'>Wednesday</td>
+									<td><input type='radio' name='days' value='Friday'>Friday</td>
 								</tr>
 								<tr>
-									<td><input type='radio' name='days' value='Thursday'>Tuesday</td>
-									<td><input type='radio' name='days' value='Friday'>Thursday</td>
+									<td><input type='radio' name='days' value='Tuesday'>Tuesday</td>
+									<td><input type='radio' name='days' value='Thursday'>Thursday</td>
 								</tr>
 								<tr><td><input type='radio' name='days' value='Saturday'>Saturday</td></tr>
 							</table>
