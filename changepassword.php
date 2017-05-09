@@ -1,6 +1,8 @@
 <?php
+session_start();
 $callToActionVar = 'Change Password';
 include 'header.php';
+$netID = (string)$_SESSION['NetID'];
 
 
 

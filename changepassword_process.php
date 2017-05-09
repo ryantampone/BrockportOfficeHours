@@ -23,7 +23,7 @@ function update_password()
 	}
 	else
 	{
-	  $message = "$uid, Your password was updated successfully.";
+	  $message = "$uid Your password was updated successfully.";
 
 	}
 
