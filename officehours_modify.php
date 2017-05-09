@@ -101,7 +101,7 @@
 								$FN = $row['FirstName'];
 								$netID = $row['NetID'];
 
-                echo "<option value=$netID>$LN , $FN</option>";
+                echo "<option value='$netID'>$LN , $FN</option>";
 							}echo "
 					</tr>
 				</table>
