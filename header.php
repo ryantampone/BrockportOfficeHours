@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <title>Brockport Faculty Office Hours</title>
 
-		<link rel='shortcut icon' type='image/x-icon' href='src/favicon.ico' />
+		<link rel='shortcut icon' type='image/x-icon' href='src/favicon.png' />
 
 		<link href="css/genericStyles.css" type="text/css" rel="stylesheet" />
     <link href="css/headerStyles.css" type="text/css" rel="stylesheet" />
